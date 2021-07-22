@@ -1,0 +1,223 @@
+\documentclass{article}
+\usepackage{template}
+
+\usepackage{chngcntr} % Reset counter within sections
+\usepackage{multicol}
+
+\counterwithin*{equation}{section}
+\counterwithin*{equation}{subsection}
+
+\pagestyle{fancy}
+\setlength\headheight{24pt}
+
+\lhead{\className}
+\rhead{\leftmark}
+\cfoot{\thepage}
+
+\newcommand{\uniTitle}{Queensland University of Technology}
+\newcommand{\className}{Engineering Computation}
+\newcommand{\classTime}{Semester 2, 2021}
+\newcommand{\classInstructorName}{Dr Michael Dallaston}
+\newcommand{\authorName}{Tarang Janawalkar}
+\newcommand{\authorStudentNumber}{n11032201}
+\newcommand{\classCode}{MZB126}
+
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0},
+    imagewidth={5em},
+]{doclicense}
+
+\date{}
+
+\begin{document}
+\begin{titlepage}
+    \vspace*{\fill}
+	\begin{center}
+        \LARGE
+        \textbf{\className}
+        \texorpdfstring{\\}{ }
+        \uniTitle
+        \texorpdfstring{\\}{ }
+        \texorpdfstring{\vspace{0.3in}}{ }
+        \normalsize\textit{\classInstructorName}
+        \texorpdfstring{\\}{ }
+        \classTime
+    \end{center}
+    \begin{center}
+        \textbf{\authorName}
+    \end{center}
+    \vspace*{\fill}
+    \doclicenseThis
+    \thispagestyle{empty}
+\end{titlepage}
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{MATLAB Functions}
+\lstset{language=Matlab}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c | c}
+        \toprule
+        Function Syntax & Function Output \\
+        \midrule
+        \begin{lstlisting}
+y = sin(x)
+        \end{lstlisting} & Sine with $x$ in radians. \\
+        \begin{lstlisting}
+y = sind(x)
+        \end{lstlisting} & Sine with $x$ in degrees. \\
+        \begin{lstlisting}
+y = asin(x)
+        \end{lstlisting} & Arcsine with $y$ in radians. \\
+        \begin{lstlisting}
+y = exp(x)
+        \end{lstlisting} & $\e^x$. \\
+        \begin{lstlisting}
+y = log(x)
+        \end{lstlisting} & $\ln{\left( x \right)}$. \\
+        \bottomrule
+    \end{tabular}
+    \caption{Common mathematical function in MATLAB.}
+\end{table}
+All the above functions are element-wise.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c | c}
+        \toprule
+        Function Syntax & Function Output(s) \\
+        \midrule
+        \begin{lstlisting}
+A = zeros(m, n)
+        \end{lstlisting} & Creates an $m \times n$ matrix containing zeros. \\
+        \begin{lstlisting}
+A = ones(m, n)
+        \end{lstlisting} & Creates an $m \times n$ matrix containing ones. \\
+        \begin{lstlisting}
+I = ones(m)
+        \end{lstlisting} & Creates an $m \times m$ identity matrix. \\
+        \begin{lstlisting} 
+a = linspace(a, b, x)
+        \end{lstlisting} & Creates an evenly spaced vector with bounds $\left[a, b\right]$. \\
+        \begin{lstlisting}
+y = length(A)
+        \end{lstlisting} & The largest dimension of $A$. \\
+        \begin{lstlisting}
+[m, n] = size(A)
+        \end{lstlisting} & The dimensions of $A$. \\
+        \begin{lstlisting}
+y = min(a)
+        \end{lstlisting} & The minimum value in the vector $a$. \\
+        \begin{lstlisting}
+y = max(a)
+        \end{lstlisting} & The maximum value in the vector $a$. \\
+        \bottomrule
+    \end{tabular}
+    \caption{Matrices and Arrays in MATLAB.}
+\end{table}
+When manipulating matrices, \ast, \^, perform matrix operations, while prepending an operator with a dot (.) performs an element-wise operation.
+\section{Operations in MATLAB}
+\begin{multicols}{2}
+    \subsection{Conditional Operations}
+    \begin{lstlisting}
+if expression
+    statements
+else if expression
+    statements
+else
+    statements
+end
+    \end{lstlisting}
+    Code inside an \lstinline{if} statement only executes if the expression is true. Note that only one branch will execute depending on which expression is true.
+    \subsection{Iterative Operations}
+    \begin{lstlisting}
+while expression
+    statements
+end
+    \end{lstlisting}
+    Statements inside a \lstinline{while} loop \linebreak execute repeatedly until the expression is false.
+    \begin{lstlisting}
+for index = values
+    statements
+end
+    \end{lstlisting}
+    Statements inside a \lstinline{for} loop execute a specific number of times, based on the length of \lstinline{values}.
+\end{multicols}
+\section{Differential Equations}
+\begin{definition}
+    A differential equation is an equation that involves the derivatives of a function as well as the function itself.
+    An ordinary differential equation (ODE) is a differential equation of a function with only one independent variable.
+\end{definition}
+\subsection{Electrical Systems}
+
+\section{First-Order Ordinary Differential Equations}
+\subsection{Separable ODE}
+\begin{equation*}
+    \dv{y}{t} = F(t, y)
+\end{equation*}
+\begin{enumerate}
+    \item Rewrite the equation in the form: $f(y)\dd{y} = g(t)\dd{t}$.
+    \item Integrate both sides: $\int f(y)\dd{y} = \int g(t)\dd{t}$.
+    \item Rearrange for the explicit form of $y(t)$.
+\end{enumerate}
+\subsection{Linear ODE}
+\begin{equation*}
+    \dv{y}{t} + P(t)y = Q(t)
+\end{equation*}
+\begin{enumerate}
+    \item Determine the integrating factor: $R(t)=\e^{\int P(t) \dd{t}}$.
+    \item Solve:
+    \begin{equation*}
+        y(t)=\frac{1}{R(t)}\int R(t)Q(t)\dd{t} + C
+    \end{equation*}
+\end{enumerate}
+\begin{proof}
+    To solve a first-order linear differential equation, determine an integrating factor $R(t)$ such that
+    \begin{equation*}
+        R(t)P(t) = \dv{R}{t}
+    \end{equation*}
+    Multiplying the equation by $R(t)$ gives
+    \begin{align*}
+        R(t)\dv{y}{t} + R(t)P(t)y &= R(t)Q(t) \\
+        R(t)\dv{y}{t} + \dv{R}{t}y &= R(t)Q(t) \\
+        \dv{t}\bigl(R(t)y\bigr) &= R(t)Q(t) \\
+        \int \dv{t}\bigl(R(t)y\bigr) \dd{t} &= \int R(t)Q(t) \dd{t} \\
+        R(t)y &= \int R(t)Q(t) \dd{t} \\
+        y(t) &= \frac{1}{R(t)}\int R(t)Q(t) \dd{t} + C
+    \end{align*}
+\end{proof}
+\subsection{Solution using Linearisation}
+A function can be linearised by using its 1st degree Taylor polynomial near $a$.
+\begin{equation*}
+    f(x) \approx f(a) + f'(a)(x-a) + \mathcal{O}(x^2)
+\end{equation*}
+This new polynomial can be substituted to form a linear ODE, which can be solved using an integrating factor.
+\newpage
+\section{Second-Order Ordinary Differential Equation}
+\subsection{Constant Coefficient Linear ODE}
+\begin{equation*}
+    a \dv[2]{y}{t} + b \dv{y}{t} + c y = Q(t)
+\end{equation*}
+where $a,\:b,\:c\in\mathbb{C}$ are constants.
+\subsection{Principle of Superposition}
+Given that $y_1(t)$ and $y_2(t)$ are both solutions to a linear homogeneous second-order ODE, any linear combination of these solutions is also a solution to the differential equation.
+\begin{equation*}
+    y_H(t) = y_1(t) + y_2(t)
+\end{equation*}
+\subsection{Homogeneous ODE}
+\begin{definition}
+    A homogeneous ODE has $Q(t)=0$, which gives
+    \begin{equation*}
+        a \dv[2]{y}{t} + b \dv{y}{t} + c y = 0
+    \end{equation*} 
+\end{definition}
+This differential equation has a solution of the form:
+\begin{equation*}
+    y(t) = \e^{rt}
+\end{equation*}
+
+\end{document}
