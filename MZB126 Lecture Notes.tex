@@ -1,0 +1,450 @@
+\documentclass{article}
+\usepackage{template}
+
+\usepackage{chngcntr} % Reset counter within sections
+\usepackage{multicol}
+\usepackage{textcomp, upquote}
+
+\counterwithin*{equation}{section}
+\counterwithin*{equation}{subsection}
+
+\pagestyle{fancy}
+\setlength\headheight{24pt}
+\setlength\parindent{0pt}
+
+\lhead{\className}
+\rhead{\leftmark}
+\cfoot{\thepage}
+
+\newcommand{\className}{Engineering Computation}
+\newcommand{\classTime}{Semester 2, 2021}
+\newcommand{\classInstructorName}{Dr Michael Dallaston}
+
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0},
+    imagewidth={5em},
+    hyphenation={raggedright}
+]{doclicense}
+
+\date{}
+
+\begin{document}
+
+\begin{titlepage}
+    \vspace*{\fill}
+    \begin{center}
+        \LARGE{\textbf{\className}}
+        \texorpdfstring{\\}{ }
+        \texorpdfstring{\vspace{0.1in}}{ }
+        \normalsize{\classTime}
+        \texorpdfstring{\\}{ }
+        \texorpdfstring{\vspace{0.1in}}{ }
+        \normalsize\textit{\classInstructorName}
+        \texorpdfstring{\\}{ }
+        \texorpdfstring{\vspace{0.2in}}{ }
+        \textsc{Tarang Janawalkar}
+    \end{center}
+    \vspace*{\fill}
+    \doclicenseThis
+    \thispagestyle{empty}
+\end{titlepage}
+\newpage
+
+\tableofcontents
+\newpage
+
+\lstset{language=Matlab, upquote=true}
+\lstset{morekeywords={randi, false, imshow, drawpolygon, polyarea, drawline, ones, imread, VideoWriter, XData, YData, getFrame, writeVideo, deg2rad, soundsc, resample, audiowrite, sind}}
+\lstset{
+    basicstyle = \ttfamily, columns = fullflexible, keepspaces = true
+}
+
+\section{MATLAB Functions}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c | c}
+        \toprule
+        Function Syntax & Function Output \\
+        \midrule
+        \lstinline!y = sin(x)! & Sine with $x$ in radians. \\
+        \lstinline!y = sind(x)! & Sine with $x$ in degrees. \\
+        \lstinline!y = asin(x)! & Arcsine with $y$ in radians. \\
+        \lstinline!y = exp(x)! & $\e^x$. \\
+        \lstinline!y = log(x)! & $\ln{\left( x \right)}$. \\
+        \bottomrule
+    \end{tabular}
+    \caption{Common Mathematical Functions in MATLAB.}
+\end{table}
+All the above functions are element-wise.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c | c}
+        \toprule
+        Function Syntax & Function Output(s) \\
+        \midrule
+        \lstinline!A = zeros(m, n)! & Creates an $m \times n$ matrix containing zeros. \\
+        \lstinline!A = ones(m, n)! & Creates an $m \times n$ matrix containing ones. \\
+        \lstinline!I = eye(m)! & Creates an $m \times m$ identity matrix. \\
+        \lstinline!a = linspace(a, b, x)! & Creates an evenly spaced vector with bounds $\left[a, b\right]$. \\
+        \lstinline!y = length(A)! & The largest dimension of $A$. \\
+        \lstinline![m, n] = size(A)! & The dimensions of $A$. \\
+        \lstinline!y = min(a)! & The minimum value in the vector $a$. \\
+        \lstinline!y = max(a)! & The maximum value in the vector $a$. \\
+        \bottomrule
+    \end{tabular}
+    \caption{Matrices and Arrays in MATLAB.}
+\end{table}
+When manipulating matrices, \verb!*!, \verb!^!, perform matrix operations, while prepending an operator with a dot (\verb!.!) performs an element-wise operation.
+\subsection{Plotting}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c | c}
+        \toprule
+        Function Syntax & Function Output(s) \\
+        \midrule
+        \lstinline!plot(x, y)! & Plots given $x$ and $y$ coordinate vectors. \\
+        \lstinline!fplot(@f, [a, b])! & Plots the anonymous function over the domain $\left[ a,\: b \right]$. \\
+        \lstinline!title('string')! & Adds title to current plot. \\
+        \lstinline!xlabel('string')! & Adds $x$-axis label to current plot. \\
+        \lstinline!ylabel('string')! & Adds $y$-axis label to current plot. \\
+        \lstinline!legend('string1', ...)! & Adds legend to plot. \\
+        \lstinline!figure! & Creates a new figure. \\
+        \bottomrule
+    \end{tabular}
+    \caption{Plotting in MATLAB.}
+    % \label{}
+\end{table}
+\section{Operations in MATLAB}
+\subsection{Conditional Operations}
+\begin{multicols}{2}
+    \begin{lstlisting}
+if expression
+    statements
+else if expression
+    statements
+else
+    statements
+end
+    \end{lstlisting}
+    \columnbreak
+    Code inside an \lstinline{if} statement only executes if the expression is true. Note that only one branch will execute depending on which expression is true.
+\end{multicols}
+\subsection{Iterative Operations}
+\begin{multicols}{2}
+    \begin{lstlisting}
+while expression
+    statements
+end
+    \end{lstlisting}
+    \columnbreak
+    Statements inside a \lstinline{while} loop \linebreak execute repeatedly until the expression is false.
+\end{multicols}
+\begin{multicols}{2}
+    \begin{lstlisting}
+for index = values
+    statements
+end
+    \end{lstlisting}
+    \columnbreak
+    Statements inside a \lstinline{for} loop execute a specific number of times, based on the length of \lstinline{values}.
+\end{multicols}
+\section{Differential Equations}
+\begin{definition}
+    A differential equation is an equation that involves the derivatives of a function as well as the function itself.
+    An ordinary differential equation (ODE) is a differential equation of a function with only one independent variable.
+\end{definition}
+\subsection{Electrical Systems}
+
+\section{First-Order Ordinary Differential Equations}
+\subsection{Separable ODEs}
+\begin{equation*}
+    \dv{y}{t} = F(y,\: t) 
+\end{equation*}
+\begin{enumerate}
+    \item Rewrite the equation in the form: $f(y)\dd{y} = g(t)\dd{t}$.
+    \item Integrate both sides: $\int f(y)\dd{y} = \int g(t)\dd{t}$.
+    \item Rearrange for the explicit form of $y(t)$.
+\end{enumerate}
+\subsection{Linear ODEs}
+Let $P=P(t)$, $Q=Q(t)$ and $\mu = \mu(t)$
+\begin{equation*}
+    \dv{y}{t} + Py = Q
+\end{equation*}
+\begin{enumerate}
+    \item Determine the integrating factor: $\displaystyle \mu=\exp{\left( \int P \dd{t} \right)}$.
+    \item Solve:
+    \begin{equation*}
+        y=\frac{1}{\mu}\left(\int Q \mu \dd{t} + C\right)
+    \end{equation*}
+\end{enumerate}
+\begin{proof}
+    To solve a first-order linear differential equation, determine an integrating factor $\mu = \mu(t)$ such that
+    \begin{equation}
+        P \mu = \dv{\mu}{t} \label{eq:integrating_factor}
+    \end{equation}
+    Multiplying the equation by $\mu$ gives
+    \begin{align*}
+        \mu \dv{y}{t} + P \mu y &= Q \mu \\
+        \mu \dv{y}{t} + \dv{\mu}{t} y &= Q \mu \\
+        \dv{t}\bigl(\mu y\bigr) &= Q \mu \\
+        \int \dv{t}\bigl(\mu y\bigr) \dd{t} &= \int Q \mu \dd{t} \\
+        \mu y &= \int Q \mu \dd{t} \\
+        y &= \frac{1}{\mu}\left(\int Q \mu \dd{t} + C\right)
+    \end{align*}
+    To determine $\mu$ we can rearrange \hyperref[eq:integrating_factor]{Equation \ref{eq:integrating_factor}} into
+    \begin{align*}
+        P = \frac{1}{\mu}\dv{\mu}{t}
+    \end{align*}
+    By recognition, this is the derivative of the natural logarithm of $\mu$ with respect to $t$.
+    \begin{align*}
+        P &= \dv{t}(\ln{\left( \mu \right)}) \\
+        \int P \dd{t} &= \int \dv{t}\bigl(\ln{\left( \mu \right)}\bigr) \dd{t} \\
+        \int P \dd{t} &= \ln{\left( \mu \right)} \\
+        \mu &= \exp{\left( \int P \dd{t} \right)}
+    \end{align*}
+\end{proof}
+\subsection{Solution using Linearisation}
+A function can be linearised by using its 1st degree Taylor polynomial near $a$.
+\begin{equation*}
+    f(x) \approx f(a) + f'(a)(x-a) + \mathcal{O}(x^2)
+\end{equation*}
+This new polynomial can be substituted to form a linear ODE, which can be solved using an integrating factor.
+\newpage
+\section{Second-Order Ordinary Differential Equations}
+\subsection{Constant Coefficient Linear ODEs}
+\begin{equation*}
+    a \dv[2]{y}{t} + b \dv{y}{t} + c y = Q(t)
+\end{equation*}
+where $a,\:b,\:c$ are constants.
+\subsection{Linearity of Solutions}
+\begin{theorem}[Principle of Superposition]\label{theorem:superposition}
+    As the given ODE is linear, if $y_1(t)$ is a solution to the equation
+    \begin{equation*}
+        a \dv[2]{y_1}{t} + b \dv{y_1}{t} + cy_1 = Q_1(t)
+    \end{equation*}
+    and $y_2(t)$ is a solution to 
+    \begin{equation*}
+        a \dv[2]{y_2}{t} + b \dv{y_2}{t} + cy_2 = Q_2(t)
+    \end{equation*}
+    then for the function $y = c_1y_1+c_2y_2$
+    \begin{equation*}
+        a \dv[2]{y}{t} + b \dv{y}{t} + cy = c_1Q_1(t) + c_2Q_2(t)
+    \end{equation*}
+    where $c_1$ and $c_2$ are constants.
+\end{theorem}
+% \begin{proof}
+% \begin{align*}
+%     a \dv[2]{y}{t} + b \dv{y}{t} + cy &= a \dv[2]{t}(k_1y_1+k_2y_2) + b \dv{t}(k_1y_1+k_2y_2) + c(k_1y_1+k_2y_2) \\
+%     &= k_1\left( a \dv[2]{y}{t} + b \dv{y}{t} + cy \right)a \dv[2]{t}(k_1y_1+k_2y_2) + b \dv{t}(k_1y_1+k_2y_2) + c(k_1y_1+k_2y_2) \\
+% \end{align*}
+% \end{proof}
+\subsection{Homogeneous ODEs}
+\begin{definition}
+    A homogeneous ODE has $Q(t)=0$, which gives
+    \begin{equation*}
+        a \dv[2]{y}{t} + b \dv{y}{t} + c y = 0
+    \end{equation*} 
+\end{definition}
+This differential equation has a solution of the form:
+\begin{equation*}
+    y_h = \e^{rt}
+\end{equation*}
+\subsection{Characteristic Equation}
+By making the substitution $y=\e^{rt}$, we get
+\begin{align*}
+    a \dv[2]{y_h}{t} + b \dv{y_h}{t} + c y_h &= 0 \\
+    ar^2\e^{rt} + br\e^{rt} + c\e^{rt} &= 0 \\
+    (ar^2 + br + c)\e^{rt} &= 0 \\
+    ar^2 + br + c &= 0
+\end{align*}
+This is known as the characteristic or \textit{auxiliary} equation. The next step is to calculate the roots of the equation.
+\begin{description}
+    \item[Real Distinct Roots.] If $b^2 > 4ac$.
+    \item[Real Repeated Roots.] If $b^2 = 4ac$.
+    \item[Complex Conjugate Roots.] If $b^2 < 4ac$.
+\end{description}
+\subsubsection{Real Distinct Roots}
+Given $r_1$ and $r_2$ are real and distinct:
+\begin{align*}
+    y_1(t) = \e^{r_1t} & & y_2(t) = \e^{r_2t}
+\end{align*}
+Hence the solution to the homogeneous equation is given by:
+\begin{equation*}
+    y_h(t) = c_1\e^{r_1t} + c_2\e^{r_2t}
+\end{equation*}
+\subsubsection{Real Repeated Roots}
+Given $r_1$ and $r_2$ are real and equal:
+\begin{align*}
+    y_1(t) = \e^{r_1t} & & y_2(t) = t\e^{r_1t}
+\end{align*}
+Hence the solution to the homogeneous equation is given by:
+\begin{equation*}
+    y_h(t) = c_1\e^{r_1t} + c_2\e^{r_2t}
+\end{equation*}
+\subsubsection{Complex Conjugate Roots}
+Given $r_1 = \alpha + \beta i$ and $r_2 = \alpha - \beta i$ are complex conjugates:
+\begin{align*}
+    y_1(t) = \e^{r_1t} & & y_2(t) = \e^{r_2t}
+\end{align*}
+Hence the solution to the homogeneous equation is given by:
+\begin{equation*}
+    y_h(t) = c_1\e^{\alpha t}\cos{\left( \beta t \right)} + c_2\e^{\alpha t}\sin{\left( \beta t \right)}
+\end{equation*}
+\subsection{Nonhomogeneous ODE}
+A nonhomogeneous differential equation is of the form
+\begin{equation*}
+    a \dv[2]{y}{t} + b \dv{y}{t} + c y = Q(t)
+\end{equation*}
+where $Q(t)\neq 0$.
+\subsection{General Solution of a Nonhomogeneous ODE}
+Recall that the solutions to any linear ODE are additive, so that if a solution $y_p$ satisfies 
+the nonhomogeneous ODE, and $y_h$ satisfies the homogeneous ODE,
+\begin{equation*}
+    y = y_h + y_p
+\end{equation*} 
+must also satisfy the ODE.
+\subsection{Undetermined Coefficients}
+To solve for $y_p$, we substitute a guess like the homogeneous case, and
+the coefficients in this guess will be determined from the ODE itself.
+
+The particular solution will depend on what $Q(t)$ looks like.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c | c}
+        \toprule
+        $Q(t)$ & $y_p$ \\
+        \midrule
+        a constant & $A$ \\ 
+        $n$th degree polynomial & $A_0 + A_1t + \cdots + A_{n-1}t^{n-1} + A_nt^n$ \\ 
+        $\e^{\alpha t}$ & $A\e^{\alpha t}$ \\ 
+        $\cos{\left( \alpha t \right)}$ & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\ 
+        $\sin{\left( \alpha t \right)}$ & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\ 
+        $\cos{\left( \alpha t \right)} + \sin{\left( \alpha t \right)}$ & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\ 
+        \bottomrule
+    \end{tabular}
+    \caption{Particular Solutions for Undetermined Coefficients}
+    % \label{}
+\end{table}
+\subsection{Special Forms}
+\subsubsection{Product of Forms}
+If $Q(t)$ is a product of the functions shown above, then we write the 
+particular solution for both functions separately and multiply the results together.
+
+For example, with $Q(t) = t \e^{4t}$, we have
+\begin{equation*}
+    y_p = \left(At + B\right) \left(C\e^{4t}\right)
+\end{equation*}
+the next step is to expand the function simplify any constants.
+\begin{align*}
+    y_p &= \left(ACt + BC\right) \e^{4t}
+    y_p &= \left(A_1t + B_1\right) \e^{4t}
+\end{align*}
+\subsubsection{Sum of Forms}
+If $Q(t)$ is a sum of the functions shown above, then we can use 
+\hyperref[theorem:superposition]{Theorem \ref{theorem:superposition}}
+and add the particular solutions together.
+\subsubsection{Linearly Dependent Case}
+If $Q(t)$ is similar to any homogenous solution, then by \textit{definition} of 
+a homogeneous solution, the solution will be $0$. Hence, $y_p$ must be multiplied by $t$ 
+to ensure that the particular solution is linearly independent to the homogeneous solutions,
+in order to form a \textit{fundamental set of solutions}. 
+\subsection{Solving the Particular Solution}
+\begin{enumerate}
+    \item Solve $y_h$
+    \item Find an appropriate form for $y_p$
+    \item Ensure that $y_p$ is linearly independent to the homogeneous solutions
+    \item Substitute $y_p$ into the nonhomogeneous ODE and solve for the undetermined coefficients
+    \item Find the general solution $y = y_h + y_p$
+    \item Apply initial conditions to solve for any constants
+\end{enumerate}
+\section{Systems of Ordinary Differential Equations}
+A first-order system of differential equations has the form
+\begin{equation*}
+    \left\{
+        \setlength\arraycolsep{0pt}
+        \begin{array}{ c >{{}}c<{{}} c >{{}}c<{{}} c >{{}}c<{{}} c >{{}}c<{{}} c  }
+        x'_1               &=& a_{11}x_1                         &+& a_{12}x_2                         &+& \cdots &+& a_{1n}x_n \\
+        x'_2               &=& a_{21}x_1                         &+& a_{22}x_2                         &+& \cdots &+& a_{2n}x_n \\
+        \vdotswithin{x'_3} & & \vdotswithin{a_{31}}\phantom{x_1} & & \vdotswithin{a_{32}}\phantom{x_2} & &        & & \vdotswithin{a_{3n}}\phantom{x_n} \\ 
+        x'_n               &=& a_{n1}x_1                         &+& a_{n2}x_2                         &+& \cdots &+& a_{nn}x_n 
+        \end{array}
+    \right.
+\end{equation*}
+where $x_1=\func{x_1}{t},\: x_2=\func{x_2}{t},\: \dots,\: x_n=\func{x_n}{t}$ are the 
+functions to be determined. In matrix form, the system can be written as
+\begin{align*}
+    \dv{t}\mqty[x_1 \\ x_2 \\ \vdots \\ x_n] &= \mqty[
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots &        & \vdots \\
+        a_{n1} & a_{n2} & \cdots & a_{nn}
+    ] \mqty[x_1 \\ x_2 \\ \vdots \\ x_n] \\
+    \symbf{x}' &= \symbfit{A} \symbf{x}
+\end{align*}
+\subsection{Higher-Order ODEs}
+A higher-order linear differential equation can be solved by first converting it to a first-order linear 
+system. Consider the $n$th-order homogeneous differential equation
+\begin{equation*}
+    y^{\left( n \right)} + a_1 y^{\left( n-1 \right)} + \cdots + a_{n-1} y' + a_n y = 0
+\end{equation*}
+Let
+\begin{align*}
+    x_1 &= y \\
+    x_2 &= y' \\
+    &\vdotswithin{=} \\
+    x_n &= y^{\left( n-1 \right)}
+\end{align*}
+so that $\symbfit{x}=\mqty[x_1 & x_2 & \cdots & x_n]^\top$. Then the differential equation can
+be expressed as the following first-order linear system of differential equations
+\begin{equation*}
+    \dv{t}\mqty[
+        x_1 \\
+        x_2 \\
+        \vdotswithin{x_3} \\
+        x_n	
+    ] = \mqty[
+        0 & 1 & 0 & \cdots & 0 \\
+        0 & 0 & 1 & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & \cdots & 1 \\
+        -a_n & -a_{n-1} & -a_{n-2} & \cdots & -a_1
+    ] \mqty[
+        x_1 \\
+        x_2 \\
+        \vdotswithin{x_3} \\
+        x_n	
+    ]
+\end{equation*}
+\subsection{Solution Form}
+Like the homogeneous case, we will guess a solution of the form
+\begin{equation*}
+    \symbf{x} = \symbf{q}\e^{\lambda t}
+\end{equation*}
+which allows for the following substitution
+\begin{align*}
+    \lambda \symbf{q}\e^{\lambda t} &= \symbfit{A} \symbf{q}\e^{\lambda t} \\
+    \symbfit{A} \symbf{q}\e^{\lambda t} - \lambda \symbf{q}\e^{\lambda t} &= \symbf{0} \\
+    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}\e^{\lambda t} &= \symbf{0} \\
+    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q} &= \symbf{0}
+\end{align*}
+This equation has the trivial solution $\symbf{q}=\symbf{0}$, however for a fundamental set of solutions,
+we must let $\symbfit{A} - \lambda\symbfit{I}$ be singular.
+\subsubsection{Characteristic Equation}
+To determine the eigenvalues $\lambda$ of the matrix $\symbf{A}$, we must solve the characteristic equation
+associated with the system of ODEs. Namely,
+\begin{equation*}
+    \det{\symbfit{A} - \lambda\symbfit{I}} = 0
+\end{equation*}
+These eigenvalues can then be used to solve the eigenvectors of $\symbfit{A}$
+\subsection{Solving a System of ODEs}
+\begin{enumerate}
+    \item Model the system of ODEs in the form $\symbf{x}' = \symbfit{A} \symbf{x}$
+    \item Solve the characteristic equation for the eigenvalues of $\symbfit{A}$
+    \item Solve the corresponding eigenvectors of $\symbfit{A}$ by solving $\left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}$
+    \item Write the general solution: $\symbf{x} = c_1\symbf{q}_1\e^{\lambda_1 t} + c_2\symbf{q}_2\e^{\lambda_2 t}$
+    \item Apply initial conditions to solve $c_1$ and $c_2$
+\end{enumerate}
+\end{document}
