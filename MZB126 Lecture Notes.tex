@@ -276,13 +276,13 @@ Hence the solution to the homogeneous equation is given by:
     y_h(t) = c_1\e^{r_1t} + c_2\e^{r_2t}
 \end{equation*}
 \subsubsection{Real Repeated Roots}
-Given $r_1$ and $r_2$ are real and equal:
+Given $r$ is a repeated root:
 \begin{align*}
-    y_1(t) = \e^{r_1t} & & y_2(t) = t\e^{r_1t}
+    y_1(t) = \e^{rt} & & y_2(t) = t\e^{rt}
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
-    y_h(t) = c_1\e^{r_1t} + c_2\e^{r_2t}
+    y_h(t) = c_1\e^{rt} + c_2t\e^{rt}
 \end{equation*}
 \subsubsection{Complex Conjugate Roots}
 Given $r_1 = \alpha + \beta i$ and $r_2 = \alpha - \beta i$ are complex conjugates:
@@ -436,15 +436,104 @@ we must let $\symbfit{A} - \lambda\symbfit{I}$ be singular.
 To determine the eigenvalues $\lambda$ of the matrix $\symbf{A}$, we must solve the characteristic equation
 associated with the system of ODEs. Namely,
 \begin{equation*}
-    \det{\symbfit{A} - \lambda\symbfit{I}} = 0
+    \det{\left( \symbfit{A} - \lambda\symbfit{I} \right)} = 0
 \end{equation*}
 These eigenvalues can then be used to solve the eigenvectors of $\symbfit{A}$
 \subsection{Solving a System of ODEs}
 \begin{enumerate}
     \item Model the system of ODEs in the form $\symbf{x}' = \symbfit{A} \symbf{x}$
     \item Solve the characteristic equation for the eigenvalues of $\symbfit{A}$
-    \item Solve the corresponding eigenvectors of $\symbfit{A}$ by solving $\left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}$
+    \item Solve the corresponding eigenvectors of $\symbfit{A}$ by solving $\left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q} = \symbf{0}$
     \item Write the general solution: $\symbf{x} = c_1\symbf{q}_1\e^{\lambda_1 t} + c_2\symbf{q}_2\e^{\lambda_2 t}$
     \item Apply initial conditions to solve $c_1$ and $c_2$
 \end{enumerate}
+\section{Probability}
+\begin{definition}[Random Variables]
+    A random variable $X$ is a measurable variable that doesn't hold a definitive value.
+\end{definition}
+\begin{definition}[Discrete Random Variables]
+    A discrete random variable $X$ has a countable number of possible values.
+\end{definition}
+\begin{definition}[Continuous Random Variables]
+    A continuous random variable $X$ can take all values in a given interval.
+\end{definition}
+\begin{definition}[Probability]
+    Probability is used to mean the chance that a particular event 
+    (or set of events) will occur, expressed on a linear scale from 0 to 1.
+    The probability of the random variable $X$ taking the value $x$ is denoted
+    \begin{equation*} 
+        \Pr{\left( X = x \right)}   
+    \end{equation*} 
+\end{definition}
+\begin{definition}[Sample Space]
+    Let the set of all possible outcomes of a random variables be called the sample
+    space, denoted $\Omega$, of that random variable. 
+    
+    Let $X$ be a random variable that can take on values $x\in\Omega$. Then
+    for all $x\in\Omega$ there is an associated probability $p(x)$, such that
+    \begin{equation*}
+        \forall x\in\Omega : 0 < p(x) \leq 1
+    \end{equation*}
+    \begin{equation*}
+        \sum p(x) = 1.
+    \end{equation*}
+\end{definition}
+\subsection{Events}
+\begin{definition}[Events]
+    An event $A$ is a set of individual outcomes within $\Omega$. 
+    Then for some event $A\subset\Omega$, the probability is given by
+    \begin{equation*}
+        \Pr{\left( A \right)} = \sum_{x\in A} p(x).
+    \end{equation*}
+    The complementary event, denoted $A^C$ (also $\overline{A}$) is the set of all 
+    outcomes within the sample space that are not within $A$.
+    \begin{equation*}
+        \Pr{\left( A^C \right)} = 1 - \Pr{\left( A \right)}.
+    \end{equation*}
+\end{definition}
+\begin{theorem}[Combination of Events]
+    Events can be combined with the two logical connectors AND and OR, which are
+    equivalent to the intersection ($\cap$) and union ($\cup$) of set.
+\end{theorem}
+\begin{theorem}[Mutually Exclusive Events]
+    If two events have no possible outcomes in common, they are mutually exclusive or disjoint events.
+    \begin{equation*}
+        A \cap B = \varnothing.
+    \end{equation*}
+    It follows that
+    \begin{equation*}
+        \Pr{\left( A \cap B \right)} = 0.
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Probability of Union]
+    \begin{equation*}
+        \Pr{\left( A \cup B \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( A \cap B \right)}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[AND Statements]
+    
+\end{theorem}
+\subsection{Dependent Events}
+\begin{definition}[Conditional Probability]
+    
+\end{definition}
+\begin{theorem}[Total Probability]
+    
+\end{theorem}
+\begin{theorem}[Bayes' Rule]
+    
+\end{theorem}
+\section{Probability Distributions}
+\begin{definition}[Expectation]
+    
+\end{definition}
+\begin{definition}[Variance]
+    
+\end{definition}
+\subsection{Binomial Distribution}
+\subsection{Bernouilli Distribution}
+\subsection{Poisson Distribution}
+\subsection{Uniform Distribution}
+\subsection{Exponential Distribution}
+\subsection{Normal Distribution}
 \end{document}

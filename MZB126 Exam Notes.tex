@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage{template}
+
+\usepackage{chngcntr} % Reset counter within sections
+\usepackage{multicol}
+
+\counterwithin*{equation}{section}
+\counterwithin*{equation}{subsection}
+
+\pagenumbering{gobble}
+\geometry{
+	a4paper,
+	margin = 10mm
+}
+
+\date{}
+ 
+\begin{document}
+\begin{multicols}{2}[When solving an initial value problem, always solve the general solution first.]
+    \subsubsection*{First-Order ODEs}
+    \noindent \textbf{Separable ODEs.} $\dv{y}{t} = f(y)g(t)$
+    \begin{enumerate}[itemsep=1pt, parsep=1pt]
+        \item Rewrite as: $f\dd{y} = g\dd{t}$.
+        \item Integrate both sides: $\int f\dd{y} = \int g\dd{t} + C$.
+        \item Rearrange for the explicit form of $y(t)$.
+    \end{enumerate}
+    \noindent \textbf{Linear ODEs.} $\dv{y}{t} + P(t)y = Q(t)$
+    \begin{enumerate}[itemsep=1pt, parsep=1pt]
+        \item Determine the integrating factor: $\mu(t)=\exp{\left( \int P \dd{t} \right)}$.
+        \item Solve: $y(t)=\frac{1}{\mu}\left(\int Q \mu \dd{t} + C\right)$.
+    \end{enumerate}
+    \noindent \textbf{Linearisation.}
+    \begin{gather*}
+        f(x) \approx f(x_0) + f'(x_0)(x-x_0) \\
+        f\bigl(y(x)\bigr) \approx f\bigl(y(x_0)\bigr) + f'\bigl(y(x)\bigr)\bigl(y(x)-y(x_0)\bigr)
+    \end{gather*}
+    \subsubsection*{Constant Coefficient Linear ODEs}
+    \noindent \textbf{Homogeneous ODEs.} $a \dv[2]{y}{t} + b \dv{y}{t} + c y = 0$
+    \begin{enumerate}[itemsep=1pt, parsep=1pt]
+        \item Substitute $y_h = \e^{rt}$ and solve characteristic equation: $ar^2 + br + c = 0$.
+        \item Find homogeneous solution:
+        \begin{description}
+            \item \textbf{Real Distinct Roots ($r_1,\: r_2$).} \\
+                $y_h(t) = c_1\e^{r_1t} + c_2\e^{r_2t}$.
+            \item \textbf{Real Repeated Roots ($r$).} \\
+                $y_h(t) = c_1\e^{rt} + c_2t\e^{rt}$
+            \item \textbf{Complex Conjugate Roots ($r_{1,\: 2} = \alpha \pm \beta i$).} \\
+                $y_h(t) = c_1\e^{\alpha t}\cos{\left( \beta t \right)} + c_2\e^{\alpha t}\sin{\left( \beta t \right)}$.
+        \end{description}
+    \end{enumerate} 
+    \noindent \textbf{Nonhomogeneous ODEs.} $a \dv[2]{y}{t} + b \dv{y}{t} + c y = Q(t)$
+    \begin{enumerate}[itemsep=1pt, parsep=1pt]
+        \item Determine $y_h$.
+        \item If $y_p$ is linearly independent to $y_h$, multiply $y_p$ by $t$.
+        \item Substitute $y_p$ and solve for undetermined coefficients, using the table below.
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{c | c}
+                \toprule
+                $Q(t)$ & $y_p$ \\
+                \midrule
+                a constant & $A$ \\ 
+                $n$th degree polynomial & $\sum_{i = 0}^n A_i t^i$ \\ 
+                $\e^{\alpha t}$ & $A\e^{\alpha t}$ \\ 
+                $\cos{\left( \alpha t \right)}$ or $\sin{\left( \alpha t \right)}$ & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\ 
+                sum/product of above & sum/product of above \\ 
+                \bottomrule
+            \end{tabular}
+            \vspace{1ex}
+
+            {\raggedleft\textit{If $Q(t)$ contains multiple forms, simplify the coefficients before substituting $y_p$.}\par}
+        \end{table}
+        \item Find general solution: $y = y_h + y_p$.
+    \end{enumerate}
+\end{multicols}
+\section{Systems of Ordinary Differential Equations}
+A first-order system of differential equations has the form
+\begin{equation*}
+    \left\{
+        \setlength\arraycolsep{0pt}
+        \begin{array}{ c >{{}}c<{{}} c >{{}}c<{{}} c >{{}}c<{{}} c >{{}}c<{{}} c  }
+        x'_1               &=& a_{11}x_1                         &+& a_{12}x_2                         &+& \cdots &+& a_{1n}x_n \\
+        x'_2               &=& a_{21}x_1                         &+& a_{22}x_2                         &+& \cdots &+& a_{2n}x_n \\
+        \vdotswithin{x'_3} & & \vdotswithin{a_{31}}\phantom{x_1} & & \vdotswithin{a_{32}}\phantom{x_2} & &        & & \vdotswithin{a_{3n}}\phantom{x_n} \\ 
+        x'_n               &=& a_{n1}x_1                         &+& a_{n2}x_2                         &+& \cdots &+& a_{nn}x_n 
+        \end{array}
+    \right.
+\end{equation*}
+where $x_1=\func{x_1}{t},\: x_2=\func{x_2}{t},\: \dots,\: x_n=\func{x_n}{t}$ are the 
+functions to be determined. In matrix form, the system can be written as
+\begin{align*}
+    \dv{t}\mqty[x_1 \\ x_2 \\ \vdots \\ x_n] &= \mqty[
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots &        & \vdots \\
+        a_{n1} & a_{n2} & \cdots & a_{nn}
+    ] \mqty[x_1 \\ x_2 \\ \vdots \\ x_n] \\
+    \symbf{x}' &= \symbfit{A} \symbf{x}
+\end{align*}
+\paragraph{Higher-Order ODEs}
+A higher-order linear differential equation can be solved by first converting it to a first-order linear 
+system. Consider the $n$th-order homogeneous differential equation
+\begin{equation*}
+    y^{\left( n \right)} + a_1 y^{\left( n-1 \right)} + \cdots + a_{n-1} y' + a_n y = 0
+\end{equation*}
+Let
+\begin{align*}
+    x_1 &= y \\
+    x_2 &= y' \\
+    &\vdotswithin{=} \\
+    x_n &= y^{\left( n-1 \right)}
+\end{align*}
+so that $\symbfit{x}=\mqty[x_1 & x_2 & \cdots & x_n]^\top$. Then the differential equation can
+be expressed as the following first-order linear system of differential equations
+\begin{equation*}
+    \dv{t}\mqty[
+        x_1 \\
+        x_2 \\
+        \vdotswithin{x_3} \\
+        x_n	
+    ] = \mqty[
+        0 & 1 & 0 & \cdots & 0 \\
+        0 & 0 & 1 & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & \cdots & 1 \\
+        -a_n & -a_{n-1} & -a_{n-2} & \cdots & -a_1
+    ] \mqty[
+        x_1 \\
+        x_2 \\
+        \vdotswithin{x_3} \\
+        x_n	
+    ]
+\end{equation*}
+\textbf{Solution Form}
+Like the homogeneous case, we will guess a solution of the form
+\begin{equation*}
+    \symbf{x} = \symbf{q}\e^{\lambda t}
+\end{equation*}
+which allows for the following substitution
+\begin{align*}
+    \lambda \symbf{q}\e^{\lambda t} &= \symbfit{A} \symbf{q}\e^{\lambda t} \\
+    \symbfit{A} \symbf{q}\e^{\lambda t} - \lambda \symbf{q}\e^{\lambda t} &= \symbf{0} \\
+    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}\e^{\lambda t} &= \symbf{0} \\
+    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q} &= \symbf{0}
+\end{align*}
+This equation has the trivial solution $\symbf{q}=\symbf{0}$, however for a fundamental set of solutions,
+we must let $\symbfit{A} - \lambda\symbfit{I}$ be singular.
+\subsubsection{Characteristic Equation}
+To determine the eigenvalues $\lambda$ of the matrix $\symbf{A}$, we must solve the characteristic equation
+associated with the system of ODEs. Namely,
+\begin{equation*}
+    \det{\left( \symbfit{A} - \lambda\symbfit{I} \right)} = 0
+\end{equation*}
+These eigenvalues can then be used to solve the eigenvectors of $\symbfit{A}$
+\textbf{Solving a System of ODEs}
+\begin{enumerate}
+    \item Model the system of ODEs in the form $\symbf{x}' = \symbfit{A} \symbf{x}$
+    \item Solve the characteristic equation for the eigenvalues of $\symbfit{A}$
+    \item Solve the corresponding eigenvectors of $\symbfit{A}$ by solving $\left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q} = \symbf{0}$
+    \item Write the general solution: $\symbf{x} = c_1\symbf{q}_1\e^{\lambda_1 t} + c_2\symbf{q}_2\e^{\lambda_2 t}$
+    \item Apply initial conditions to solve $c_1$ and $c_2$
+\end{enumerate}
+\end{document}
