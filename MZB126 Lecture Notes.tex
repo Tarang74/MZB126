@@ -634,7 +634,7 @@ Two events are dependent if the outcome of one event influences the outcome of t
         \item $\lim_{x\to-\infty} F(x) = 0$ and $\lim_{x\to\infty} F(x) = 1$
     \end{enumerate}
 \end{definition}
-\subsection{Statistics Summary}
+\subsection{Summary Statistics}
 \begin{definition}[Expectation]
     The expected value $\E{\left( X \right)}$, of a random variable is the average
     outcome that could be expected from an infinite number of observations of that
@@ -690,10 +690,105 @@ For a general linear combination of two random variables,
     and it always satisfies $-1 \leq\rho\leq 1$.
 \end{definition}
 \section{Common Probability Distributions}
+\subsection{Bernoulli Random Variables}
+A Bernoulli random variable takes values according to the probability distribution:
+\begin{equation*}
+    X =
+    \begin{cases}
+        1 & \text{with probability $p\in\left[ 0,\: 1 \right]$} \\
+        0 & \text{with probability $1 - p$}
+    \end{cases}
+\end{equation*}
+This distribution has the following mean and variance
+\begin{align*}
+    \E{\left( X \right)}   & = p                     \\
+    \Var{\left( X \right)} & = p\left( 1 - p \right)
+\end{align*}
 \subsection{Binomial Distribution}
-\subsection{Bernoulli Distribution}
+The Binomial distribution describes a discrete random variable that is the sum of the outcomes of $n$
+independent and identically distributed Bernoulli random variables.
+The PMF for this distribution is given by
+\begin{equation*}
+    p(x) = \dbinom{n}{x} p^x \left( 1 - p \right)^{n - x}
+\end{equation*}
+where
+\begin{equation*}
+    \dbinom{n}{x} = \frac{n!}{x!\left( n - x \right)!}
+\end{equation*}
+This distribution has the following mean and variance
+\begin{align*}
+    \E{\left( X \right)}   & = np                     \\
+    \Var{\left( X \right)} & = np\left( 1 - p \right)
+\end{align*}
 \subsection{Poisson Distribution}
+The Poisson distribution describes discrete events that occur randomly at an average rate $\lambda$.
+The PMF for this distribution is given by
+\begin{equation*}
+    p(x) = \frac{\mu^x\e^{-\mu}}{x!}
+\end{equation*}
+where $\mu = \lambda t$ is the average number of events occurring in any interval of length $t$.
+This distribution has the following mean and variance
+\begin{align*}
+    \E{\left( X \right)}   & = \mu \\
+    \Var{\left( X \right)} & = \mu
+\end{align*}
 \subsection{Uniform Distribution}
+The uniform distribution describes a continuous random variable which is only non-zero over a finite interval $\left( a,\: b \right)$,
+with every value within this interval being equally likely to occur. The PDF and CDF for this distribution are given by
+\begin{align*}
+    f(x) & = \frac{1}{b - a}     \\
+    F(x) & = \frac{x - a}{b - a}
+\end{align*}
+This distribution has the following mean and variance
+\begin{align*}
+    \E{\left( X \right)}   & = \frac{a + b}{2}                   \\
+    \Var{\left( X \right)} & = \frac{\left( b - a \right)^2}{12}
+\end{align*}
 \subsection{Exponential Distribution}
+The uniform distribution describes the time between successive events that are occurring under the same conditions as Poisson
+distributions. The PDF and CDF for this distribution are given by
+\begin{align*}
+    f(x) & = \lambda \exp{\left( -\lambda x \right)} \\
+    F(x) & = 1 - \exp{\left( -\lambda x \right)}
+\end{align*}
+This distribution has the following mean and variance
+\begin{align*}
+    \E{\left( X \right)}   & = \frac{1}{\lambda}   \\
+    \Var{\left( X \right)} & = \frac{1}{\lambda^2}
+\end{align*}
 \subsection{Normal Distribution}
+\section{Statistical Inference}
+The aim of statistical inference is to infer the true mean of a numerical variable from sample data.
+
+In order to carry out inference, we must use data that is properly representative of the situation we wish to draw conclusions about.
+\subsection{Sample Statistics}
+Let $x$ be a set of sample data, with a sample size $N$.
+\begin{theorem}[Sample Mean]
+    The sample mean $\overline{X}$ is given by
+    \begin{equation*}
+        \overline{X} = \frac{1}{N} \sum_{i = 1}^{N} x_i
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Sample Variance]
+    The sample variance $s^2$ is given by
+    \begin{align*}
+        s^2 & = \frac{1}{N - 1} \sum_{i = 1}^{N} \left( x_i - \overline{X} \right)^2     \\
+            & = \frac{1}{N - 1} \left( \sum_{i = 1}^{N} x_i^2 - N \overline{X}^2 \right)
+    \end{align*}
+\end{theorem}
+\subsection{Sampling Distribution of \texorpdfstring{$\overline{X}$}{Xbar}}
+The Central Limit theorem states that the distribution of $\overline{X}$ will approach a 
+Normal distribution as $N \to \infty$. In most cases, $N = 30$ is sufficiently large for
+a Normal distribution to accurately reflect the distribution of $\overline{X}$
+\begin{theorem}[Expectation of a Sample Mean]
+    \begin{equation*}
+        \E{\left( \overline{X} \right)} = \mu
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Variance of a Sample Mean]
+    \begin{equation*}
+        \Var{\left( \overline{X} \right)} = \frac{\sigma^2}{N}
+    \end{equation*}
+\end{theorem}
+By standardising $\overline{X}$
 \end{document}
