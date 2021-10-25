@@ -67,13 +67,13 @@
     \centering
     \begin{tabular}{c | c}
         \toprule
-        Function Syntax & Function Output \\
+        Function Syntax         & Function Output              \\
         \midrule
-        \lstinline!y = sin(x)! & Sine with $x$ in radians. \\
-        \lstinline!y = sind(x)! & Sine with $x$ in degrees. \\
+        \lstinline!y = sin(x)!  & Sine with $x$ in radians.    \\
+        \lstinline!y = sind(x)! & Sine with $x$ in degrees.    \\
         \lstinline!y = asin(x)! & Arcsine with $y$ in radians. \\
-        \lstinline!y = exp(x)! & $\e^x$. \\
-        \lstinline!y = log(x)! & $\ln{\left( x \right)}$. \\
+        \lstinline!y = exp(x)!  & $\e^x$.                      \\
+        \lstinline!y = log(x)!  & $\ln{\left( x \right)}$.     \\
         \bottomrule
     \end{tabular}
     \caption{Common Mathematical Functions in MATLAB.}
@@ -83,16 +83,16 @@ All the above functions are element-wise.
     \centering
     \begin{tabular}{c | c}
         \toprule
-        Function Syntax & Function Output(s) \\
+        Function Syntax                   & Function Output(s)                                               \\
         \midrule
-        \lstinline!A = zeros(m, n)! & Creates an $m \times n$ matrix containing zeros. \\
-        \lstinline!A = ones(m, n)! & Creates an $m \times n$ matrix containing ones. \\
-        \lstinline!I = eye(m)! & Creates an $m \times m$ identity matrix. \\
+        \lstinline!A = zeros(m, n)!       & Creates an $m \times n$ matrix containing zeros.                 \\
+        \lstinline!A = ones(m, n)!        & Creates an $m \times n$ matrix containing ones.                  \\
+        \lstinline!I = eye(m)!            & Creates an $m \times m$ identity matrix.                         \\
         \lstinline!a = linspace(a, b, x)! & Creates an evenly spaced vector with bounds $\left[a, b\right]$. \\
-        \lstinline!y = length(A)! & The largest dimension of $A$. \\
-        \lstinline![m, n] = size(A)! & The dimensions of $A$. \\
-        \lstinline!y = min(a)! & The minimum value in the vector $a$. \\
-        \lstinline!y = max(a)! & The maximum value in the vector $a$. \\
+        \lstinline!y = length(A)!         & The largest dimension of $A$.                                    \\
+        \lstinline![m, n] = size(A)!      & The dimensions of $A$.                                           \\
+        \lstinline!y = min(a)!            & The minimum value in the vector $a$.                             \\
+        \lstinline!y = max(a)!            & The maximum value in the vector $a$.                             \\
         \bottomrule
     \end{tabular}
     \caption{Matrices and Arrays in MATLAB.}
@@ -103,15 +103,15 @@ When manipulating matrices, \verb!*!, \verb!^!, perform matrix operations, while
     \centering
     \begin{tabular}{c | c}
         \toprule
-        Function Syntax & Function Output(s) \\
+        Function Syntax                    & Function Output(s)                                                    \\
         \midrule
-        \lstinline!plot(x, y)! & Plots given $x$ and $y$ coordinate vectors. \\
-        \lstinline!fplot(@f, [a, b])! & Plots the anonymous function over the domain $\left[ a,\: b \right]$. \\
-        \lstinline!title('string')! & Adds title to current plot. \\
-        \lstinline!xlabel('string')! & Adds $x$-axis label to current plot. \\
-        \lstinline!ylabel('string')! & Adds $y$-axis label to current plot. \\
-        \lstinline!legend('string1', ...)! & Adds legend to plot. \\
-        \lstinline!figure! & Creates a new figure. \\
+        \lstinline!plot(x, y)!             & Plots given $x$ and $y$ coordinate vectors.                           \\
+        \lstinline!fplot(@f, [a, b])!      & Plots the anonymous function over the domain $\left[ a,\: b \right]$. \\
+        \lstinline!title('string')!        & Adds title to current plot.                                           \\
+        \lstinline!xlabel('string')!       & Adds $x$-axis label to current plot.                                  \\
+        \lstinline!ylabel('string')!       & Adds $y$-axis label to current plot.                                  \\
+        \lstinline!legend('string1', ...)! & Adds legend to plot.                                                  \\
+        \lstinline!figure!                 & Creates a new figure.                                                 \\
         \bottomrule
     \end{tabular}
     \caption{Plotting in MATLAB.}
@@ -140,7 +140,7 @@ while expression
 end
     \end{lstlisting}
     \columnbreak
-    Statements inside a \lstinline{while} loop \linebreak execute repeatedly until the expression is false.
+    Statements inside a \lstinline{while} loop execute repeatedly until the expression is false.
 \end{multicols}
 \begin{multicols}{2}
     \begin{lstlisting}
@@ -157,11 +157,59 @@ end
     An ordinary differential equation (ODE) is a differential equation of a function with only one independent variable.
 \end{definition}
 \subsection{Electrical Systems}
-
+\begin{theorem}[VI Relationship between Resistors]
+    \begin{equation*}
+        v = i R
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[VI Relationship between Inductors]
+    \begin{equation*}
+        v = L \dv{i}{t}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[VI Relationship between Capacitors]
+    \begin{equation*}
+        i = C \dv{v}{t}
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Kirchoff's Voltage Law]
+    The sum of all voltages around a loop equals zero.
+    \begin{equation*}
+        \sum v_{\mathrm{loop}} = 0
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Kirchoff's Current Law]
+    The sum of all currents into a node equals zero.
+    \begin{equation*}
+        \sum i_{\mathrm{node}} = 0
+    \end{equation*}
+\end{theorem}
+\subsection{Mechanical Systems}
+\begin{theorem}[Newton's Second Law]
+    \begin{equation*}
+        \sum F = \dv{p}{t}
+    \end{equation*}
+    where $p = mv$.
+\end{theorem}
+\begin{theorem}[Thrust Force]
+    \begin{equation*}
+        F_T = (c - v) d_f
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Force of Gravity]
+    \begin{equation*}
+        F_g = mg
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Force of a Spring]
+    \begin{equation*}
+        F = -kx
+    \end{equation*}
+\end{theorem}
 \section{First-Order Ordinary Differential Equations}
 \subsection{Separable ODEs}
 \begin{equation*}
-    \dv{y}{t} = F(y,\: t) 
+    \dv{y}{t} = F(y,\: t)
 \end{equation*}
 \begin{enumerate}
     \item Rewrite the equation in the form: $f(y)\dd{y} = g(t)\dd{t}$.
@@ -176,9 +224,9 @@ Let $P=P(t)$, $Q=Q(t)$ and $\mu = \mu(t)$
 \begin{enumerate}
     \item Determine the integrating factor: $\displaystyle \mu=\exp{\left( \int P \dd{t} \right)}$.
     \item Solve:
-    \begin{equation*}
-        y=\frac{1}{\mu}\left(\int Q \mu \dd{t} + C\right)
-    \end{equation*}
+          \begin{equation*}
+              y=\frac{1}{\mu}\left(\int Q \mu \dd{t} + C\right)
+          \end{equation*}
 \end{enumerate}
 \begin{proof}
     To solve a first-order linear differential equation, determine an integrating factor $\mu = \mu(t)$ such that
@@ -187,12 +235,12 @@ Let $P=P(t)$, $Q=Q(t)$ and $\mu = \mu(t)$
     \end{equation}
     Multiplying the equation by $\mu$ gives
     \begin{align*}
-        \mu \dv{y}{t} + P \mu y &= Q \mu \\
-        \mu \dv{y}{t} + \dv{\mu}{t} y &= Q \mu \\
-        \dv{t}\bigl(\mu y\bigr) &= Q \mu \\
-        \int \dv{t}\bigl(\mu y\bigr) \dd{t} &= \int Q \mu \dd{t} \\
-        \mu y &= \int Q \mu \dd{t} \\
-        y &= \frac{1}{\mu}\left(\int Q \mu \dd{t} + C\right)
+        \mu \dv{y}{t} + P \mu y             & = Q \mu                                           \\
+        \mu \dv{y}{t} + \dv{\mu}{t} y       & = Q \mu                                           \\
+        \dv{t}\bigl(\mu y\bigr)             & = Q \mu                                           \\
+        \int \dv{t}\bigl(\mu y\bigr) \dd{t} & = \int Q \mu \dd{t}                               \\
+        \mu y                               & = \int Q \mu \dd{t}                               \\
+        y                                   & = \frac{1}{\mu}\left(\int Q \mu \dd{t} + C\right)
     \end{align*}
     To determine $\mu$ we can rearrange \hyperref[eq:integrating_factor]{Equation \ref{eq:integrating_factor}} into
     \begin{align*}
@@ -200,10 +248,10 @@ Let $P=P(t)$, $Q=Q(t)$ and $\mu = \mu(t)$
     \end{align*}
     By recognition, this is the derivative of the natural logarithm of $\mu$ with respect to $t$.
     \begin{align*}
-        P &= \dv{t}(\ln{\left( \mu \right)}) \\
-        \int P \dd{t} &= \int \dv{t}\bigl(\ln{\left( \mu \right)}\bigr) \dd{t} \\
-        \int P \dd{t} &= \ln{\left( \mu \right)} \\
-        \mu &= \exp{\left( \int P \dd{t} \right)}
+        P             & = \dv{t}(\ln{\left( \mu \right)})                       \\
+        \int P \dd{t} & = \int \dv{t}\bigl(\ln{\left( \mu \right)}\bigr) \dd{t} \\
+        \int P \dd{t} & = \ln{\left( \mu \right)}                               \\
+        \mu           & = \exp{\left( \int P \dd{t} \right)}
     \end{align*}
 \end{proof}
 \subsection{Solution using Linearisation}
@@ -225,7 +273,7 @@ where $a,\:b,\:c$ are constants.
     \begin{equation*}
         a \dv[2]{y_1}{t} + b \dv{y_1}{t} + cy_1 = Q_1(t)
     \end{equation*}
-    and $y_2(t)$ is a solution to 
+    and $y_2(t)$ is a solution to
     \begin{equation*}
         a \dv[2]{y_2}{t} + b \dv{y_2}{t} + cy_2 = Q_2(t)
     \end{equation*}
@@ -246,7 +294,7 @@ where $a,\:b,\:c$ are constants.
     A homogeneous ODE has $Q(t)=0$, which gives
     \begin{equation*}
         a \dv[2]{y}{t} + b \dv{y}{t} + c y = 0
-    \end{equation*} 
+    \end{equation*}
 \end{definition}
 This differential equation has a solution of the form:
 \begin{equation*}
@@ -255,10 +303,10 @@ This differential equation has a solution of the form:
 \subsection{Characteristic Equation}
 By making the substitution $y=\e^{rt}$, we get
 \begin{align*}
-    a \dv[2]{y_h}{t} + b \dv{y_h}{t} + c y_h &= 0 \\
-    ar^2\e^{rt} + br\e^{rt} + c\e^{rt} &= 0 \\
-    (ar^2 + br + c)\e^{rt} &= 0 \\
-    ar^2 + br + c &= 0
+    a \dv[2]{y_h}{t} + b \dv{y_h}{t} + c y_h & = 0 \\
+    ar^2\e^{rt} + br\e^{rt} + c\e^{rt}       & = 0 \\
+    (ar^2 + br + c)\e^{rt}                   & = 0 \\
+    ar^2 + br + c                            & = 0
 \end{align*}
 This is known as the characteristic or \textit{auxiliary} equation. The next step is to calculate the roots of the equation.
 \begin{description}
@@ -269,7 +317,7 @@ This is known as the characteristic or \textit{auxiliary} equation. The next ste
 \subsubsection{Real Distinct Roots}
 Given $r_1$ and $r_2$ are real and distinct:
 \begin{align*}
-    y_1(t) = \e^{r_1t} & & y_2(t) = \e^{r_2t}
+    y_1(t) = \e^{r_1t} &  & y_2(t) = \e^{r_2t}
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
@@ -278,7 +326,7 @@ Hence the solution to the homogeneous equation is given by:
 \subsubsection{Real Repeated Roots}
 Given $r$ is a repeated root:
 \begin{align*}
-    y_1(t) = \e^{rt} & & y_2(t) = t\e^{rt}
+    y_1(t) = \e^{rt} &  & y_2(t) = t\e^{rt}
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
@@ -287,7 +335,7 @@ Hence the solution to the homogeneous equation is given by:
 \subsubsection{Complex Conjugate Roots}
 Given $r_1 = \alpha + \beta i$ and $r_2 = \alpha - \beta i$ are complex conjugates:
 \begin{align*}
-    y_1(t) = \e^{r_1t} & & y_2(t) = \e^{r_2t}
+    y_1(t) = \e^{r_1t} &  & y_2(t) = \e^{r_2t}
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
@@ -300,29 +348,29 @@ A nonhomogeneous differential equation is of the form
 \end{equation*}
 where $Q(t)\neq 0$.
 \subsection{General Solution of a Nonhomogeneous ODE}
-Recall that the solutions to any linear ODE are additive, so that if a solution $y_p$ satisfies 
+Recall that the solutions to any linear ODE are additive, so that if a solution $y_p$ satisfies
 the nonhomogeneous ODE, and $y_h$ satisfies the homogeneous ODE,
 \begin{equation*}
     y = y_h + y_p
-\end{equation*} 
+\end{equation*}
 must also satisfy the ODE.
 \subsection{Undetermined Coefficients}
-To solve for $y_p$, we substitute a guess like the homogeneous case, and
-the coefficients in this guess will be determined from the ODE itself.
+To solve for $y_p$, we substitute a guess, and
+determined the coefficients from the ODE itself.
 
 The particular solution will depend on what $Q(t)$ looks like.
 \begin{table}[H]
     \centering
     \begin{tabular}{c | c}
         \toprule
-        $Q(t)$ & $y_p$ \\
+        $Q(t)$                                                          & $y_p$                                                             \\
         \midrule
-        a constant & $A$ \\ 
-        $n$th degree polynomial & $A_0 + A_1t + \cdots + A_{n-1}t^{n-1} + A_nt^n$ \\ 
-        $\e^{\alpha t}$ & $A\e^{\alpha t}$ \\ 
-        $\cos{\left( \alpha t \right)}$ & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\ 
-        $\sin{\left( \alpha t \right)}$ & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\ 
-        $\cos{\left( \alpha t \right)} + \sin{\left( \alpha t \right)}$ & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\ 
+        a constant                                                      & $A$                                                               \\
+        $n$th degree polynomial                                         & $A_0 + A_1t + \cdots + A_{n-1}t^{n-1} + A_nt^n$                   \\
+        $\e^{\alpha t}$                                                 & $A\e^{\alpha t}$                                                  \\
+        $\cos{\left( \alpha t \right)}$                                 & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\
+        $\sin{\left( \alpha t \right)}$                                 & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\
+        $\cos{\left( \alpha t \right)} + \sin{\left( \alpha t \right)}$ & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\
         \bottomrule
     \end{tabular}
     \caption{Particular Solutions for Undetermined Coefficients}
@@ -330,7 +378,7 @@ The particular solution will depend on what $Q(t)$ looks like.
 \end{table}
 \subsection{Special Forms}
 \subsubsection{Product of Forms}
-If $Q(t)$ is a product of the functions shown above, then we write the 
+If $Q(t)$ is a product of the functions shown above, then we write the
 particular solution for both functions separately and multiply the results together.
 
 For example, with $Q(t) = t \e^{4t}$, we have
@@ -339,18 +387,18 @@ For example, with $Q(t) = t \e^{4t}$, we have
 \end{equation*}
 the next step is to expand the function simplify any constants.
 \begin{align*}
-    y_p &= \left(ACt + BC\right) \e^{4t}
-    y_p &= \left(A_1t + B_1\right) \e^{4t}
+    y_p & = \left(ACt + BC\right) \e^{4t}
+    y_p & = \left(A_1t + B_1\right) \e^{4t}
 \end{align*}
 \subsubsection{Sum of Forms}
-If $Q(t)$ is a sum of the functions shown above, then we can use 
+If $Q(t)$ is a sum of the functions shown above, then we can use
 \hyperref[theorem:superposition]{Theorem \ref{theorem:superposition}}
 and add the particular solutions together.
 \subsubsection{Linearly Dependent Case}
-If $Q(t)$ is similar to any homogenous solution, then by \textit{definition} of 
-a homogeneous solution, the solution will be $0$. Hence, $y_p$ must be multiplied by $t$ 
+If $Q(t)$ is similar to any homogenous solution, then by \textit{definition} of
+a homogeneous solution, the solution will be $0$. Hence, $y_p$ must be multiplied by $t$
 to ensure that the particular solution is linearly independent to the homogeneous solutions,
-in order to form a \textit{fundamental set of solutions}. 
+in order to form a \textit{fundamental set of solutions}.
 \subsection{Solving the Particular Solution}
 \begin{enumerate}
     \item Solve $y_h$
@@ -364,38 +412,38 @@ in order to form a \textit{fundamental set of solutions}.
 A first-order system of differential equations has the form
 \begin{equation*}
     \left\{
-        \setlength\arraycolsep{0pt}
-        \begin{array}{ c >{{}}c<{{}} c >{{}}c<{{}} c >{{}}c<{{}} c >{{}}c<{{}} c  }
-        x'_1               &=& a_{11}x_1                         &+& a_{12}x_2                         &+& \cdots &+& a_{1n}x_n \\
-        x'_2               &=& a_{21}x_1                         &+& a_{22}x_2                         &+& \cdots &+& a_{2n}x_n \\
-        \vdotswithin{x'_3} & & \vdotswithin{a_{31}}\phantom{x_1} & & \vdotswithin{a_{32}}\phantom{x_2} & &        & & \vdotswithin{a_{3n}}\phantom{x_n} \\ 
-        x'_n               &=& a_{n1}x_1                         &+& a_{n2}x_2                         &+& \cdots &+& a_{nn}x_n 
-        \end{array}
+    \setlength\arraycolsep{0pt}
+    \begin{array}{ c >{{}}c<{{}} c >{{}}c<{{}} c >{{}}c<{{}} c >{{}}c<{{}} c  }
+        x'_1               & = & a_{11}x_1                         & + & a_{12}x_2                         & + & \cdots & + & a_{1n}x_n                         \\
+        x'_2               & = & a_{21}x_1                         & + & a_{22}x_2                         & + & \cdots & + & a_{2n}x_n                         \\
+        \vdotswithin{x'_3} &   & \vdotswithin{a_{31}}\phantom{x_1} &   & \vdotswithin{a_{32}}\phantom{x_2} &   &        &   & \vdotswithin{a_{3n}}\phantom{x_n} \\
+        x'_n               & = & a_{n1}x_1                         & + & a_{n2}x_2                         & + & \cdots & + & a_{nn}x_n
+    \end{array}
     \right.
 \end{equation*}
-where $x_1=\func{x_1}{t},\: x_2=\func{x_2}{t},\: \dots,\: x_n=\func{x_n}{t}$ are the 
+where $x_1=x_1(t),\: x_2=x_2(t),\: \dots,\: x_n=x_n(t)$ are the
 functions to be determined. In matrix form, the system can be written as
 \begin{align*}
-    \dv{t}\mqty[x_1 \\ x_2 \\ \vdots \\ x_n] &= \mqty[
-        a_{11} & a_{12} & \cdots & a_{1n} \\
-        a_{21} & a_{22} & \cdots & a_{2n} \\
-        \vdots & \vdots &        & \vdots \\
-        a_{n1} & a_{n2} & \cdots & a_{nn}
-    ] \mqty[x_1 \\ x_2 \\ \vdots \\ x_n] \\
-    \symbf{x}' &= \symbfit{A} \symbf{x}
+    \dv{t}\mqty[x_1                                        \\ x_2 \\ \vdots \\ x_n] &= \mqty[
+    a_{11}     & a_{12}                  & \cdots & a_{1n} \\
+    a_{21}     & a_{22}                  & \cdots & a_{2n} \\
+    \vdots     & \vdots                  &        & \vdots \\
+    a_{n1}     & a_{n2}                  & \cdots & a_{nn}
+    ] \mqty[x_1                                            \\ x_2 \\ \vdots \\ x_n] \\
+    \symbf{x}' & = \symbfit{A} \symbf{x}
 \end{align*}
 \subsection{Higher-Order ODEs}
-A higher-order linear differential equation can be solved by first converting it to a first-order linear 
+A higher-order linear differential equation can be solved by first converting it to a first-order linear
 system. Consider the $n$th-order homogeneous differential equation
 \begin{equation*}
     y^{\left( n \right)} + a_1 y^{\left( n-1 \right)} + \cdots + a_{n-1} y' + a_n y = 0
 \end{equation*}
 Let
 \begin{align*}
-    x_1 &= y \\
-    x_2 &= y' \\
-    &\vdotswithin{=} \\
-    x_n &= y^{\left( n-1 \right)}
+    x_1 & = y                      \\
+    x_2 & = y'                     \\
+        & \vdotswithin{=}          \\
+    x_n & = y^{\left( n-1 \right)}
 \end{align*}
 so that $\symbfit{x}=\mqty[x_1 & x_2 & \cdots & x_n]^\top$. Then the differential equation can
 be expressed as the following first-order linear system of differential equations
@@ -404,18 +452,18 @@ be expressed as the following first-order linear system of differential equation
         x_1 \\
         x_2 \\
         \vdotswithin{x_3} \\
-        x_n	
+        x_n
     ] = \mqty[
-        0 & 1 & 0 & \cdots & 0 \\
-        0 & 0 & 1 & \cdots & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        0 & 0 & 0 & \cdots & 1 \\
-        -a_n & -a_{n-1} & -a_{n-2} & \cdots & -a_1
+    0 & 1 & 0 & \cdots & 0 \\
+    0 & 0 & 1 & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & \cdots & 1 \\
+    -a_n & -a_{n-1} & -a_{n-2} & \cdots & -a_1
     ] \mqty[
         x_1 \\
         x_2 \\
         \vdotswithin{x_3} \\
-        x_n	
+        x_n
     ]
 \end{equation*}
 \subsection{Solution Form}
@@ -425,10 +473,10 @@ Like the homogeneous case, we will guess a solution of the form
 \end{equation*}
 which allows for the following substitution
 \begin{align*}
-    \lambda \symbf{q}\e^{\lambda t} &= \symbfit{A} \symbf{q}\e^{\lambda t} \\
-    \symbfit{A} \symbf{q}\e^{\lambda t} - \lambda \symbf{q}\e^{\lambda t} &= \symbf{0} \\
-    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}\e^{\lambda t} &= \symbf{0} \\
-    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q} &= \symbf{0}
+    \lambda \symbf{q}\e^{\lambda t}                                         & = \symbfit{A} \symbf{q}\e^{\lambda t} \\
+    \symbfit{A} \symbf{q}\e^{\lambda t} - \lambda \symbf{q}\e^{\lambda t}   & = \symbf{0}                           \\
+    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}\e^{\lambda t} & = \symbf{0}                           \\
+    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}               & = \symbf{0}
 \end{align*}
 This equation has the trivial solution $\symbf{q}=\symbf{0}$, however for a fundamental set of solutions,
 we must let $\symbfit{A} - \lambda\symbfit{I}$ be singular.
@@ -458,17 +506,17 @@ These eigenvalues can then be used to solve the eigenvectors of $\symbfit{A}$
     A continuous random variable $X$ can take all values in a given interval.
 \end{definition}
 \begin{definition}[Probability]
-    Probability is used to mean the chance that a particular event 
+    Probability is used to mean the chance that a particular event
     (or set of events) will occur, expressed on a linear scale from 0 to 1.
     The probability of the random variable $X$ taking the value $x$ is denoted
-    \begin{equation*} 
-        \Pr{\left( X = x \right)}   
-    \end{equation*} 
+    \begin{equation*}
+        \Pr{\left( X = x \right)}
+    \end{equation*}
 \end{definition}
 \begin{definition}[Sample Space]
     Let the set of all possible outcomes of a random variables be called the sample
-    space, denoted $\Omega$, of that random variable. 
-    
+    space, denoted $\Omega$, of that random variable.
+
     Let $X$ be a random variable that can take on values $x\in\Omega$. Then
     for all $x\in\Omega$ there is an associated probability $p(x)$, such that
     \begin{equation*}
@@ -480,22 +528,22 @@ These eigenvalues can then be used to solve the eigenvectors of $\symbfit{A}$
 \end{definition}
 \subsection{Events}
 \begin{definition}[Events]
-    An event $A$ is a set of individual outcomes within $\Omega$. 
+    An event $A$ is a set of individual outcomes within $\Omega$.
     Then for some event $A\subset\Omega$, the probability is given by
     \begin{equation*}
         \Pr{\left( A \right)} = \sum_{x\in A} p(x).
     \end{equation*}
-    The complementary event, denoted $A^C$ (also $\overline{A}$) is the set of all 
+    The complementary event, denoted $A^C$ (also $\overline{A}$) is the set of all
     outcomes within the sample space that are not within $A$.
     \begin{equation*}
         \Pr{\left( A^C \right)} = 1 - \Pr{\left( A \right)}.
     \end{equation*}
 \end{definition}
-\begin{theorem}[Combination of Events]
+\begin{definition}[Combination of Events]
     Events can be combined with the two logical connectors AND and OR, which are
     equivalent to the intersection ($\cap$) and union ($\cup$) of set.
-\end{theorem}
-\begin{theorem}[Mutually Exclusive Events]
+\end{definition}
+\begin{definition}[Mutually Exclusive Events]
     If two events have no possible outcomes in common, they are mutually exclusive or disjoint events.
     \begin{equation*}
         A \cap B = \varnothing.
@@ -504,34 +552,146 @@ These eigenvalues can then be used to solve the eigenvectors of $\symbfit{A}$
     \begin{equation*}
         \Pr{\left( A \cap B \right)} = 0.
     \end{equation*}
-\end{theorem}
+\end{definition}
 \begin{theorem}[Probability of Union]
+    \begin{align*}
+        \Pr{\left( A \cup B \right)} & = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( A \cap B \right)} \\
+                                     & = 1 - \Pr{\left( A^C \cap B^C \right)}
+    \end{align*}
+\end{theorem}
+\begin{definition}[Independent Events]
+    Two events are independent if the outcome of one event has no influence on the outcome of the other.
+    For these cases, the joint probability is given by
     \begin{equation*}
-        \Pr{\left( A \cup B \right)} = \Pr{\left( A \right)} + \Pr{\left( B \right)} - \Pr{\left( A \cap B \right)}
+        \Pr{\left( A \cap B \right)} = \Pr{\left( A \right)} \Pr{\left( B \right)}.
     \end{equation*}
-\end{theorem}
-\begin{theorem}[AND Statements]
-    
-\end{theorem}
+\end{definition}
 \subsection{Dependent Events}
+Two events are dependent if the outcome of one event influences the outcome of the other.
 \begin{definition}[Conditional Probability]
-    
+    In the case of dependent events, we must use \linebreak conditional probability concepts in calculating
+    joint probabilities.
+    The probability of $A$ given that the event $B$ has occurred is
+    \begin{equation*}
+        \Pr{\left( A \;\middle|\; B \right)} = \frac{\Pr{\left( A \cap B \right)}}{\Pr{\left( B \right)}}
+    \end{equation*}
 \end{definition}
 \begin{theorem}[Total Probability]
-    
+    If $B$ is a sample space of disjoint events $B_1,\: B_2,\: \dots,\: B_N$, then
+    $A \cap B_1,\: A \cap B_2,\: \dots,\: A \cap B_N$ are also disjoint, and
+    \begin{equation*}
+        A = \left( A \cap B_1 \right) + \left( A \cap B_2 \right) + \cdots + \left( A \cap B_N \right)
+    \end{equation*}
+    This gives
+    \begin{align*}
+        \Pr{\left( A \right)} & = \sum_{i=1}^N \Pr{\left( A \cap B_i \right)}                                 \\
+                              & = \sum_{i=1}^N \Pr{\left( A \;\middle|\; B_i \right)} \Pr{\left( B_i \right)}
+    \end{align*}
 \end{theorem}
 \begin{theorem}[Bayes' Rule]
-    
+    Using the commutativity of intersections, the rule for conditional probability gives
+    \begin{equation*}
+        \Pr{\left( A \cap B \right)} = \Pr{\left( A \;\middle|\; B \right)} \Pr{\left( B \right)} = \Pr{\left( B \;\middle|\; A \right)} \Pr{\left( A \right)}
+    \end{equation*}
+    Therefore
+    \begin{equation*}
+        \Pr{\left( A \right)} = \frac{\Pr{\left( A \;\middle|\; B \right)} \Pr{\left( B \right)}}{\Pr{\left( A \right)}}
+    \end{equation*}
 \end{theorem}
 \section{Probability Distributions}
+\begin{definition}[Discrete Random Variables]
+    A discrete random variable has countably many outcomes.
+\end{definition}
+\begin{definition}[Continuous Random Variables]
+    A continuous random variable can take an infinite number of individual outcomes.
+\end{definition}
+\begin{definition}[Probability Distributions]
+    The probabilities of random variable make up a probability distribution.
+
+    For discrete random variables, the distribution is described with a Probability
+    Mass Function (PMF)
+    \begin{equation*}
+        p(x) = \Pr{\left( X = x \right)}
+    \end{equation*}
+    For continuous variables, the distribution is described with a Probability
+    Density Function (PDF) and the associated Cumulative Distribution Function (CDF).
+
+    Here, probabilities are represented by areas under the PDF:
+    \begin{equation*}
+        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f(u) \dd{u}
+    \end{equation*}
+    and the CDF is defined as
+    \begin{equation*}
+        F(x) = \Pr{\left( X \leq x \right)} = \int_{-\infty}^{x} f(u) \dd{u}.
+    \end{equation*}
+    Note that $f(x)$ is a valid PDF provided
+    \begin{equation*}
+        f(x) \geq 0:\forall x \quad \text{and} \quad \int_{-\infty}^{\infty} f(u) \dd{u} = 1
+    \end{equation*}
+    while $F(x)$ is a valid CDF if:
+    \begin{enumerate}
+        \item $F$ is a non-decreasing right continuous function
+        \item $\lim_{x\to-\infty} F(x) = 0$ and $\lim_{x\to\infty} F(x) = 1$
+    \end{enumerate}
+\end{definition}
+\subsection{Statistics Summary}
 \begin{definition}[Expectation]
-    
+    The expected value $\E{\left( X \right)}$, of a random variable is the average
+    outcome that could be expected from an infinite number of observations of that
+    variable. This is also known as the mean of the variable, denoted $\mu$.
+    \begin{equation*}
+        \E{\left( X \right)} =
+        \begin{cases}
+            \sum_{X} x p(x)        & \text{for discrete variables}   \\
+            \int_{X} x f(x) \dd{x} & \text{for continuous variables}
+        \end{cases}
+    \end{equation*}
 \end{definition}
 \begin{definition}[Variance]
-    
+    The variance $\Var{\left( X \right)}$, of a random variable is a measure of spread
+    of the distribution (defined as the average squared distance of each value from the mean).
+    $\Var{\left( X \right)}$ is also denoted as $\sigma^2$.
+    \begin{align*}
+        \Var{\left( X \right)} & =
+        \begin{cases}
+            \sum_{X} \left( x - \mu \right)^2 p(x)             & \text{for discrete variables}   \\
+            \int_{X} \left( x - \mu \right)^2 p(x) f(x) \dd{x} & \text{for continuous variables}
+        \end{cases} \\
+                               & = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
+    \end{align*}
 \end{definition}
+\begin{definition}[Standard Deviation]
+    The standard deviation is defined as
+    \begin{equation*}
+        \sigma = \sqrt{\Var{\left( X \right)}}
+    \end{equation*}
+\end{definition}
+\subsubsection{General Linear Combinations}
+For a simple linear function of a random variable
+\begin{align*}
+    \E{\left( aX + b \right)}   & = a\E{\left( X \right)} + b \\
+    \Var{\left( aX + b \right)} & = a^2\Var{\left( X \right)}
+\end{align*}
+For a general linear combination of two random variables,
+\begin{align*}
+    \E{\left( aX + bY \right)}   & = a\E{\left( X \right)} + b\E{\left( Y \right)}                                           \\
+    \Var{\left( aX + bY \right)} & = a^2\Var{\left( X \right)} + b^2\Var{\left( Y \right)} + 2ab \Cov{\left( X,\: Y \right)}
+\end{align*}
+\begin{definition}[Covariance]
+    Covariance is the joint variability of two random variables.
+    \begin{align*}
+        \Cov{\left( X,\: Y \right)} & = \E{\left( XY \right)} - \E{\left( X \right)} \E{\left( Y \right)}                 \\
+                                    & = \Corr{\left( X,\: Y \right)} \sqrt{\Var{\left( X \right)} \Var{\left( Y \right)}}
+    \end{align*}
+\end{definition}
+\begin{definition}[Correlation]
+    The correlation of two random variables is any statistical \linebreak relationship between
+    those two variables. The correlation $\Corr{\left( X,\: Y \right)}$ is usually denoted $\rho_{XY}$ or $\rho$,
+    and it always satisfies $-1 \leq\rho\leq 1$.
+\end{definition}
+\section{Common Probability Distributions}
 \subsection{Binomial Distribution}
-\subsection{Bernouilli Distribution}
+\subsection{Bernoulli Distribution}
 \subsection{Poisson Distribution}
 \subsection{Uniform Distribution}
 \subsection{Exponential Distribution}
