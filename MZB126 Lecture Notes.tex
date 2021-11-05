@@ -76,7 +76,7 @@
         \lstinline!y = log(x)!  & $\ln{\left( x \right)}$.     \\
         \bottomrule
     \end{tabular}
-    \caption{Common Mathematical Functions in MATLAB.}
+    \caption{Common mathematical functions in MATLAB.}
 \end{table}
 All the above functions are element-wise.
 \begin{table}[H]
@@ -95,7 +95,7 @@ All the above functions are element-wise.
         \lstinline!y = max(a)!            & The maximum value in the vector $a$.                             \\
         \bottomrule
     \end{tabular}
-    \caption{Matrices and Arrays in MATLAB.}
+    \caption{Matrices and arrays in MATLAB.}
 \end{table}
 When manipulating matrices, \verb!*!, \verb!^!, perform matrix operations, while prepending an operator with a dot (\verb!.!) performs an element-wise operation.
 \subsection{Plotting}
@@ -172,13 +172,13 @@ end
         i = C \dv{v}{t}
     \end{equation*}
 \end{theorem}
-\begin{theorem}[Kirchoff's Voltage Law]
+\begin{theorem}[Kirchhoff's Voltage Law]
     The sum of all voltages around a loop equals zero.
     \begin{equation*}
         \sum v_{\mathrm{loop}} = 0
     \end{equation*}
 \end{theorem}
-\begin{theorem}[Kirchoff's Current Law]
+\begin{theorem}[Kirchhoff's Current Law]
     The sum of all currents into a node equals zero.
     \begin{equation*}
         \sum i_{\mathrm{node}} = 0
@@ -298,12 +298,12 @@ where $a,\:b,\:c$ are constants.
 \end{definition}
 This differential equation has a solution of the form:
 \begin{equation*}
-    y_h = \e^{rt}
+    y_H = \e^{rt}
 \end{equation*}
 \subsection{Characteristic Equation}
 By making the substitution $y=\e^{rt}$, we get
 \begin{align*}
-    a \dv[2]{y_h}{t} + b \dv{y_h}{t} + c y_h & = 0 \\
+    a \dv[2]{y_H}{t} + b \dv{y_H}{t} + c y_H & = 0 \\
     ar^2\e^{rt} + br\e^{rt} + c\e^{rt}       & = 0 \\
     (ar^2 + br + c)\e^{rt}                   & = 0 \\
     ar^2 + br + c                            & = 0
@@ -321,7 +321,7 @@ Given $r_1$ and $r_2$ are real and distinct:
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
-    y_h(t) = c_1\e^{r_1t} + c_2\e^{r_2t}
+    y_H(t) = c_1\e^{r_1t} + c_2\e^{r_2t}
 \end{equation*}
 \subsubsection{Real Repeated Roots}
 Given $r$ is a repeated root:
@@ -330,7 +330,7 @@ Given $r$ is a repeated root:
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
-    y_h(t) = c_1\e^{rt} + c_2t\e^{rt}
+    y_H(t) = c_1\e^{rt} + c_2t\e^{rt}
 \end{equation*}
 \subsubsection{Complex Conjugate Roots}
 Given $r_1 = \alpha + \beta i$ and $r_2 = \alpha - \beta i$ are complex conjugates:
@@ -339,7 +339,7 @@ Given $r_1 = \alpha + \beta i$ and $r_2 = \alpha - \beta i$ are complex conjugat
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
-    y_h(t) = c_1\e^{\alpha t}\cos{\left( \beta t \right)} + c_2\e^{\alpha t}\sin{\left( \beta t \right)}
+    y_H(t) = c_1\e^{\alpha t}\cos{\left( \beta t \right)} + c_2\e^{\alpha t}\sin{\left( \beta t \right)}
 \end{equation*}
 \subsection{Nonhomogeneous ODE}
 A nonhomogeneous differential equation is of the form
@@ -348,14 +348,14 @@ A nonhomogeneous differential equation is of the form
 \end{equation*}
 where $Q(t)\neq 0$.
 \subsection{General Solution of a Nonhomogeneous ODE}
-Recall that the solutions to any linear ODE are additive, so that if a solution $y_p$ satisfies
-the nonhomogeneous ODE, and $y_h$ satisfies the homogeneous ODE,
+Recall that the solutions to any linear ODE are additive, so that if a solution $y_P$ satisfies
+the nonhomogeneous ODE, and $y_H$ satisfies the homogeneous ODE,
 \begin{equation*}
-    y = y_h + y_p
+    y = y_H + y_P
 \end{equation*}
 must also satisfy the ODE.
 \subsection{Undetermined Coefficients}
-To solve for $y_p$, we substitute a guess, and
+To solve for $y_P$, we substitute a guess, and
 determined the coefficients from the ODE itself.
 
 The particular solution will depend on what $Q(t)$ looks like.
@@ -363,7 +363,7 @@ The particular solution will depend on what $Q(t)$ looks like.
     \centering
     \begin{tabular}{c | c}
         \toprule
-        $Q(t)$                                                          & $y_p$                                                             \\
+        $Q(t)$                                                          & $y_P$                                                             \\
         \midrule
         a constant                                                      & $A$                                                               \\
         $n$th degree polynomial                                         & $A_0 + A_1t + \cdots + A_{n-1}t^{n-1} + A_nt^n$                   \\
@@ -373,40 +373,29 @@ The particular solution will depend on what $Q(t)$ looks like.
         $\cos{\left( \alpha t \right)} + \sin{\left( \alpha t \right)}$ & $A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}$ \\
         \bottomrule
     \end{tabular}
-    \caption{Particular Solutions for Undetermined Coefficients}
+    \caption{Particular solutions for undetermined coefficients.}
     % \label{}
 \end{table}
 \subsection{Special Forms}
 \subsubsection{Product of Forms}
-If $Q(t)$ is a product of the functions shown above, then we write the
-particular solution for both functions separately and multiply the results together.
-
-For example, with $Q(t) = t \e^{4t}$, we have
-\begin{equation*}
-    y_p = \left(At + B\right) \left(C\e^{4t}\right)
-\end{equation*}
-the next step is to expand the function simplify any constants.
-\begin{align*}
-    y_p & = \left(ACt + BC\right) \e^{4t}
-    y_p & = \left(A_1t + B_1\right) \e^{4t}
-\end{align*}
+If $Q(t)$ is a product of the functions shown above, then the
+particular solutions are also multiplied together and any coefficients are simplified.
 \subsubsection{Sum of Forms}
-If $Q(t)$ is a sum of the functions shown above, then we can use
-\hyperref[theorem:superposition]{Theorem \ref{theorem:superposition}}
-and add the particular solutions together.
+If $Q(t)$ is a sum of the functions shown above, then the
+particular solutions are also added together.
 \subsubsection{Linearly Dependent Case}
 If $Q(t)$ is similar to any homogenous solution, then by \textit{definition} of
-a homogeneous solution, the solution will be $0$. Hence, $y_p$ must be multiplied by $t$
+a homogeneous solution, the solution will be $0$. Hence, $y_P$ must be multiplied by $t$
 to ensure that the particular solution is linearly independent to the homogeneous solutions,
 in order to form a \textit{fundamental set of solutions}.
 \subsection{Solving the Particular Solution}
 \begin{enumerate}
-    \item Solve $y_h$
-    \item Find an appropriate form for $y_p$
-    \item Ensure that $y_p$ is linearly independent to the homogeneous solutions
-    \item Substitute $y_p$ into the nonhomogeneous ODE and solve for the undetermined coefficients
-    \item Find the general solution $y = y_h + y_p$
-    \item Apply initial conditions to solve for any constants
+    \item Solve $y_H$
+    \item Find an appropriate form for $y_P$
+    \item Ensure that $y_P$ is linearly independent to the homogeneous solutions
+    \item Substitute $y_P$ into the nonhomogeneous ODE and solve for the undetermined coefficients
+    \item Find the general solution $y = y_H + y_P$
+    \item Apply initial conditions
 \end{enumerate}
 \section{Systems of Ordinary Differential Equations}
 A first-order system of differential equations has the form
@@ -577,25 +566,25 @@ Two events are dependent if the outcome of one event influences the outcome of t
     \end{equation*}
 \end{definition}
 \begin{theorem}[Total Probability]
-    If $B$ is a sample space of disjoint events $B_1,\: B_2,\: \dots,\: B_N$, then
+    If $B$ is a sample space of disjoint events $B_1,\: B_2,\: \dots,\: B_n$, then
     $A \cap B_1,\: A \cap B_2,\: \dots,\: A \cap B_N$ are also disjoint, and
     \begin{equation*}
-        A = \left( A \cap B_1 \right) + \left( A \cap B_2 \right) + \cdots + \left( A \cap B_N \right)
+        A = \left( A \cap B_1 \right) \cup \left( A \cap B_2 \right) \cup \cdots \cup \left( A \cap B_n \right)
     \end{equation*}
     This gives
     \begin{align*}
-        \Pr{\left( A \right)} & = \sum_{i=1}^N \Pr{\left( A \cap B_i \right)}                                 \\
-                              & = \sum_{i=1}^N \Pr{\left( A \;\middle|\; B_i \right)} \Pr{\left( B_i \right)}
+        \Pr{\left( A \right)} & = \sum_{i=1}^n \Pr{\left( A \cap B_i \right)}                                 \\
+                              & = \sum_{i=1}^n \Pr{\left( A \;\middle|\; B_i \right)} \Pr{\left( B_i \right)}
     \end{align*}
 \end{theorem}
-\begin{theorem}[Bayes' Rule]
+\begin{theorem}[Bayes' Theorem]
     Using the commutativity of intersections, the rule for conditional probability gives
     \begin{equation*}
         \Pr{\left( A \cap B \right)} = \Pr{\left( A \;\middle|\; B \right)} \Pr{\left( B \right)} = \Pr{\left( B \;\middle|\; A \right)} \Pr{\left( A \right)}
     \end{equation*}
     Therefore
     \begin{equation*}
-        \Pr{\left( A \right)} = \frac{\Pr{\left( A \;\middle|\; B \right)} \Pr{\left( B \right)}}{\Pr{\left( A \right)}}
+        \Pr{\left( B \;\middle|\; A \right)} = \frac{\Pr{\left( A \;\middle|\; B \right)} \Pr{\left( B \right)}}{\Pr{\left( A \right)}}
     \end{equation*}
 \end{theorem}
 \section{Probability Distributions}
@@ -642,8 +631,8 @@ Two events are dependent if the outcome of one event influences the outcome of t
     \begin{equation*}
         \E{\left( X \right)} =
         \begin{cases}
-            \sum_{X} x p(x)        & \text{for discrete variables}   \\
-            \int_{X} x f(x) \dd{x} & \text{for continuous variables}
+            \sum_{\Omega} x p(x)        & \text{for discrete variables}   \\
+            \int_{\Omega} x f(x) \dd{x} & \text{for continuous variables}
         \end{cases}
     \end{equation*}
 \end{definition}
@@ -654,8 +643,8 @@ Two events are dependent if the outcome of one event influences the outcome of t
     \begin{align*}
         \Var{\left( X \right)} & =
         \begin{cases}
-            \sum_{X} \left( x - \mu \right)^2 p(x)             & \text{for discrete variables}   \\
-            \int_{X} \left( x - \mu \right)^2 p(x) f(x) \dd{x} & \text{for continuous variables}
+            \sum_{\Omega} \left( x - \mu \right)^2 p(x)             & \text{for discrete variables}   \\
+            \int_{\Omega} \left( x - \mu \right)^2 p(x) f(x) \dd{x} & \text{for continuous variables}
         \end{cases} \\
                                & = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
     \end{align*}
@@ -745,7 +734,7 @@ This distribution has the following mean and variance
     \Var{\left( X \right)} & = \frac{\left( b - a \right)^2}{12}
 \end{align*}
 \subsection{Exponential Distribution}
-The uniform distribution describes the time between successive events that are occurring under the same conditions as Poisson
+The exponential distribution describes the time between successive events that are occurring under the same conditions as Poisson
 distributions. The PDF and CDF for this distribution are given by
 \begin{align*}
     f(x) & = \lambda \exp{\left( -\lambda x \right)} \\
@@ -762,23 +751,23 @@ The aim of statistical inference is to infer the true mean of a numerical variab
 
 In order to carry out inference, we must use data that is properly representative of the situation we wish to draw conclusions about.
 \subsection{Sample Statistics}
-Let $x$ be a set of sample data, with a sample size $N$.
+Let $x$ be a set of sample data, with a sample size $n$.
 \begin{theorem}[Sample Mean]
     The sample mean $\overline{X}$ is given by
     \begin{equation*}
-        \overline{X} = \frac{1}{N} \sum_{i = 1}^{N} x_i
+        \overline{X} = \frac{1}{n} \sum_{i = 1}^{n} x_i
     \end{equation*}
 \end{theorem}
 \begin{theorem}[Sample Variance]
     The sample variance $s^2$ is given by
     \begin{align*}
-        s^2 & = \frac{1}{N - 1} \sum_{i = 1}^{N} \left( x_i - \overline{X} \right)^2     \\
-            & = \frac{1}{N - 1} \left( \sum_{i = 1}^{N} x_i^2 - N \overline{X}^2 \right)
+        s^2 & = \frac{1}{n - 1} \sum_{i = 1}^{n} \left( x_i - \overline{X} \right)^2     \\
+            & = \frac{1}{n - 1} \left( \sum_{i = 1}^{n} x_i^2 - n \overline{X}^2 \right)
     \end{align*}
 \end{theorem}
 \subsection{Sampling Distribution of \texorpdfstring{$\overline{X}$}{Xbar}}
 The Central Limit theorem states that the distribution of $\overline{X}$ will approach a 
-Normal distribution as $N \to \infty$. In most cases, $N = 30$ is sufficiently large for
+Normal distribution as $n \to \infty$. In most cases, $n = 30$ is sufficiently large for
 a Normal distribution to accurately reflect the distribution of $\overline{X}$
 \begin{theorem}[Expectation of a Sample Mean]
     \begin{equation*}
@@ -787,8 +776,78 @@ a Normal distribution to accurately reflect the distribution of $\overline{X}$
 \end{theorem}
 \begin{theorem}[Variance of a Sample Mean]
     \begin{equation*}
-        \Var{\left( \overline{X} \right)} = \frac{\sigma^2}{N}
+        \Var{\left( \overline{X} \right)} = \frac{\sigma^2}{n}
     \end{equation*}
 \end{theorem}
-By standardising $\overline{X}$
+By standardising $\overline{X}$ we get 
+\begin{equation*}
+    Z = \frac{\overline{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,\: 1)
+\end{equation*}
+as $n\to\infty$. But as $\sigma$ is often unknown, and can vary between samples, the Normal 
+distribution may no long apply. 
+\subsection{Student's \texorpdfstring{$t$}{t}-distribution}
+\begin{definition}
+    When using sampled data, we can use the $t$-distribution for $\overline{X}$.
+    \begin{equation*}
+        T = \frac{\overline{X} - \mu}{s/\sqrt{n}} \sim t_{n-1}
+    \end{equation*}
+    where $t_{n-1}$ is Student's $t$-distribution with $n-1$ degrees of freedom.
+
+    The $t$-distribution converges to the standard Normal distribution as $n\to\infty$.
+\end{definition}
+Values along the horizontal axis of the $t$-distribution can be denoted by $t_{n-1,\: 1-\alpha/2}$.
+\begin{description}
+    \item[$n-1$] represents the degrees of freedom. 
+    \item[$1-\alpha/2$] represents the CDF probability:
+    \begin{equation*}
+        \Pr{\left( T \leq t_{n-1,\: 1-\alpha/2} \right)} = 1-\alpha/2
+    \end{equation*}
+\end{description}
+\subsection{Confidence Intervals}
+\begin{definition}[Confidence Intervals]
+    As $\overline{X}$ varies between samples, and is never equal to $\mu$, we can determine
+    a range of values (based on the observation of $\overline{X}$) that is likely to contain
+    the true mean. This range is called an interval estimate or confidence interval for $\mu$.
+    
+    The $\left( 1 - \alpha \right)$ confidence interval for $\mu$ is
+    \begin{equation*}
+        {CI}_{\left( 1 - \alpha \right)} = \overline{X} \pm t_{n-1,\: 1-\alpha/2} \frac{s}{\sqrt{n}}
+    \end{equation*}
+    Typically we construct $1-\alpha = \SI{95}{\percent}$ confidence intervals.
+\end{definition}
+\subsection{Hypothesis Testing}
+\begin{definition}[Hypothesis Tests]
+    In statistics, a hypothesis test allows us to assess how
+    consistent a particular assumption (hypothesis) is with our
+    observed data.
+    
+    The process of hypothesis test starts with an assumption about the
+    data. This assumption is known as the ``null hypothesis'', denoted $H_0$.
+    
+    We then assess to what extent the sample is inconsistent with the assumption $H_0$, 
+    by determining how likely we are to observe the sample if the null hypothesis is true.
+    
+    This probability is known as the ``$p$-value'' for the test, and indicates how strong the
+    evidence is against $H_0$.
+    \begin{description}
+        \item[p > 0.1] is not sufficient evidence to dispute $H_0$ 
+        \item[0.05 < p < 0.1] might provide weak evidence against $H_0$ 
+        \item[p < 0.05] provides some evidence against $H_0$ 
+        \item[p < 0.01] provides strong evidence against $H_0$ 
+    \end{description}
+    The assumption when $H_0$ is rejected is known as the alternative hypothesis, denoted $H_1$ or $H_A$.
+    
+    To test the true mean $\mu$, we have
+    \begin{equation*}
+        H_0:\mu = \mu_0 \quad \text{vs} \quad H_A:\mu \neq \mu_0
+    \end{equation*}
+    Suppose a sample mean of $\overline{x}$ from a sample of $n$ observations, then:
+    \begin{align*}
+        \Pr{\left( \abs{\overline{X} - \mu} > \abs{\overline{x} - \mu_0} \right)} & = \Pr{\left( \abs{\frac{\overline{X} - \mu}{s/\sqrt{n}}} > \abs{\frac{\overline{x} - \mu_0}{s/\sqrt{n}}} \right)} \\
+        & = \Pr{\left( \abs{T} > \abs{\frac{\overline{x} - \mu_0}{s/\sqrt{n}}} \right)}
+    \end{align*}
+    where $T=\frac{\overline{X} - \mu}{s/\sqrt{n}}\sim t_{n-1}$.
+\end{definition}
+\section{Linear Regression}
+
 \end{document}
