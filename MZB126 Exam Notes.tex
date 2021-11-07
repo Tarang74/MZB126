@@ -229,8 +229,11 @@ else ... end
         \Pr{\left( A \right)} & = \sum_{i=1}^n \Pr{\left( A \cap B_i \right)}
     \end{align*}
     \subsubsection*{Expectation}
-    Average output or mean: $\mu = \E{\left( X \right)}$.
-    \subsubsection*{Variation}
+    Average output or mean:
+    \begin{equation*}
+        \mu = \E{\left( X \right)}.
+    \end{equation*}
+    \subsubsection*{Variance}
     Measure of spread from the mean:
     \begin{equation*}
         \sigma^2 = \E{\left( X^2 \right)} - \E{\left( X \right)}^2.
@@ -296,9 +299,8 @@ else ... end
     \subsubsection*{Normal (Continuous)}
     Events occur more frequently near $\mu$ and less frequently further away from $\mu$.
     \subsubsection*{Standardised Normal (Continuous)}
-    A normal distribution with $\mu=0$ and $\sigma=1$.
     \begin{equation*}
-        Z = \frac{X-\mu}{\sigma}
+        Z = \frac{X-\mu}{\sigma} \sim \mathrm{N}\left( 0,\: 1 \right)
     \end{equation*}
 \end{minipage}
 \begin{table}[H]
@@ -366,13 +368,40 @@ else ... end
             \Pr{\left( T > \abs{T_{\text{test}}} \right)}    & = \frac{\alpha}{2}
         \end{align*}
     \end{multicols*}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width = \linewidth, keepaspectratio = true]{p_values}
-    \end{figure}
+    \includegraphics[width = \linewidth, keepaspectratio = true]{p_values}
 \end{minipage}
 \begin{multicols}{3}
     \subsection*{Linear Regression}
-    
+    Given a set of $n$ points $\left( x_i,\: y_i \right)$ that are assumed to have a linear relationship,
+    the model for $y_i$ is
+    \begin{equation*}
+        y_i = \beta_0 + \beta_1 x_i + \varepsilon_i
+    \end{equation*}
+    where $\varepsilon_i \sim \mathrm{N}\left( 0,\: \sigma^2 \right)$ is the residual.
+    $s$ (RMS error) gives an estimate for $\sigma$ --
+    how close the data is to the model. 
+    \subsubsection*{Estimates}
+    \begin{align*}
+        T_{\text{test}}:\frac{\hat{\beta}_0 - \beta_0}{s_{\hat{\beta}_0}} \sim t_{n-2},\quad \frac{\hat{\beta}_1 - \beta_1}{s_{\hat{\beta}_1}} \sim t_{n-2}
+    \end{align*}
+    \subsubsection*{Inferences about $\beta_0$ and $\beta_1$}
+    \begin{align*}
+        CI_c & = \hat{\beta}_0 \pm t_{n-2,\: 1-\alpha/2} s_{\hat{\beta}_0} \\
+        CI_c & = \hat{\beta}_1 \pm t_{n-2,\: 1-\alpha/2} s_{\hat{\beta}_1}
+    \end{align*}
+    where $s_{\hat{\beta}_0}$ and $s_{\hat{\beta}_1}$ are the standard errors (SE) for $\hat{\beta}_0$ and $\hat{\beta}_1$.
+    $H_{0,\:\beta_0}:\beta_0=0$ tests whether the model crosses the origin.
+    $H_{0,\:\beta_1}:\beta_1=0$ tests whether the model is constant.
+    \subsubsection*{R-squared}
+    The percentage of the observed variance in $y$ that is explained by the model.
+    \subsubsection*{Residual Plots}
+    Test the following two assumptions:
+    \begin{enumerate}
+        \item The relationship between $X$ and $Y$ is best modelled linearly
+        -- clear indication of a non-linear trend suggests assumption is not valid.
+        \item The variance of residuals is the same for all observations, (not affected by $y_i$)
+        -- uneven width of residual suggests assumption is not valid. 
+        This may lead to inaccurate inferences.
+    \end{enumerate}
 \end{multicols}
 \end{document}

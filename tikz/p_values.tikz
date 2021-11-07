@@ -24,6 +24,6 @@
         \foreach \x in {0, 2, 4, 6, 8, 10}
             \draw[very thin] (\x, -0.1) -- ++ (0, 0.2);
         %
-        \node at (5, 1) {$\text{\underline{Strength of evidence against $H_0$}}$};
+        \node at (5, .75) {$\text{\small \underline{Strength of evidence against $H_0$}}$};
     \end{tikzpicture}
 \end{document}
