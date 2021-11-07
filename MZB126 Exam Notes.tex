@@ -10,6 +10,8 @@
 	margin = 10mm
 } 
 
+\usepackage{calc}
+
 \usepackage{textcomp, upquote}
 
 \lstset{language=Matlab, upquote=true}
@@ -38,43 +40,48 @@
 \setlength{\belowdisplayskip}{1pt}
 
 \begin{multicols}{3}
-    \subsubsection*{MATLAB}
-    \lstinline!function [output1, ...]!
-
-    \mbox{}\hfill\lstinline!= func_name(input1, ...)!
+    \subsection*{MATLAB}
+    \lstset{belowskip=0pt, aboveskip=0pt}
+    \begin{lstlisting}
+% Function declaration
+function [output1, ...]
+    = function_name(input1, ...)
+% Iterate over the vector v
+for i = v ... end 
+% Repeat while condition is true
+while condition ... end
+% Execute first true alternative
+if condition_1 ...
+elseif condition_2 ... 
+else ... end
+\end{lstlisting}
     \subsubsection*{Partial Fraction Decomposition}
+    Given the LHS in the denominator, substitute the RHS.
     \begin{align*}
-        ax+b                & \to \frac{A}{ax+b}                                                \\
         \left(ax+b\right)^k & \to \frac{A_1}{ax+b} + \cdots + \frac{A_k}{\left( ax+b \right)^k}
     \end{align*}
     \begin{align*}
-        ax^2+bx+c                    & \to \frac{A}{ax^2+bx+c}                              \\
         \left(ax^2+bx+c\right)^k     & \to                                                  \\
         \frac{A_1x+B_1}{ax^2+bx+c} + & \cdots + \frac{A_kx+B_k}{\left( ax^2+bx+c \right)^k}
     \end{align*}
     \subsection*{Differential Equations}
-    \subsubsection*{Electrical Circuits}
-    \begin{align*}
-        \sum v_{loop} = 0 &  & \sum i_{node} = 0
-    \end{align*}
-    \begin{equation*}
-        \displaystyle i = \dv{q}{t}
-    \end{equation*}
-    \subsubsection*{Voltage drop across various elements:}
-    \begin{align*}
-        v_R & = iR          & R & : \text{resistance}  \\
-        v_C & = \frac{q}{C} & C & : \text{capacitance} \\
-        v_L & = L \dv{i}{t} & L & : \text{inductance}
-    \end{align*}
     \subsubsection*{Mechanical Systems}
     \begin{equation*}
-        \sum F = \dv{p}{t}
+        \sum F = \dv{p}{t},\quad \sum M = I \dv[2]{\theta}{t}
     \end{equation*}
-    where $p = mv$.
+    where momentum $p = mv$, moment $M=Fx$ and inertia $I=mr^2$.
+    % \columnbreak
     \begin{align*}
-        F_T & = \left( c - v \right) d_f \\
-        F_g & = mg                       \\
-        F_S & = -kx
+        F_T & = \left( c - v \right) d_f & F_g & = -mg                       \\
+        F_s & = -kx                      & F_f & = -b v^2 \text{ (or $-bv$)}
+    \end{align*}
+    \subsubsection*{Electrical Circuits}
+    \begin{align*}
+        i = \dv{q}{t},\quad \sum v_{loop} = 0,\quad \sum i_{node} = 0
+    \end{align*}
+    \underline{Voltage drop across elements:}
+    \begin{align*}
+        v_R = iR,\quad v_C = \frac{q}{C},\quad v_L & = L \dv{i}{t}
     \end{align*}
     \subsubsection*{Separable ODEs}
     For $\dv{y}{t} = p(t) q(y)$:
@@ -89,71 +96,73 @@
     \end{equation*}
     \subsubsection*{Linearisation}
     \begin{align*}
-        f(t)              & \approx f(t_0) + f'(t_0)(t-t_0)                     \\
-        f\bigl(y(t)\bigr) & \approx f'\bigl(y(t_0)\bigr)\bigl(y(t)-y(t_0)\bigr) \\
-                          & \phantom{\approx} +f\bigl(y(t_0)\bigr)
+        f(t)              & \approx f(t_0) + f'(t_0)(t-t_0)                                 \\
+        f\bigl(y(t)\bigr) & \approx f\bigl(y(t_0)\bigr)                                     \\
+                          & \phantom{\approx} + f'\bigl(y(t_0)\bigr)\bigl(y(t)-y(t_0)\bigr)
     \end{align*}
     \subsubsection*{Euler's Method}
+    For $\symbfit{y}' = \symbfit{f}(t,\: \symbfit{y})$:
     \begin{align*}
-        y(t+h)           & = y(t) + hy'(t)                     \\
-        \symbfit{y}(t+h) & = \symbfit{y}(t) + h\symbfit{y}'(t)
+        \symbfit{y}_{n+1} & = \symbfit{y}_{n} + h\symbfit{f}(t_n,\: \symbfit{y}_n)
     \end{align*}
     \subsubsection*{Modified Euler's Method}
     \begin{align*}
-        y(t+h)           & = y(t) + \frac{h}{2}\bigl( y'(t) + y'(t+h) \bigr)                               \\
-        \symbfit{y}(t+h) & = \symbfit{y}(t) + \frac{h}{2}\bigl( \symbfit{y}'(t) + \symbfit{y}'(t+h) \bigr)
+         & \symbfit{y}_{n+1} =                                                                                                       \\
+         & \symbfit{y}_{n} + \frac{h}{2}\left( \symbfit{f}(t_n,\: \symbfit{y}_n) + \symbfit{f}(t_{n+1},\: \symbfit{y}_{n+1}) \right)
     \end{align*}
-    where $y'(t+h)$ is determined using Euler's method.
+    where $\symbfit{f}(t_{n+1},\: \symbfit{y}_{n+1})$ is determined using Euler's method.
     \subsubsection*{Second-Order ODEs}
     \begin{equation*}
         ay'' + by' + cy = F(t)
     \end{equation*}
-    \textbf{Homogeneous:} $F(t) = 0$
-
-    \textbf{Nonhomogeneous:} $F(t) \neq 0$
-    \subsubsection*{Homogeneous ODEs}
+    \subsubsection*{General Solution}
+    \begin{equation*}
+        y(t) = y_H(t) + y_P(t)
+    \end{equation*}
+    \subsubsection*{Homogeneous Solution}
     \begin{equation*}
         y_H(t) = \e^{\lambda t}
     \end{equation*}
-    \subsubsection*{Real Distinct Roots}
+    To solve for $\lambda$, substitute the homogeneous form into the homogeneous ODE. \\
+    \underline{Real distinct roots:}
     \begin{equation*}
         y_H(t) = c_1\e^{\lambda_1 t} + c_2\e^{\lambda_2 t}
     \end{equation*}
-    \subsubsection*{Real Repeated Roots}
+    \underline{Real repeated roots:}
     \begin{equation*}
         y_H(t) = c_1\e^{\lambda t} + c_2 t\e^{\lambda t}
     \end{equation*}
-    \subsubsection*{Complex Conjugate Roots}
-    Given $\lambda = \alpha \pm \beta i$:
+    \underline{Complex conjugate roots:} $\lambda = \alpha \pm \beta i$
     \begin{equation*}
         y_H(t) = \e^{\alpha x}\bigl( c_1\cos{\left( \beta t \right)} + c_2 \sin{\left( \beta t \right)} \bigr)
     \end{equation*}
-    \subsubsection*{Nonhomogeneous ODEs}
-    \begin{equation*}
-        y(t) = y_H(t) + y_P(t).
-    \end{equation*}
-    \subsubsection*{Method of Undetermined Coefficients}
+    \subsubsection*{Particular Solution}
     \emph{See table below.}
     Substitute $y_P$ into the nonhomogeneous ODE, and solve the undetermined coefficients.
     \subsubsection*{System of ODEs}
+    Given $\symbfit{y}' = \symbf{A} \symbfit{y}$, 
     \begin{equation*}
-        \symbfit{y}' = \symbf{A} \symbfit{y}
+        \symbfit{y}_H(t) = \symbfit{q}\e^{\lambda t}.
     \end{equation*}
-    \subsubsection*{Homogeneous System}
+    $\lambda_i$ are the eigenvalues of $\symbfit{A}$ that satisfy 
     \begin{equation*}
-        \symbfit{y}_H = \symbfit{q}\e^{\lambda t}
+        \det{\left( \symbf{A} - \lambda\symbf{I} \right)} = 0.
     \end{equation*}
-    $\lambda_i$ are the eigenvalues of $\symbfit{A}$, and $\symbfit{q}_i$ are the associated eigenvectors.
+    $\symbfit{q}_i$ are the associated eigenvectors that satisfy
+    \begin{equation*}
+        \left( \symbf{A} - \lambda_i \symbf{I} \right)\symbfit{q}_i = \symbf{0}.
+    \end{equation*}
+    \underline{For real distinct roots:}
+    \begin{equation*}
+        \symbfit{y}_H(t) = c_1\symbfit{q}_1\e^{\lambda_1 t} + c_2\symbfit{q}_2\e^{\lambda_2 t}
+    \end{equation*}
     \subsubsection*{Higher-Order ODEs}
     \begin{equation*}
         y^{\left( n \right)} + a_1 y^{\left( n-1 \right)} + \cdots + a_{n-1} y' + a_n y = 0
     \end{equation*}
     Let $y_1 = y$, $y_2 = y'$, \dots, $y_n = y^{\left( n-1 \right)}$
-    so that $\symbfit{y}=\avec{y_1,\: y_2,\: \dots,\: y_n}$. Then
-    \begin{equation*}
-        \symbfit{y}' = \symbf{A} \symbfit{y}
-    \end{equation*}
-    where
+    so that $\symbfit{y}=\avec{y_1,\: y_2,\: \dots,\: y_n}$.
+    Then $\symbfit{y}' = \symbf{A} \symbfit{y}$, where
     \begin{equation*}
         \symbf{A} =
         \mqty[
@@ -164,106 +173,6 @@
         -a_n   & -a_{n-1} & -a_{n-2} & \cdots & -a_1
         ]
     \end{equation*}
-    \subsection*{Probability}
-    \subsubsection*{Events}
-    \begin{equation*}
-        \Pr{\left( A \right)} = \sum_{x\in A} p(x)
-    \end{equation*}
-    \begin{align*}
-        \Pr{\left( A^C \right)} = \Pr{\left( \overline{A} \right)} = 1 - \Pr{\left( A \right)}
-    \end{align*}
-    \subsubsection*{Disjoint Events (Mutually Exclusive)}
-    Events don't have outcomes in common.
-    \begin{align*}
-        A \cap B                   & = \varnothing \\
-        \Pr{\left(A \cap B\right)} & = 0
-    \end{align*}
-    \subsubsection*{Unions}
-    \begin{align*}
-        \Pr{\left( A \cup B \right)} & = \Pr{\left( A \right)} + \Pr{\left( B \right)} \\
-                                     & \phantom{=} - \Pr{\left( A \cap B \right)}      \\
-                                     & = 1 - \Pr{\left( A^C \cap B^C \right)}
-    \end{align*}
-    \subsubsection*{Independent Events}
-    Outcome of events do not influence each other. Joint probability:
-    \begin{equation*}
-        \Pr{\left(A \cap B\right)} = \Pr{\left( A \right)}\Pr{\left( B \right)}
-    \end{equation*}
-    \subsubsection*{Dependent (Conditional) Events}
-    Outcome of event depends on the outcome of the other. Joint probability of $A$ given $B$:
-    \begin{equation*}
-        \Pr{\left(A \;\middle|\; B\right)} = \frac{\Pr{\left( A \cap B \right)}}{\Pr{\left( B \right)}}
-    \end{equation*}
-    \subsubsection*{Total Probability}
-    For disjoint events $B_i$:
-    \begin{align*}
-        A                     & = \bigcup\limits_{i=1}^n \left( A \cap B_i \right)                            \\
-        \Pr{\left( A \right)} & = \sum_{i=1}^n \Pr{\left( A \cap B_i \right)}                                 \\
-        \Pr{\left( A \right)} & = \sum_{i=1}^n \Pr{\left( A \;\middle|\; B_i \right)} \Pr{\left( B_i \right)}
-    \end{align*}
-    \subsubsection*{Bayes' Theorem}
-    \begin{equation*}
-        \Pr{\left(B \;\middle|\; A\right)} = \frac{\Pr{\left( A \;\middle|\; B \right)}\Pr{\left( B \right)}}{\Pr{\left( A \right)}}
-    \end{equation*}
-    \subsection*{Summary Statistics}
-    \subsubsection*{Discrete Random Variables}
-    Has countably many outcomes. Distributed according to a
-    Probability Mass Function (PMF):
-    \begin{equation*}
-        p(x) = \Pr{\left( X = x \right)}
-    \end{equation*}
-    \subsubsection*{Continuous Random Variables}
-    Has an infinite number of individual outcomes. Distributed according to a
-    Probability Density Function $f(x)$ where
-    \begin{equation*}
-        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f(u) \dd{u}.
-    \end{equation*}
-    The Cumulative Density Function (CDF)
-    is defined as:
-    \begin{equation*}
-        F(x) = \Pr{\left( X \leq x \right)} = \int_{-\infty}^x f(u) \dd{u}
-    \end{equation*}
-    \subsubsection*{Expectation}
-    \begin{equation*}
-        \mu = \E{\left( X \right)} =
-        \begin{cases}
-            \sum_\Omega x p(x) \\
-            \int_\Omega x f(x) \dd{x}
-        \end{cases}
-    \end{equation*}
-    \subsubsection*{Variation}
-    \begin{align*}
-        \sigma^2 = \Var{\left( X \right)} & =
-        \begin{cases}
-            \sum_\Omega \left( x - \mu \right)^2 p(x) \\
-            \int_\Omega \left( x - \mu \right)^2 f(x) \dd{x}
-        \end{cases}                                       \\
-                                          & = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
-    \end{align*}
-    \subsubsection*{Standard Deviation}
-    \begin{equation*}
-        \sigma = \sqrt{\Var{\left( X \right)}}
-    \end{equation*}
-    \subsubsection*{General Linear Combinations}
-    Expectation:
-    \begin{align*}
-        \E{\left( aX+b \right)}  & = a\E{\left( X \right)} + b                     \\
-        \E{\left( aX+bY \right)} & = a\E{\left( X \right)} + b\E{\left( Y \right)}
-    \end{align*}
-    Variation:
-    \begin{align*}
-        \Var{\left( aX+b \right)}  & = a^2\Var{\left( X \right)}                  \\
-        \Var{\left( aX+bY \right)} & = a^2\Var{\left( X \right)}                  \\
-                                   & \phantom{=} + b^2\Var{\left( Y \right)}      \\
-                                   & \phantom{=} - 2ab\Cov{\left( X,\: Y \right)}
-    \end{align*}
-    where
-    \begin{align*}
-        \Cov{\left( X,\: Y \right)} & = \E{\left( XY \right)} - \E{\left( X \right)}\E{\left( Y \right)} \\
-                                    & = \rho_{XY} \sqrt{\Var{\left( X \right)}\Var{\left( Y \right)}}.
-    \end{align*}
-    The correlation $\Corr{\left( X,\: Y \right)}$ or $\rho_{XY}$ is a constant that describes the statistical relationship
-    between $X$ and $Y$. $-1 \leq \rho_{XY} \leq 1$.
 \end{multicols}
 \begin{table}[H]
     \centering
@@ -280,4 +189,190 @@
         \bottomrule
     \end{tabular}
 \end{table}
+\begin{multicols}{3}
+    \subsection*{Probability}
+    \subsubsection*{Events}
+    \begin{gather*}
+        \Pr{\left( A \right)} = \sum_{x\in A} p(x) \\
+        \Pr{\left( A^C \right)} = \Pr{\left( \overline{A} \right)} = 1 - \Pr{\left( A \right)}
+    \end{gather*}
+    \subsubsection*{Unions}
+    \begin{align*}
+        \Pr{\left( A \cup B \right)} & = \Pr{\left( A \right)} + \Pr{\left( B \right)} \\
+                                     & \phantom{=} - \Pr{\left( A \cap B \right)}      \\
+                                     & = 1 - \Pr{\left( A^C \cap B^C \right)}
+    \end{align*}
+    \subsubsection*{Bayes' Theorem}
+    \begin{equation*}
+        \Pr{\left(B \;\middle|\; A\right)} = \frac{\Pr{\left( A \;\middle|\; B \right)}\Pr{\left( B \right)}}{\Pr{\left( A \right)}}
+    \end{equation*}
+    \subsubsection*{Disjoint Events}
+    Events don't have outcomes in common.
+    \begin{align*}
+        A \cap B                   & = \varnothing \\
+        \Pr{\left(A \cap B\right)} & = 0
+    \end{align*}
+    \subsubsection*{Independent Events}
+    Outcome of events do not influence each other. Joint probability:
+    \begin{equation*}
+        \Pr{\left(A \cap B\right)} = \Pr{\left( A \right)}\Pr{\left( B \right)}
+    \end{equation*}
+    \subsubsection*{Dependent (Conditional) Events}
+    Outcome of event depends on the outcome of the other. Joint probability of $A$ given $B$:
+    \begin{equation*}
+        \Pr{\left(A \;\middle|\; B\right)} = \frac{\Pr{\left( A \cap B \right)}}{\Pr{\left( B \right)}}
+    \end{equation*}
+    \subsubsection*{Total Probability}
+    For disjoint events $B_i$:
+    \begin{align*}
+        A                     & = \bigcup\limits_{i=1}^n \left( A \cap B_i \right) \\
+        \Pr{\left( A \right)} & = \sum_{i=1}^n \Pr{\left( A \cap B_i \right)}
+    \end{align*}
+    \subsubsection*{Expectation}
+    Average output or mean: $\mu = \E{\left( X \right)}$.
+    \subsubsection*{Variation}
+    Measure of spread from the mean:
+    \begin{equation*}
+        \sigma^2 = \E{\left( X^2 \right)} - \E{\left( X \right)}^2.
+    \end{equation*}
+\end{multicols}
+\begin{minipage}{126.1962963mm}
+    \begin{multicols}{2}
+        \subsection*{Probability Distributions}
+        \subsubsection*{Discrete Random Variables}
+        Has countably many outcomes. Distributed with a
+        probability mass function $p(x)$.
+        \subsubsection*{Continuous Random Variables}
+        Has an infinite number of outcomes. Distributed with a
+        probability density function $f(x)$.
+        \begin{equation*}
+            \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f(x) \dd{x}
+        \end{equation*}
+        \begin{equation*}
+            F(x) = \Pr{\left( X \leq x \right)}
+        \end{equation*}
+        \subsubsection*{General Linear Combinations}
+        \begin{align*}
+            \E{\left( aX+b \right)}  & = a\E{\left( X \right)} + b                     \\
+            \E{\left( aX+bY \right)} & = a\E{\left( X \right)} + b\E{\left( Y \right)}
+        \end{align*}
+        \begin{align*}
+            \Var{\left( aX+b \right)}  & = a^2\Var{\left( X \right)}                  \\
+            \Var{\left( aX+bY \right)} & = a^2\Var{\left( X \right)}                  \\
+                                       & \phantom{=} + b^2\Var{\left( Y \right)}      \\
+                                       & \phantom{=} - 2ab\Cov{\left( X,\: Y \right)}
+        \end{align*}
+        \begin{align*}
+            \Cov{\left( X,\: Y \right)} & = \E{\left( XY \right)} - \E{\left( X \right)}\E{\left( Y \right)} \\
+                                        & = \rho_{XY} \sqrt{\Var{\left( X \right)}\Var{\left( Y \right)}}.
+        \end{align*}
+        The correlation $\Corr{\left( X,\: Y \right)}$ or $\rho_{XY}$ is a constant that describes the statistical relationship
+        between $X$ and $Y$. $-1 \leq \rho_{XY} \leq 1$.
+    \end{multicols}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{c | c | c}
+            \toprule
+                                   & \textbf{Discrete}                            & \textbf{Continuous}                                \\
+            \midrule
+            Valid probabilities    & $0 \leq p(x) \leq 1$                         & $f(x) \geq 0$                                      \\
+            Cumulative probability & $\sum_{u \leq x} p(u)$                       & $\int_{-\infty}^{x} f(u) \dd{u}$                   \\
+            Expectation            & $\sum_{\Omega} xp(x)$                        & $\int_{\Omega} xf(x)\dd{x}$                        \\
+            Variance               & $\sum_{\Omega} \left( x - \mu \right)^2p(x)$ & $\int_{\Omega} \left( x - \mu \right)^2f(x)\dd{x}$ \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{minipage}\hfill%
+\begin{minipage}{62.39259259mm}
+    \subsubsection*{Binomial (Discrete)}
+    Probability of $x$ successes out of $n$ independent trials, each with chance $p$.
+    \subsubsection*{Poisson (Discrete)}
+    Probability of observing $x$ events over an interval $t$, where events occur at an
+    average rate $\lambda$. $\mu = \lambda t$.
+    \subsubsection*{Exponential (Continuous)}
+    The time $t$ between events, where the events are independent and occur at an average rate $\lambda$.
+    \subsubsection*{Uniform (Continuous)}
+    The probability of any value $x\in\left[ a,\: b \right]$ is constant.
+    \subsubsection*{Normal (Continuous)}
+    Events occur more frequently near $\mu$ and less frequently further away from $\mu$.
+    \subsubsection*{Standardised Normal (Continuous)}
+    A normal distribution with $\mu=0$ and $\sigma=1$.
+    \begin{equation*}
+        Z = \frac{X-\mu}{\sigma}
+    \end{equation*}
+\end{minipage}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c | c | c | c | c}
+        \toprule
+        \textbf{Distribution}                                    & \textbf{Probability}                            & \textbf{Cumulative Probability}         & $\mu$                  & $\sigma^2$                \\
+        \midrule
+        Binomial: $X\sim \mathrm{bin}\left( n,\: p \right)$      & $\binom{n}{x} p^x \left( 1 - p \right)^{n - x}$ & \emph{See table above.}                 & $np$                   & $np\left( 1-p \right)$    \\
+        Poisson: $X\sim \mathrm{Pois}\left( \mu \right)$         & $\e^{-\mu}\mu^x/x!$                             & \emph{See table above.}                 & $\lambda t$            & $\lambda t$               \\
+        Exponential: $T\sim \mathrm{exp}\left( \lambda \right)$  & $\lambda \e^{-\lambda t}$                       & $1 - \lambda \e^{-\lambda t}$           & $1/\lambda$            & $1/\lambda^2$             \\
+        Uniform: $X\sim \mathrm{U}\left( a,\: b \right)$         & $1/\left( b-a \right)$                          & $\left( x-a \right)/\left( b-a \right)$ & $\left( a+b \right)/2$ & $\left( b-a \right)^2/12$ \\
+        Normal: $X\sim \mathrm{N}\left( \mu,\: \sigma^2 \right)$ & $-$                                             & $-$                                     & $\mu$                  & $\sigma^2$                \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\begin{minipage}{62.39259259mm}
+    \subsection*{Sample Statistics}
+    Given $n$ samples $x_i$:
+    \begin{align*}
+        \text{Mean:}     &  & \overline{x} & = \frac{1}{n}\sum_{i=1}^{n} x_i                                      \\
+        \text{Variance:} &  & s^2          & = \frac{1}{n-1}\sum_{i=1}^{n} \left( x_i - \overline{x} \right)^2    \\
+                         &  &              & = \frac{1}{n-1}\left( \sum_{i=1}^{n} x_i^2 - n\overline{x}^2 \right)
+    \end{align*}
+    \subsubsection*{t Distribution}
+    The sample mean is distributed according to the t distribution where
+    \begin{equation*}
+        T=\frac{\overline{X} - \mu}{s/\sqrt{n}}\sim t_{n-1}
+    \end{equation*}
+    \begin{align*}
+        \Pr{\left( T \leq t_{n-1,\: 1-\alpha/2} \right)} & = 1 - \frac{\alpha}{2} \\
+        \Pr{\left( T > t_{n-1,\: \alpha/2} \right)}      & = \frac{\alpha}{2}
+    \end{align*}
+\end{minipage}\hfill%
+\begin{minipage}{126.1962963mm}
+    \begin{multicols*}{2}
+        \subsubsection*{Confidence Intervals}
+        Given the confidence level $c$:
+        \begin{equation*}
+            c = 1 - \alpha.
+        \end{equation*}
+        The confidence interval for $\overline{x}$:
+        \begin{equation*}
+            {CI}_{c} = \overline{x} \pm t_{n-1,\: 1-\alpha/2} \frac{s}{\sqrt{n}}.
+        \end{equation*}
+        \subsection*{Hypothesis Testing}
+        Hypothesis testing assesses the likelihood of observing the sample \underline{if} the null hypothesis was true.
+        \subsubsection*{Hypothesis}
+        \begin{align*}
+            H_0:\mu = \mu_0 \quad \text{vs} \quad H_1:\mu \neq \mu_0
+        \end{align*}
+        Generally there is no evidence supporting $H_0$, but only evidence or lack of evidence for rejecting $H_0$.
+        \subsubsection*{Test Statistic}
+        The measure of the distance that the proposed mean is from the sample mean:
+        \begin{align*}
+            T_{\text{test}} = \frac{\overline{x} - \mu_0}{s/\sqrt{n}}
+        \end{align*}
+        \subsubsection*{p-Value}
+        Strength of evidence against $H_0$. The $p$-value is the $\alpha$ value that satisfies:
+        \begin{equation*}
+            \abs{T_{\text{test}}} = t_{n-1,\: 1-\alpha/2}.
+        \end{equation*}
+        \begin{align*}
+            \Pr{\left( T \leq \abs{T_{\text{test}}} \right)} & = 1 - \frac{\alpha}{2} \\
+            \Pr{\left( T > \abs{T_{\text{test}}} \right)}    & = \frac{\alpha}{2}
+        \end{align*}
+    \end{multicols*}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width = \linewidth, keepaspectratio = true]{p_values}
+    \end{figure}
+\end{minipage}
+\begin{multicols}{3}
+    \subsection*{Linear Regression}
+    
+\end{multicols}
 \end{document}
