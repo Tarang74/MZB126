@@ -766,7 +766,7 @@ Let $x$ be a set of sample data, with a sample size $n$.
     \end{align*}
 \end{theorem}
 \subsection{Sampling Distribution of \texorpdfstring{$\overline{X}$}{Xbar}}
-The Central Limit theorem states that the distribution of $\overline{X}$ will approach a 
+The Central Limit theorem states that the distribution of $\overline{X}$ will approach a
 Normal distribution as $n \to \infty$. In most cases, $n = 30$ is sufficiently large for
 a Normal distribution to accurately reflect the distribution of $\overline{X}$
 \begin{theorem}[Expectation of a Sample Mean]
@@ -779,12 +779,12 @@ a Normal distribution to accurately reflect the distribution of $\overline{X}$
         \Var{\left( \overline{X} \right)} = \frac{\sigma^2}{n}
     \end{equation*}
 \end{theorem}
-By standardising $\overline{X}$ we get 
+By standardising $\overline{X}$ we get
 \begin{equation*}
     Z = \frac{\overline{X} - \mu}{\sigma/\sqrt{n}} \sim N(0,\: 1)
 \end{equation*}
-as $n\to\infty$. But as $\sigma$ is often unknown, and can vary between samples, the Normal 
-distribution may no long apply. 
+as $n\to\infty$. But as $\sigma$ is often unknown, and can vary between samples, the Normal
+distribution may no long apply.
 \subsection{Student's \texorpdfstring{$t$}{t}-distribution}
 \begin{definition}
     When using sampled data, we can use the $t$-distribution for $\overline{X}$.
@@ -797,18 +797,18 @@ distribution may no long apply.
 \end{definition}
 Values along the horizontal axis of the $t$-distribution can be denoted by $t_{n-1,\: 1-\alpha/2}$.
 \begin{description}
-    \item[$n-1$] represents the degrees of freedom. 
+    \item[$n-1$] represents the degrees of freedom.
     \item[$1-\alpha/2$] represents the CDF probability:
-    \begin{equation*}
-        \Pr{\left( T \leq t_{n-1,\: 1-\alpha/2} \right)} = 1-\alpha/2
-    \end{equation*}
+        \begin{equation*}
+            \Pr{\left( T \leq t_{n-1,\: 1-\alpha/2} \right)} = 1-\alpha/2
+        \end{equation*}
 \end{description}
 \subsection{Confidence Intervals}
 \begin{definition}[Confidence Intervals]
     As $\overline{X}$ varies between samples, and is never equal to $\mu$, we can determine
     a range of values (based on the observation of $\overline{X}$) that is likely to contain
     the true mean. This range is called an interval estimate or confidence interval for $\mu$.
-    
+
     The $\left( 1 - \alpha \right)$ confidence interval for $\mu$ is
     \begin{equation*}
         {CI}_{\left( 1 - \alpha \right)} = \overline{X} \pm t_{n-1,\: 1-\alpha/2} \frac{s}{\sqrt{n}}
@@ -820,23 +820,23 @@ Values along the horizontal axis of the $t$-distribution can be denoted by $t_{n
     In statistics, a hypothesis test allows us to assess how
     consistent a particular assumption (hypothesis) is with our
     observed data.
-    
+
     The process of hypothesis test starts with an assumption about the
     data. This assumption is known as the ``null hypothesis'', denoted $H_0$.
-    
-    We then assess to what extent the sample is inconsistent with the assumption $H_0$, 
+
+    We then assess to what extent the sample is inconsistent with the assumption $H_0$,
     by determining how likely we are to observe the sample if the null hypothesis is true.
-    
+
     This probability is known as the ``$p$-value'' for the test, and indicates how strong the
     evidence is against $H_0$.
     \begin{description}
-        \item[p > 0.1] is not sufficient evidence to dispute $H_0$ 
-        \item[0.05 < p < 0.1] might provide weak evidence against $H_0$ 
-        \item[p < 0.05] provides some evidence against $H_0$ 
-        \item[p < 0.01] provides strong evidence against $H_0$ 
+        \item[p > 0.1] is not sufficient evidence to dispute $H_0$
+        \item[0.05 < p < 0.1] might provide weak evidence against $H_0$
+        \item[p < 0.05] provides some evidence against $H_0$
+        \item[p < 0.01] provides strong evidence against $H_0$
     \end{description}
     The assumption when $H_0$ is rejected is known as the alternative hypothesis, denoted $H_1$ or $H_A$.
-    
+
     To test the true mean $\mu$, we have
     \begin{equation*}
         H_0:\mu = \mu_0 \quad \text{vs} \quad H_A:\mu \neq \mu_0
@@ -844,10 +844,37 @@ Values along the horizontal axis of the $t$-distribution can be denoted by $t_{n
     Suppose a sample mean of $\overline{x}$ from a sample of $n$ observations, then:
     \begin{align*}
         \Pr{\left( \abs{\overline{X} - \mu} > \abs{\overline{x} - \mu_0} \right)} & = \Pr{\left( \abs{\frac{\overline{X} - \mu}{s/\sqrt{n}}} > \abs{\frac{\overline{x} - \mu_0}{s/\sqrt{n}}} \right)} \\
-        & = \Pr{\left( \abs{T} > \abs{\frac{\overline{x} - \mu_0}{s/\sqrt{n}}} \right)}
+                                                                                  & = \Pr{\left( \abs{T} > \abs{\frac{\overline{x} - \mu_0}{s/\sqrt{n}}} \right)}
     \end{align*}
     where $T=\frac{\overline{X} - \mu}{s/\sqrt{n}}\sim t_{n-1}$.
 \end{definition}
 \section{Linear Regression}
+\begin{definition}[Linear Relationship]
+    Two variables $x$ and $y$ have a linear relationship if they satisfy an equation of the form
+    \begin{equation*}
+        y = a x + b
+    \end{equation*}
+    where $a$ and $b$ are the parameters in the relationship. 
+\end{definition}
+To determine estimates for the values $a$ and $b$, a statistical model must be formulated along with the linear relationship.
 
+To do this, we assume that the points $\left( x_i,\: y_i \right)$ have been observed with some error and formulate the following statistical model
+\begin{equation*}
+    y_i = \beta_0 + \beta_1 x_i + \varepsilon_i
+\end{equation*}
+where $\epsilon_i$ is the error in observing $y_i$, and $\beta_0$ and $\beta_1$ are the estimated parameters in the relationship.
+\begin{definition}[Residual]
+    By re-expressing the equation in terms of $\varepsilon_i$,
+    \begin{equation*}
+        \varepsilon_i = y_i - \beta_0 + \beta_1 x_i
+    \end{equation*}
+    the residual for each observation can be defined as the amount by which $y_i$ differs from the linear model.
+\end{definition}
+To make statistical inferences about various features of this model, the following assumptions must be made about the residuals:
+\begin{enumerate}
+    \item The residuals are independent, identically distributed random variables.
+    \item $\E{}$
+\end{enumerate} 
+
+To accurately observe this relationship, it is best to obtain a large number of observations.
 \end{document}
