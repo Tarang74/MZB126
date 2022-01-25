@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{template}
+\usepackage{LaTeX-Submodule/template}
 \usepackage{changepage} % Modify page width
 \usepackage{multicol}
 
@@ -140,11 +140,11 @@ else ... end
     \emph{See table below.}
     Substitute $y_P$ into the nonhomogeneous ODE, and solve the undetermined coefficients.
     \subsubsection*{System of ODEs}
-    Given $\symbfit{y}' = \symbf{A} \symbfit{y}$, 
+    Given $\symbfit{y}' = \symbf{A} \symbfit{y}$,
     \begin{equation*}
         \symbfit{y}_H(t) = \symbfit{q}\e^{\lambda t}.
     \end{equation*}
-    $\lambda_i$ are the eigenvalues of $\symbfit{A}$ that satisfy 
+    $\lambda_i$ are the eigenvalues of $\symbfit{A}$ that satisfy
     \begin{equation*}
         \det{\left( \symbf{A} - \lambda\symbf{I} \right)} = 0.
     \end{equation*}
@@ -256,14 +256,14 @@ else ... end
         \end{equation*}
         \subsubsection*{General Linear Combinations}
         \begin{align*}
-            \E{\left( aX+b \right)}  & = a\E{\left( X \right)} + b                     \\
-            \E{\left( aX+bY \right)} & = a\E{\left( X \right)} + b\E{\left( Y \right)}
+            \E{\left( aX\pm b \right)}  & = a\E{\left( X \right)} \pm b                     \\
+            \E{\left( aX\pm bY \right)} & = a\E{\left( X \right)} \pm b\E{\left( Y \right)}
         \end{align*}
         \begin{align*}
-            \Var{\left( aX+b \right)}  & = a^2\Var{\left( X \right)}                  \\
-            \Var{\left( aX+bY \right)} & = a^2\Var{\left( X \right)}                  \\
-                                       & \phantom{=} + b^2\Var{\left( Y \right)}      \\
-                                       & \phantom{=} - 2ab\Cov{\left( X,\: Y \right)}
+            \Var{\left( aX\pm b \right)} & = a^2\Var{\left( X \right)}                  \\
+            \Var{\left( aX\pm bY \right)}   & = a^2\Var{\left( X \right)}                  \\
+                                         & \phantom{=} + b^2\Var{\left( Y \right)}      \\
+                                         & \phantom{=} \pm 2ab\Cov{\left( X,\: Y \right)}
         \end{align*}
         \begin{align*}
             \Cov{\left( X,\: Y \right)} & = \E{\left( XY \right)} - \E{\left( X \right)}\E{\left( Y \right)} \\
@@ -379,7 +379,7 @@ else ... end
     \end{equation*}
     where $\varepsilon_i \sim \mathrm{N}\left( 0,\: \sigma^2 \right)$ is the residual.
     $s$ (RMS error) gives an estimate for $\sigma$ --
-    how close the data is to the model. 
+    how close the data is to the model.
     \subsubsection*{Estimates}
     \begin{align*}
         T_{\text{test}}:\frac{\hat{\beta}_0 - \beta_0}{s_{\hat{\beta}_0}} \sim t_{n-2},\quad \frac{\hat{\beta}_1 - \beta_1}{s_{\hat{\beta}_1}} \sim t_{n-2}
@@ -398,10 +398,10 @@ else ... end
     Test the following two assumptions:
     \begin{enumerate}
         \item The relationship between $X$ and $Y$ is best modelled linearly
-        -- clear indication of a non-linear trend suggests assumption is not valid.
+              -- clear indication of a non-linear trend suggests assumption is not valid.
         \item The variance of residuals is the same for all observations, (not affected by $y_i$)
-        -- uneven width of residual suggests assumption is not valid. 
-        This may lead to inaccurate inferences.
+              -- uneven width of residual suggests assumption is not valid.
+              This may lead to inaccurate inferences.
     \end{enumerate}
 \end{multicols}
 \end{document}

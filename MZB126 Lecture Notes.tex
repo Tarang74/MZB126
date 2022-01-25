@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{template}
+\usepackage{LaTeX-Submodule/template}
 
 \usepackage{chngcntr} % Reset counter within sections
 \usepackage{multicol}
@@ -140,7 +140,7 @@ while expression
 end
     \end{lstlisting}
     \columnbreak
-    Statements inside a \lstinline{while} loop execute repeatedly until the expression is false.
+    Statements inside a \lstinline{while} loop repeat while the expression is true.
 \end{multicols}
 \begin{multicols}{2}
     \begin{lstlisting}
@@ -578,7 +578,7 @@ Two events are dependent if the outcome of one event influences the outcome of t
     \end{align*}
 \end{theorem}
 \begin{theorem}[Bayes' Theorem]
-    Using the commutativity of intersections, the rule for conditional probability gives
+    Using the commutativity of intersections, the rule for \linebreak conditional probability gives
     \begin{equation*}
         \Pr{\left( A \cap B \right)} = \Pr{\left( A \;\middle|\; B \right)} \Pr{\left( B \right)} = \Pr{\left( B \;\middle|\; A \right)} \Pr{\left( A \right)}
     \end{equation*}
@@ -658,13 +658,13 @@ Two events are dependent if the outcome of one event influences the outcome of t
 \subsubsection{General Linear Combinations}
 For a simple linear function of a random variable
 \begin{align*}
-    \E{\left( aX + b \right)}   & = a\E{\left( X \right)} + b \\
-    \Var{\left( aX + b \right)} & = a^2\Var{\left( X \right)}
+    \E{\left( aX \pm b \right)}   & = a\E{\left( X \right)} \pm b \\
+    \Var{\left( aX \pm b \right)} & = a^2\Var{\left( X \right)}
 \end{align*}
 For a general linear combination of two random variables,
 \begin{align*}
-    \E{\left( aX + bY \right)}   & = a\E{\left( X \right)} + b\E{\left( Y \right)}                                           \\
-    \Var{\left( aX + bY \right)} & = a^2\Var{\left( X \right)} + b^2\Var{\left( Y \right)} + 2ab \Cov{\left( X,\: Y \right)}
+    \E{\left( aX \pm bY \right)}   & = a\E{\left( X \right)} \pm b\E{\left( Y \right)}                                           \\
+    \Var{\left( aX \pm bY \right)} & = a^2\Var{\left( X \right)} + b^2\Var{\left( Y \right)} \pm 2ab \Cov{\left( X,\: Y \right)}
 \end{align*}
 \begin{definition}[Covariance]
     Covariance is the joint variability of two random variables.
@@ -765,7 +765,7 @@ Let $x$ be a set of sample data, with a sample size $n$.
             & = \frac{1}{n - 1} \left( \sum_{i = 1}^{n} x_i^2 - n \overline{X}^2 \right)
     \end{align*}
 \end{theorem}
-\subsection{Sampling Distribution of \texorpdfstring{$\overline{X}$}{Xbar}}
+\subsection{Sampling Distribution of \texorpdfstring{$\overline{X}$}{X bar}}
 The Central Limit theorem states that the distribution of $\overline{X}$ will approach a
 Normal distribution as $n \to \infty$. In most cases, $n = 30$ is sufficiently large for
 a Normal distribution to accurately reflect the distribution of $\overline{X}$
@@ -854,7 +854,7 @@ Values along the horizontal axis of the $t$-distribution can be denoted by $t_{n
     \begin{equation*}
         y = a x + b
     \end{equation*}
-    where $a$ and $b$ are the parameters in the relationship. 
+    where $a$ and $b$ are the parameters in the relationship.
 \end{definition}
 To determine estimates for the values $a$ and $b$, a statistical model must be formulated along with the linear relationship.
 
@@ -862,7 +862,7 @@ To do this, we assume that the points $\left( x_i,\: y_i \right)$ have been obse
 \begin{equation*}
     y_i = \beta_0 + \beta_1 x_i + \varepsilon_i
 \end{equation*}
-where $\epsilon_i$ is the error in observing $y_i$, and $\beta_0$ and $\beta_1$ are the estimated parameters in the relationship.
+where $\epsilon_i$ is the error in observing $y_i$, and $\beta_0$ and $\beta_1$ are the true values of the parameters.
 \begin{definition}[Residual]
     By re-expressing the equation in terms of $\varepsilon_i$,
     \begin{equation*}
@@ -873,8 +873,167 @@ where $\epsilon_i$ is the error in observing $y_i$, and $\beta_0$ and $\beta_1$ 
 To make statistical inferences about various features of this model, the following assumptions must be made about the residuals:
 \begin{enumerate}
     \item The residuals are independent, identically distributed random variables.
-    \item $\E{}$
-\end{enumerate} 
+    \item $\forall i : \E{\left( \varepsilon_i \right)} = 0$.
+    \item The residuals are normally distributed.
+\end{enumerate}
+In summary, we assume $\varepsilon_i \sim \mathrm{N}\left( 0,\: \sigma^2 \right)$.
+The variance of $\varepsilon_i$ uses a similar form to the expression shown in the previous section.
+\begin{align*}
+    s^2 & = \frac{1}{n- 2} \sum_i^n \varepsilon_i^2                                          \\
+        & = \frac{1}{n- 2} \sum_i^n \left( y_i - \hat{\beta_0} - \hat{\beta_1} x_i \right)^2
+\end{align*}
+where the hats indicate the estimated values for $\beta_0$ and $\beta_1$.
+\subsection{Sample Statistics for \texorpdfstring{$y_i$}{yi}}
+These assumptions also allow us to find the properties of $y_i$. As each observation is conducted with a known $x_i$, we can generally assume that it is a constant.
+Likewise $\beta_0$ and $\beta_1$ are also constants, therefore the properties of means and variances tells us
+\begin{align*}
+    \E{\left( y_i \right)}   & = \beta_0 + \beta_1 x_i + \E{\left( \varepsilon_i \right)} = \beta_0 + \beta_1 x_i \\
+    \Var{\left( y_i \right)} & = \Var{\left( \varepsilon_i \right)} = \sigma^2
+\end{align*}
+hence, $y_i \sim \mathrm{N}\left( \beta_0 + \beta_1 x_i,\: \sigma^2 \right)$.
+\begin{definition}[Least Squares]
+    To estimate $\beta_0$ and $\beta_1$, the intercept and slope of the model,
+    we can use the ``least squares criterion'',
+    that is, we can minimise the sum of the squares of the residuals.
+    \begin{equation*}
+        \min_{\beta_0,\: \beta_1}\sum_i^n \varepsilon_i^2 \quad \text{or} \quad \min_{\beta_0,\: \beta_1}\sum_i^n \left( y_i - \beta_0 - \beta_1 x_i \right)^2
+    \end{equation*}
+\end{definition}
+By differentiating this expression w.r.t. $\beta_0$ and $\beta_1$, and setting the derivatives to zero, we reach the following conditions:
+\begin{align*}
+    \sum_i^n \left( y_i - \beta_0 - \beta_1 x_i \right)    & = 0 \\
+    \sum_i^n x_i\left( y_i - \beta_0 - \beta_1 x_i \right) & = 0
+\end{align*}
+\begin{proof}
+    Differentiating w.r.t. $\beta_0$:
+    \begin{align*}
+        \partial_{\beta_0}\left( \sum_i^n \left( y_i - \beta_0 - \beta_1 x_i \right)^2 \right) & = 0 \\
+        \sum_i^n \partial_{\beta_0} \left( y_i - \beta_0 - \beta_1 x_i \right)^2               & = 0 \\
+        \sum_i^n 2 \left( y_i - \beta_0 - \beta_1 x_i \right)\left( -1 \right)                 & = 0 \\
+        \sum_i^n \left( y_i - \beta_0 - \beta_1 x_i \right)                                    & = 0
+    \end{align*}
+    Differentiating w.r.t. $\beta_1$:
+    \begin{align*}
+        \partial_{\beta_1}\left( \sum_i^n \left( y_i - \beta_0 - \beta_1 x_i \right)^2 \right) & = 0 \\
+        \sum_i^n \partial_{\beta_1} \left( y_i - \beta_0 - \beta_1 x_i \right)^2               & = 0 \\
+        \sum_i^n 2 \left( y_i - \beta_0 - \beta_1 x_i \right)\left( -x_i \right)               & = 0 \\
+        \sum_i^n x_i \left( y_i - \beta_0 - \beta_1 x_i \right)                                & = 0
+    \end{align*}
+\end{proof}
+This gives the following estimates for $\beta_0$ and $\beta_1$.
+\begin{align*}
+    \hat{\beta}_1 & = \frac{\sum_i^n x_iy_i - n\overline{x}\overline{y}}{\sum_i^nx_i^2 - n\overline{x}^2} \\
+    \hat{\beta}_0 & = \overline{y} - \hat{\beta}_1\overline{x}
+\end{align*}
+where $\overline{x} = \frac{1}{n}\sum_i^n x_i$ and $\overline{y} = \frac{1}{n}\sum_i^n y_i$.
+\begin{proof}
+    For $\hat{\beta}_0$:
+    \begin{align*}
+        0             & = \sum_i^n \left( y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i \right) \\
+        0             & = \sum_i^n y_i - \hat{\beta}_0n - \hat{\beta}_1 \sum_i^n x_i      \\
+        \hat{\beta}_0 & = \frac{\sum_i^n y_i - \hat{\beta}_1 \sum_i^n x_i}{n}             \\
+        \hat{\beta}_0 & = \overline{y} - \hat{\beta}_1\overline{x}                        \\
+    \end{align*}
+    For $\hat{\beta}_1$, using $\hat{\beta}_0$:
+    \begin{align*}
+        0                                                              & = \sum_i^n x_i \left( y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i \right)                                                      \\
+        0                                                              & = \sum_i^n x_i y_i - \hat{\beta}_0 \sum_i^n x_i - \hat{\beta}_1 \sum_i^n x_i^2                                             \\
+        0                                                              & = \sum_i^n x_i y_i - \left( \overline{y} - \hat{\beta}_1\overline{x} \right) n \overline{x} - \hat{\beta}_1 \sum_i^n x_i^2 \\
+        0                                                              & = \sum_i^n x_i y_i - n \overline{x} \overline{y} + \hat{\beta}_1 n \overline{x}^2 - \hat{\beta}_1 \sum_i^n x_i^2           \\
+        \hat{\beta}_1 \left( \sum_i^n x_i^2 - n \overline{x}^2 \right) & = \sum_i^n x_i y_i - n \overline{x} \overline{y}                                                                           \\
+        \hat{\beta}_1                                                  & = \frac{\sum_i^n x_i y_i - n \overline{x} \overline{y}}{\sum_i^n x_i^2 - n \overline{x}^2}
+    \end{align*}
+\end{proof}
+\subsection{Sample Statistics for \texorpdfstring{$\beta_0$}{beta 0} and \texorpdfstring{$\beta_1$}{beta 1}}
+As the estimators $\hat{\beta}_0$ and $\hat{\beta}_1$ are linear combinations of $y_i$, they are also random variables. The variance of these estimates is given by
+\begin{align*}
+    s_{\hat{\beta}_0}^2 & = s^2 \frac{\sum_i^n x_i^2}{n\sum_i^n \left( x_i - \overline{x} \right)^2} \\
+    s_{\hat{\beta}_1}^2 & = s^2 \frac{1}{\sum_i^n \left( x_i - \overline{x} \right)^2}
+\end{align*}
+where $s^2$ is the estimate for $\Var{\left( y_i \right)}$, (or $\Var{\left( \varepsilon_i \right)}$), as shown previously.
+This leads to the following sampling distributions:
+\begin{align*}
+    \hat{\beta}_0 \sim \mathrm{N}{\left( \beta_0,\: s_{\hat{\beta}_0}^2 \right)} \\
+    \hat{\beta}_1 \sim \mathrm{N}{\left( \beta_1,\: s_{\hat{\beta}_1}^2 \right)}
+\end{align*}
+and it follows that
+\begin{equation*}
+    \frac{\hat{\beta}_0 - \beta_0}{s_{\hat{\beta}_0}} \sim t_{n-2} \quad \text{and} \quad \frac{\hat{\beta}_1 - \beta_1}{s_{\hat{\beta}_1}} \sim t_{n-2}.
+\end{equation*}
+\begin{proof}
+    To determine the variance for the estimators $\hat{\beta}_0$ and $\hat{\beta}_1$, we must first recognise the following identities:
+    \begin{equation}
+        \sum_i^n \left( x_i - \overline{x} \right) = 0 \label{eq:sum_of_deviation}
+    \end{equation}
+    as $\sum_i^n \left( x_i - \overline{x} \right) = \sum_i^n x_i - n \overline{x}$.
+    Additionally,
+    \begin{equation}
+        \Var{\left(\sum_{i}^n a_iX_i\right)} = \sum_i^na_i^2 \Var{\left(X_i\right)} + 2\sum_{i=1}^n\sum_{j=i+1}^na_ia_j\Cov{\left(X_i,\:X_j\right)} \label{eq:variance_of_weighted_sums}
+    \end{equation}
+    We can now rewrite the numerator and denominator in $\hat{\beta}_1$:
+    \begin{align*}
+        \sum_i^n x_i y_i - n \overline{x} \overline{y} & = \sum_i^n y_i \left( x_i - \overline{x} \right)                                                                                                                  \\
+                                                       & = \sum_i^n y_i \left( x_i - \overline{x} \right) - \sum_i^n \overline{y} \left( x_i - \overline{x} \right) &  & \text{(Using Equation \ref{eq:sum_of_deviation})} \\
+                                                       & = \sum_i^n \left( x_i - \overline{x} \right) \left( y_i - \overline{y} \right)
+    \end{align*}
+    Similarly,
+    \begin{align*}
+        \sum_i^n x_i^2- n \overline{x}^2 & = \sum_i^n x_i \left( x_i - \overline{x} \right)                                                                                                                  \\
+                                         & = \sum_i^n x_i \left( x_i - \overline{x} \right) - \sum_i^n \overline{x} \left( x_i - \overline{x} \right) &  & \text{(Using Equation \ref{eq:sum_of_deviation})} \\
+                                         & = \sum_i^n \left( x_i - \overline{x} \right)^2
+    \end{align*}
+    These two quantities are known as the sum of products and sum of squares, denoted $S_{XY}$ and $S_{XX}$ respectively.
 
-To accurately observe this relationship, it is best to obtain a large number of observations.
+    This allows us to represent $\hat{\beta}_1$ as:
+    \begin{equation*}
+        \hat{\beta}_1 = \frac{S_{XY}}{S_{XX}} = \frac{\sum_i^n \left( x_i - \overline{x} \right) \left( y_i - \overline{y} \right)}{\sum_i^n \left( x_i - \overline{x} \right)^2}
+    \end{equation*}
+    To simplify calculations regarding the variance, we will write $S_{XY}$ as $\sum_i^n y_i \left( x_i - \overline{x} \right)$,
+    \begin{align*}
+        \Var{\left( \hat{\beta}_1 \right)} = s_{\hat{\beta}_1}^2 & = \Var{\left( \frac{\sum_i^n y_i \left( x_i - \overline{x} \right)}{\sum_i^n \left( x_i - \overline{x} \right)^2} \right)}                                                                                                               \\
+                                                                 & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \Var{\left( \sum_i^n y_i \left( x_i - \overline{x} \right) \right)}                                                                                            \\
+                                                                 & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \Var{\left( \sum_i^n \left( \beta_0 + \beta_1x_i + \varepsilon_i \right) \left( x_i - \overline{x} \right) \right)}                                            \\
+                                                                 & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \Var{\left( \sum_i^n \left( \beta_0 + \beta_1x_i \right) \left( x_i - \overline{x} \right) + \sum_i^n \varepsilon_i \left( x_i - \overline{x} \right) \right)} \\
+                                                                 & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \Var{\left( \sum_i^n \varepsilon_i \left( x_i - \overline{x} \right) \right)}
+    \end{align*}
+    Using Equation \ref{eq:variance_of_weighted_sums},
+    \begin{align*}
+        s_{\hat{\beta}_1}^2 & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \left( \sum_i^n \left( x_i - \overline{x} \right)^2 \Var{\left( \varepsilon_i \right)} + 2\sum_{i=1}^n\sum_{j=i+1}^n\left( x_i - \overline{x} \right)\left( x_j - \overline{x} \right)\Cov{\left(\varepsilon_i,\: \varepsilon_j\right)} \right).
+    \end{align*}
+    The independence of the residuals implies that the covariance of all residuals -- $\Cov{\left( \varepsilon_i,\: \varepsilon_j \right)}:i \neq j$ is equal to 0. Therefore
+    \begin{align*}
+        s_{\hat{\beta}_1}^2 & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \sum_i^n \left( x_i - \overline{x} \right)^2 \Var{\left( \varepsilon_i \right)} \\
+                            & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \sum_i^n \left( x_i - \overline{x} \right)^2 s^2                                \\
+                            & = s^2 \frac{1}{\sum_i^n \left( x_i - \overline{x} \right)^2}
+    \end{align*}
+    We will use similar techniques to determine the variance of $\hat{\beta}_0$.
+    \begin{equation*}
+        \Var{\left( \hat{\beta}_0 \right)} = s_{\hat{\beta}_0}^2 = \Var{\left( \overline{y} - \hat{\beta}_1 \overline{x} \right)}
+    \end{equation*}
+    here we must assume that $\overline{y}$ and $\hat{\beta}_1$ are uncorrelated.
+    \begin{align*}
+        s_{\hat{\beta}_0}^2 & = \Var{\left( \overline{y} \right)} + \overline{x}^2 \Var{\left( \hat{\beta}_1 \right)}                                                                                   \\
+                            & = \Var{\left( \frac{1}{n}\sum_i^ny_i \right)} + \overline{x}^2 s^2 \frac{1}{\sum_i^n \left( x_i - \overline{x} \right)^2}                                                 \\
+                            & = \frac{1}{n^2}\Var{\left( \sum_i^ny_i \right)} + s^2 \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}                                                 \\
+                            & = \frac{1}{n^2}\Var{\left( \sum_i^n\left( \beta_0 + \beta_1x_i + \varepsilon_i \right) \right)} + s^2 \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}
+    \end{align*}
+    As the residuals are uncorrelated, and $\beta_0$, $\beta_1$, and $x_i$ are all constants, we can simplify the first term further.
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align*}
+        s_{\hat{\beta}_0}^2 & = \frac{1}{n^2} \sum_i^n\Var{\left( \beta_0 + \beta_1x_i + \varepsilon_i \right)} + s^2 \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}                                                        \\
+                            & = \frac{1}{n^2} \sum_i^n\Var{\left( \varepsilon_i \right)} + s^2 \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}                                                                               \\
+                            & = \frac{1}{n^2} \sum_i^ns^2 + s^2 \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}                                                                                                              \\
+                            & = \frac{1}{n^2} n s^2 + s^2 \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}                                                                                                                    \\
+                            & = s^2 \frac{1}{n} + s^2 \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}                                                                                                                        \\
+                            & = s^2 \left( \frac{1}{n} + \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2} \right)                                                                                                             \\
+                            & = s^2 \frac{\sum_i^n \left( x_i - \overline{x} \right)^2 + n\overline{x}^2}{n \sum_i^n \left( x_i - \overline{x} \right)^2}                                                                                        \\
+                            & = s^2 \frac{\sum_i^n \left( x_i - \overline{x} \right)^2 + \sum_i^n \overline{x}^2}{n \sum_i^n \left( x_i - \overline{x} \right)^2}                                                                                \\
+                            & = s^2 \frac{\sum_i^n \left( \left( x_i - \overline{x} \right)^2 + \overline{x}^2 \right)}{n \sum_i^n \left( x_i - \overline{x} \right)^2}                                                                          \\
+                            & = s^2 \frac{\sum_i^n \left( x_i^2 - 2x_i\overline{x} + \overline{x}^2 + \overline{x}^2 \right)}{n \sum_i^n \left( x_i - \overline{x} \right)^2}                                                                    \\
+                            & = s^2 \frac{\sum_i^n x_i^2 - 2\overline{x}\sum_i^n \left( x_i - \overline{x} \right)}{n \sum_i^n \left( x_i - \overline{x} \right)^2}                                                                              \\
+                            & = s^2 \frac{\sum_i^n x_i^2}{n \sum_i^n \left( x_i - \overline{x} \right)^2}                                                                                 &  & \text{(Using Equation \ref{eq:sum_of_deviation})}
+    \end{align*}
+    \endgroup
+\end{proof}
 \end{document}
