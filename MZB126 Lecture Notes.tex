@@ -857,7 +857,6 @@ Values along the horizontal axis of the $t$-distribution can be denoted by $t_{n
     where $a$ and $b$ are the parameters in the relationship.
 \end{definition}
 To determine estimates for the values $a$ and $b$, a statistical model must be formulated along with the linear relationship.
-
 To do this, we assume that the points $\left( x_i,\: y_i \right)$ have been observed with some error and formulate the following statistical model
 \begin{equation*}
     y_i = \beta_0 + \beta_1 x_i + \varepsilon_i
@@ -866,7 +865,7 @@ where $\epsilon_i$ is the error in observing $y_i$, and $\beta_0$ and $\beta_1$ 
 \begin{definition}[Residual]
     By re-expressing the equation in terms of $\varepsilon_i$,
     \begin{equation*}
-        \varepsilon_i = y_i - \beta_0 + \beta_1 x_i
+        \varepsilon_i = y_i - \beta_0 - \beta_1 x_i
     \end{equation*}
     the residual for each observation can be defined as the amount by which $y_i$ differs from the linear model.
 \end{definition}
@@ -876,8 +875,8 @@ To make statistical inferences about various features of this model, the followi
     \item $\forall i : \E{\left( \varepsilon_i \right)} = 0$.
     \item The residuals are normally distributed.
 \end{enumerate}
-In summary, we assume $\varepsilon_i \sim \mathrm{N}\left( 0,\: \sigma^2 \right)$.
-The variance of $\varepsilon_i$ uses a similar form to the expression shown in the previous section.
+In summary, we assume $\varepsilon_i \stackrel{iid}{\sim} \mathrm{N}\left( 0,\: \sigma^2 \right)$.
+The estimated variance of $\varepsilon_i$ uses a similar form to the expression shown in the previous section.
 \begin{align*}
     s^2 & = \frac{1}{n- 2} \sum_i^n \varepsilon_i^2                                          \\
         & = \frac{1}{n- 2} \sum_i^n \left( y_i - \hat{\beta_0} - \hat{\beta_1} x_i \right)^2
@@ -885,7 +884,7 @@ The variance of $\varepsilon_i$ uses a similar form to the expression shown in t
 where the hats indicate the estimated values for $\beta_0$ and $\beta_1$.
 \subsection{Sample Statistics for \texorpdfstring{$y_i$}{yi}}
 These assumptions also allow us to find the properties of $y_i$. As each observation is conducted with a known $x_i$, we can generally assume that it is a constant.
-Likewise $\beta_0$ and $\beta_1$ are also constants, therefore the properties of means and variances tells us
+Likewise, $\beta_0$ and $\beta_1$ are also constants, therefore the properties of means and variances tells us,
 \begin{align*}
     \E{\left( y_i \right)}   & = \beta_0 + \beta_1 x_i + \E{\left( \varepsilon_i \right)} = \beta_0 + \beta_1 x_i \\
     \Var{\left( y_i \right)} & = \Var{\left( \varepsilon_i \right)} = \sigma^2
@@ -899,7 +898,7 @@ hence, $y_i \sim \mathrm{N}\left( \beta_0 + \beta_1 x_i,\: \sigma^2 \right)$.
         \min_{\beta_0,\: \beta_1}\sum_i^n \varepsilon_i^2 \quad \text{or} \quad \min_{\beta_0,\: \beta_1}\sum_i^n \left( y_i - \beta_0 - \beta_1 x_i \right)^2
     \end{equation*}
 \end{definition}
-By differentiating this expression w.r.t. $\beta_0$ and $\beta_1$, and setting the derivatives to zero, we reach the following conditions:
+By differentiating this expression w.r.t. $\beta_0$ and $\beta_1$, and setting the partial derivatives equal to zero, we reach the following conditions:
 \begin{align*}
     \sum_i^n \left( y_i - \beta_0 - \beta_1 x_i \right)    & = 0 \\
     \sum_i^n x_i\left( y_i - \beta_0 - \beta_1 x_i \right) & = 0
@@ -945,7 +944,7 @@ where $\overline{x} = \frac{1}{n}\sum_i^n x_i$ and $\overline{y} = \frac{1}{n}\s
     \end{align*}
 \end{proof}
 \subsection{Sample Statistics for \texorpdfstring{$\beta_0$}{beta 0} and \texorpdfstring{$\beta_1$}{beta 1}}
-As the estimators $\hat{\beta}_0$ and $\hat{\beta}_1$ are linear combinations of $y_i$, they are also random variables. The variance of these estimates is given by
+As the estimators $\hat{\beta}_0$ and $\hat{\beta}_1$ are linear combinations of $y_i$, they are also random variables. The variance of these estimates is given by:
 \begin{align*}
     s_{\hat{\beta}_0}^2 & = s^2 \frac{\sum_i^n x_i^2}{n\sum_i^n \left( x_i - \overline{x} \right)^2} \\
     s_{\hat{\beta}_1}^2 & = s^2 \frac{1}{\sum_i^n \left( x_i - \overline{x} \right)^2}
@@ -983,12 +982,11 @@ and it follows that
                                          & = \sum_i^n \left( x_i - \overline{x} \right)^2
     \end{align*}
     These two quantities are known as the sum of products and sum of squares, denoted $S_{XY}$ and $S_{XX}$ respectively.
-
     This allows us to represent $\hat{\beta}_1$ as:
     \begin{equation*}
         \hat{\beta}_1 = \frac{S_{XY}}{S_{XX}} = \frac{\sum_i^n \left( x_i - \overline{x} \right) \left( y_i - \overline{y} \right)}{\sum_i^n \left( x_i - \overline{x} \right)^2}
     \end{equation*}
-    To simplify calculations regarding the variance, we will write $S_{XY}$ as $\sum_i^n y_i \left( x_i - \overline{x} \right)$,
+    To simplify calculations regarding the variance, we will write $S_{XY}$ as $\sum_i^n y_i \left( x_i - \overline{x} \right)$.
     \begin{align*}
         \Var{\left( \hat{\beta}_1 \right)} = s_{\hat{\beta}_1}^2 & = \Var{\left( \frac{\sum_i^n y_i \left( x_i - \overline{x} \right)}{\sum_i^n \left( x_i - \overline{x} \right)^2} \right)}                                                                                                               \\
                                                                  & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \Var{\left( \sum_i^n y_i \left( x_i - \overline{x} \right) \right)}                                                                                            \\
@@ -1000,7 +998,7 @@ and it follows that
     \begin{align*}
         s_{\hat{\beta}_1}^2 & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \left( \sum_i^n \left( x_i - \overline{x} \right)^2 \Var{\left( \varepsilon_i \right)} + 2\sum_{i=1}^n\sum_{j=i+1}^n\left( x_i - \overline{x} \right)\left( x_j - \overline{x} \right)\Cov{\left(\varepsilon_i,\: \varepsilon_j\right)} \right).
     \end{align*}
-    The independence of the residuals implies that the covariance of all residuals -- $\Cov{\left( \varepsilon_i,\: \varepsilon_j \right)}:i \neq j$ is equal to 0. Therefore
+    The independence of the residuals implies that the covariance of all residuals -- $\Cov{\left( \varepsilon_i,\: \varepsilon_j \right)}:i \neq j$ -- is equal to 0. Therefore
     \begin{align*}
         s_{\hat{\beta}_1}^2 & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \sum_i^n \left( x_i - \overline{x} \right)^2 \Var{\left( \varepsilon_i \right)} \\
                             & = \frac{1}{\left( \sum_i^n \left( x_i - \overline{x} \right)^2 \right)^2} \sum_i^n \left( x_i - \overline{x} \right)^2 s^2                                \\
@@ -1017,7 +1015,8 @@ and it follows that
                             & = \frac{1}{n^2}\Var{\left( \sum_i^ny_i \right)} + s^2 \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}                                                 \\
                             & = \frac{1}{n^2}\Var{\left( \sum_i^n\left( \beta_0 + \beta_1x_i + \varepsilon_i \right) \right)} + s^2 \frac{\overline{x}^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}
     \end{align*}
-    As the residuals are uncorrelated, and $\beta_0$, $\beta_1$, and $x_i$ are all constants, we can simplify the first term further.
+    As the residuals are uncorrelated, and $\beta_0$, $\beta_1$, and $x_i$ are all 
+    constants, we can write the variance of the summation as the summation of the variation.
     \begingroup
     \allowdisplaybreaks
     \begin{align*}
