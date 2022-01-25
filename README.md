@@ -4,7 +4,13 @@
 
 #### Semester 2, 2021
 
-----
+---
+
+This repository provides **lecture notes** and **exam notes** for **MZB126 - Engineering Computation**.
+
+*The contents of the lecture notes are described below.*
+
+---
 
 ## Contents
 
