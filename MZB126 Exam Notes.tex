@@ -1,47 +1,53 @@
 %!TEX program = xelatex
 \documentclass{article}
 \usepackage{LaTeX-Submodule/template}
+
+% Additional packages and macros
 \usepackage{changepage} % Modify page width
-\usepackage{multicol}
+\usepackage{multicol} % Use multiple columns
+\usepackage{titlesec} % Modify section heading styles
+\usepackage{textcomp, upquote} % Code block quotations support 
+\usepackage{calc} % Set exact 
 
-\usepackage{titlesec}
-
+%% A4 page
 \geometry{
 	a4paper,
 	margin = 10mm
-} 
-
-\usepackage{calc}
-
-\usepackage{textcomp, upquote}
-
-\lstset{language=Matlab, upquote=true}
-\lstset{morekeywords={randi, false, imshow, drawpolygon, polyarea, drawline, ones, imread, VideoWriter, XData, YData, getFrame, writeVideo, deg2rad, soundsc, resample, audiowrite, sind}}
-\lstset{
-    basicstyle = \ttfamily, columns = fullflexible, keepspaces = true
 }
 
+%% Hide horizontal rule 
+\renewcommand{\headrulewidth}{0pt}
+
+% Hide page numbers
 \pagenumbering{gobble}
 
-\setlength\columnsep{4pt}
+%% Multi-columns setup
+\setlength{\columnsep}{4pt}
+
+%% Paragraph setup
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
-\titleformat*\subsection{\raggedright\bfseries\large}
-\titleformat*\subsubsection{\raggedright\bfseries}
+%% Customise section heading styles
+\titleformat*\section{\raggedright\bfseries\large}
+\titleformat*\subsection{\raggedright\bfseries}
 
 \begin{document}
-\titlespacing*\subsubsection{0pt}{1ex}{1ex}
-\titlespacing*\subsection{0pt}{0ex}{0ex}
-
+% Modify spacing
+\titlespacing*\section{0pt}{0ex}{0ex}
+\titlespacing*\subsection{0pt}{1ex}{1ex}
+%
 \setlength{\abovecaptionskip}{-5pt}
 \setlength{\textfloatsep}{0pt}
-
+%
 \setlength{\abovedisplayskip}{1pt}
 \setlength{\belowdisplayskip}{1pt}
-
+%
+\lstset{language=Matlab, upquote=true}
+\lstset{morekeywords={randi, false, imshow, drawpolygon, polyarea, drawline, ones, imread, VideoWriter, XData, YData, getFrame, writeVideo, deg2rad, soundsc, resample, audiowrite, sind}}
+%
 \begin{multicols}{3}
-    \subsection*{MATLAB}
+    \section*{MATLAB}
     \lstset{belowskip=0pt, aboveskip=0pt}
     \begin{lstlisting}
 % Function declaration
@@ -56,7 +62,7 @@ if condition_1 ...
 elseif condition_2 ... 
 else ... end
 \end{lstlisting}
-    \subsubsection*{Partial Fraction Decomposition}
+    \subsection*{Partial Fraction Decomposition}
     Given the LHS in the denominator, substitute the RHS.
     \begin{align*}
         \left(ax+b\right)^k & \to \frac{A_1}{ax+b} + \cdots + \frac{A_k}{\left( ax+b \right)^k}
@@ -65,8 +71,8 @@ else ... end
         \left(ax^2+bx+c\right)^k     & \to                                                  \\
         \frac{A_1x+B_1}{ax^2+bx+c} + & \cdots + \frac{A_kx+B_k}{\left( ax^2+bx+c \right)^k}
     \end{align*}
-    \subsection*{Differential Equations}
-    \subsubsection*{Mechanical Systems}
+    \section*{Differential Equations}
+    \subsection*{Mechanical Systems}
     \begin{equation*}
         \sum F = \dv{p}{t},\quad \sum M = I \dv[2]{\theta}{t}
     \end{equation*}
@@ -76,7 +82,7 @@ else ... end
         F_T & = \left( c - v \right) d_f & F_g & = -mg                       \\
         F_s & = -kx                      & F_f & = -b v^2 \text{ (or $-bv$)}
     \end{align*}
-    \subsubsection*{Electrical Circuits}
+    \subsection*{Electrical Circuits}
     \begin{align*}
         i = \dv{q}{t},\quad \sum v_{loop} = 0,\quad \sum i_{node} = 0
     \end{align*}
@@ -84,43 +90,43 @@ else ... end
     \begin{align*}
         v_R = iR,\quad v_C = \frac{q}{C},\quad v_L & = L \dv{i}{t}
     \end{align*}
-    \subsubsection*{Separable ODEs}
+    \subsection*{Separable ODEs}
     For $\dv{y}{t} = p(t) q(y)$:
     \begin{equation*}
         \int \frac{1}{q(y)} \dv{y}{t} \dd{t} = \int p(t) \dd{t}.
     \end{equation*}
-    \subsubsection*{Linear ODEs}
+    \subsection*{Linear ODEs}
     For $\dv{y}{t} + p(t)y = q(t)$, use the \textit{integrating factor}:
     $I(t) = \e^{\int p(t) \dd{t}}$, so that
     \begin{equation*}
         y(t) = \frac{1}{I(t)} \int I(t) q(t) \dd{t}.
     \end{equation*}
-    \subsubsection*{Linearisation}
+    \subsection*{Linearisation}
     \begin{align*}
         f(t)              & \approx f(t_0) + f'(t_0)(t-t_0)                                 \\
         f\bigl(y(t)\bigr) & \approx f\bigl(y(t_0)\bigr)                                     \\
                           & \phantom{\approx} + f'\bigl(y(t_0)\bigr)\bigl(y(t)-y(t_0)\bigr)
     \end{align*}
-    \subsubsection*{Euler's Method}
+    \subsection*{Euler's Method}
     For $\symbfit{y}' = \symbfit{f}(t,\: \symbfit{y})$:
     \begin{align*}
         \symbfit{y}_{n+1} & = \symbfit{y}_{n} + h\symbfit{f}(t_n,\: \symbfit{y}_n)
     \end{align*}
-    \subsubsection*{Modified Euler's Method}
+    \subsection*{Modified Euler's Method}
     \begin{align*}
          & \symbfit{y}_{n+1} =                                                                                                       \\
          & \symbfit{y}_{n} + \frac{h}{2}\left( \symbfit{f}(t_n,\: \symbfit{y}_n) + \symbfit{f}(t_{n+1},\: \symbfit{y}_{n+1}) \right)
     \end{align*}
     where $\symbfit{f}(t_{n+1},\: \symbfit{y}_{n+1})$ is determined using Euler's method.
-    \subsubsection*{Second-Order ODEs}
+    \subsection*{Second-Order ODEs}
     \begin{equation*}
         ay'' + by' + cy = F(t)
     \end{equation*}
-    \subsubsection*{General Solution}
+    \subsection*{General Solution}
     \begin{equation*}
         y(t) = y_H(t) + y_P(t)
     \end{equation*}
-    \subsubsection*{Homogeneous Solution}
+    \subsection*{Homogeneous Solution}
     \begin{equation*}
         y_H(t) = \e^{\lambda t}
     \end{equation*}
@@ -137,10 +143,10 @@ else ... end
     \begin{equation*}
         y_H(t) = \e^{\alpha x}\bigl( c_1\cos{\left( \beta t \right)} + c_2 \sin{\left( \beta t \right)} \bigr)
     \end{equation*}
-    \subsubsection*{Particular Solution}
+    \subsection*{Particular Solution}
     \emph{See table below.}
     Substitute $y_P$ into the nonhomogeneous ODE, and solve the undetermined coefficients.
-    \subsubsection*{System of ODEs}
+    \subsection*{System of ODEs}
     Given $\symbfit{y}' = \symbf{A} \symbfit{y}$,
     \begin{equation*}
         \symbfit{y}_H(t) = \symbfit{q}\e^{\lambda t}.
@@ -157,7 +163,7 @@ else ... end
     \begin{equation*}
         \symbfit{y}_H(t) = c_1\symbfit{q}_1\e^{\lambda_1 t} + c_2\symbfit{q}_2\e^{\lambda_2 t}
     \end{equation*}
-    \subsubsection*{Higher-Order ODEs}
+    \subsection*{Higher-Order ODEs}
     \begin{equation*}
         y^{\left( n \right)} + a_1 y^{\left( n-1 \right)} + \cdots + a_{n-1} y' + a_n y = 0
     \end{equation*}
@@ -191,50 +197,50 @@ else ... end
     \end{tabular}
 \end{table}
 \begin{multicols}{3}
-    \subsection*{Probability}
-    \subsubsection*{Events}
+    \section*{Probability}
+    \subsection*{Events}
     \begin{gather*}
         \Pr{\left( A \right)} = \sum_{x\in A} p(x) \\
         \Pr{\left( A^C \right)} = \Pr{\left( \overline{A} \right)} = 1 - \Pr{\left( A \right)}
     \end{gather*}
-    \subsubsection*{Unions}
+    \subsection*{Unions}
     \begin{align*}
         \Pr{\left( A \cup B \right)} & = \Pr{\left( A \right)} + \Pr{\left( B \right)} \\
                                      & \phantom{=} - \Pr{\left( A \cap B \right)}      \\
                                      & = 1 - \Pr{\left( A^C \cap B^C \right)}
     \end{align*}
-    \subsubsection*{Bayes' Theorem}
+    \subsection*{Bayes' Theorem}
     \begin{equation*}
         \Pr{\left(B \;\middle|\; A\right)} = \frac{\Pr{\left( A \;\middle|\; B \right)}\Pr{\left( B \right)}}{\Pr{\left( A \right)}}
     \end{equation*}
-    \subsubsection*{Disjoint Events}
+    \subsection*{Disjoint Events}
     Events don't have outcomes in common.
     \begin{align*}
         A \cap B                   & = \varnothing \\
         \Pr{\left(A \cap B\right)} & = 0
     \end{align*}
-    \subsubsection*{Independent Events}
+    \subsection*{Independent Events}
     Outcome of events do not influence each other. Joint probability:
     \begin{equation*}
         \Pr{\left(A \cap B\right)} = \Pr{\left( A \right)}\Pr{\left( B \right)}
     \end{equation*}
-    \subsubsection*{Dependent (Conditional) Events}
+    \subsection*{Dependent (Conditional) Events}
     Outcome of event depends on the outcome of the other. Joint probability of $A$ given $B$:
     \begin{equation*}
         \Pr{\left(A \;\middle|\; B\right)} = \frac{\Pr{\left( A \cap B \right)}}{\Pr{\left( B \right)}}
     \end{equation*}
-    \subsubsection*{Total Probability}
+    \subsection*{Total Probability}
     For disjoint events $B_i$:
     \begin{align*}
         A                     & = \bigcup\limits_{i=1}^n \left( A \cap B_i \right) \\
         \Pr{\left( A \right)} & = \sum_{i=1}^n \Pr{\left( A \cap B_i \right)}
     \end{align*}
-    \subsubsection*{Expectation}
+    \subsection*{Expectation}
     Average output or mean:
     \begin{equation*}
         \mu = \E{\left( X \right)}.
     \end{equation*}
-    \subsubsection*{Variance}
+    \subsection*{Variance}
     Measure of spread from the mean:
     \begin{equation*}
         \sigma^2 = \E{\left( X^2 \right)} - \E{\left( X \right)}^2.
@@ -242,11 +248,11 @@ else ... end
 \end{multicols}
 \begin{minipage}{126.1962963mm}
     \begin{multicols}{2}
-        \subsection*{Probability Distributions}
-        \subsubsection*{Discrete Random Variables}
+        \section*{Probability Distributions}
+        \subsection*{Discrete Random Variables}
         Has countably many outcomes. Distributed with a
         probability mass function $p(x)$.
-        \subsubsection*{Continuous Random Variables}
+        \subsection*{Continuous Random Variables}
         Has an infinite number of outcomes. Distributed with a
         probability density function $f(x)$.
         \begin{equation*}
@@ -255,7 +261,7 @@ else ... end
         \begin{equation*}
             F(x) = \Pr{\left( X \leq x \right)}
         \end{equation*}
-        \subsubsection*{General Linear Combinations}
+        \subsection*{General Linear Combinations}
         \begin{align*}
             \E{\left( aX\pm b \right)}  & = a\E{\left( X \right)} \pm b                     \\
             \E{\left( aX\pm bY \right)} & = a\E{\left( X \right)} \pm b\E{\left( Y \right)}
@@ -288,18 +294,18 @@ else ... end
     \end{table}
 \end{minipage}\hfill%
 \begin{minipage}{62.39259259mm}
-    \subsubsection*{Binomial (Discrete)}
+    \subsection*{Binomial (Discrete)}
     Probability of $x$ successes out of $n$ independent trials, each with chance $p$.
-    \subsubsection*{Poisson (Discrete)}
+    \subsection*{Poisson (Discrete)}
     Probability of observing $x$ events over an interval $t$, where events occur at an
     average rate $\lambda$. $\mu = \lambda t$.
-    \subsubsection*{Exponential (Continuous)}
+    \subsection*{Exponential (Continuous)}
     The time $t$ between events, where the events are independent and occur at an average rate $\lambda$.
-    \subsubsection*{Uniform (Continuous)}
+    \subsection*{Uniform (Continuous)}
     The probability of any value $x\in\left[ a,\: b \right]$ is constant.
-    \subsubsection*{Normal (Continuous)}
+    \subsection*{Normal (Continuous)}
     Events occur more frequently near $\mu$ and less frequently further away from $\mu$.
-    \subsubsection*{Standardised Normal (Continuous)}
+    \subsection*{Standardised Normal (Continuous)}
     \begin{equation*}
         Z = \frac{X-\mu}{\sigma} \sim \mathrm{N}\left( 0,\: 1 \right)
     \end{equation*}
@@ -319,14 +325,14 @@ else ... end
     \end{tabular}
 \end{table}
 \begin{minipage}{62.39259259mm}
-    \subsection*{Sample Statistics}
+    \section*{Sample Statistics}
     Given $n$ samples $x_i$:
     \begin{align*}
         \text{Mean:}     &  & \overline{x} & = \frac{1}{n}\sum_{i=1}^{n} x_i                                      \\
         \text{Variance:} &  & s^2          & = \frac{1}{n-1}\sum_{i=1}^{n} \left( x_i - \overline{x} \right)^2    \\
                          &  &              & = \frac{1}{n-1}\left( \sum_{i=1}^{n} x_i^2 - n\overline{x}^2 \right)
     \end{align*}
-    \subsubsection*{t Distribution}
+    \subsection*{t Distribution}
     The sample mean is distributed according to the t distribution where
     \begin{equation*}
         T=\frac{\overline{X} - \mu}{s/\sqrt{n}}\sim t_{n-1}
@@ -338,7 +344,7 @@ else ... end
 \end{minipage}\hfill%
 \begin{minipage}{126.1962963mm}
     \begin{multicols*}{2}
-        \subsubsection*{Confidence Intervals}
+        \subsection*{Confidence Intervals}
         Given the confidence level $c$:
         \begin{equation*}
             c = 1 - \alpha.
@@ -347,19 +353,19 @@ else ... end
         \begin{equation*}
             {CI}_{c} = \overline{x} \pm t_{n-1,\: 1-\alpha/2} \frac{s}{\sqrt{n}}.
         \end{equation*}
-        \subsection*{Hypothesis Testing}
+        \section*{Hypothesis Testing}
         Hypothesis testing assesses the likelihood of observing the sample \underline{if} the null hypothesis was true.
-        \subsubsection*{Hypothesis}
+        \subsection*{Hypothesis}
         \begin{align*}
             H_0:\mu = \mu_0 \quad \text{vs} \quad H_1:\mu \neq \mu_0
         \end{align*}
         Generally there is no evidence supporting $H_0$, but only evidence or lack of evidence for rejecting $H_0$.
-        \subsubsection*{Test Statistic}
+        \subsection*{Test Statistic}
         The measure of the distance that the proposed mean is from the sample mean:
         \begin{align*}
             T_{\text{test}} = \frac{\overline{x} - \mu_0}{s/\sqrt{n}}
         \end{align*}
-        \subsubsection*{p-Value}
+        \subsection*{p-Value}
         Strength of evidence against $H_0$. The $p$-value is the $\alpha$ value that satisfies:
         \begin{equation*}
             \abs{T_{\text{test}}} = t_{n-1,\: 1-\alpha/2}.
@@ -372,7 +378,7 @@ else ... end
     \includegraphics[width = \linewidth, keepaspectratio = true]{p_values}
 \end{minipage}
 \begin{multicols}{3}
-    \subsection*{Linear Regression}
+    \section*{Linear Regression}
     Given a set of $n$ points $\left( x_i,\: y_i \right)$ that are assumed to have a linear relationship,
     the model for $y_i$ is
     \begin{equation*}
@@ -381,11 +387,11 @@ else ... end
     where $\varepsilon_i \sim \mathrm{N}\left( 0,\: \sigma^2 \right)$ is the residual.
     $s$ (RMS error) gives an estimate for $\sigma$ --
     how close the data is to the model.
-    \subsubsection*{Estimates}
+    \subsection*{Estimates}
     \begin{align*}
         T_{\text{test}}:\frac{\hat{\beta}_0 - \beta_0}{s_{\hat{\beta}_0}} \sim t_{n-2},\quad \frac{\hat{\beta}_1 - \beta_1}{s_{\hat{\beta}_1}} \sim t_{n-2}
     \end{align*}
-    \subsubsection*{Inferences about $\beta_0$ and $\beta_1$}
+    \subsection*{Inferences about $\beta_0$ and $\beta_1$}
     \begin{align*}
         CI_c & = \hat{\beta}_0 \pm t_{n-2,\: 1-\alpha/2} s_{\hat{\beta}_0} \\
         CI_c & = \hat{\beta}_1 \pm t_{n-2,\: 1-\alpha/2} s_{\hat{\beta}_1}
@@ -393,9 +399,9 @@ else ... end
     where $s_{\hat{\beta}_0}$ and $s_{\hat{\beta}_1}$ are the standard errors (SE) for $\hat{\beta}_0$ and $\hat{\beta}_1$.
     $H_{0,\:\beta_0}:\beta_0=0$ tests whether the model crosses the origin.
     $H_{0,\:\beta_1}:\beta_1=0$ tests whether the model is constant.
-    \subsubsection*{R-squared}
+    \subsection*{R-squared}
     The percentage of the observed variance in $y$ that is explained by the model.
-    \subsubsection*{Residual Plots}
+    \subsection*{Residual Plots}
     Test the following two assumptions:
     \begin{enumerate}
         \item The relationship between $X$ and $Y$ is best modelled linearly

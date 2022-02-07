@@ -2,25 +2,21 @@
 \documentclass{article}
 \usepackage{LaTeX-Submodule/template}
 
-\usepackage{chngcntr} % Reset counter within sections
-\usepackage{multicol}
-\usepackage{textcomp, upquote}
+% Additional packages & macros
+\usepackage{multicol} % Use multiple columns
+\usepackage{textcomp, upquote} % Code block quotations support 
 
-\counterwithin*{equation}{section}
-\counterwithin*{equation}{subsection}
-
-\pagestyle{fancy}
-\setlength\headheight{24pt}
-\setlength\parindent{0pt}
-
-\lhead{\className}
-\rhead{\leftmark}
-\cfoot{\thepage}
-
+% Header and footer
 \newcommand{\className}{Engineering Computation}
 \newcommand{\classTime}{Semester 2, 2021}
 \newcommand{\classInstructorName}{Dr Michael Dallaston}
 
+\fancyhf{}
+\fancyhead[L]{\className}
+\fancyhead[R]{\leftmark}
+\fancyfoot[C]{\thepage}
+
+% Copyright
 \usepackage[
     type={CC},
     modifier={by-nc-sa},
@@ -32,7 +28,7 @@
 \date{}
 
 \begin{document}
-
+%
 \begin{titlepage}
     \vspace*{\fill}
     \begin{center}
@@ -52,18 +48,14 @@
     \thispagestyle{empty}
 \end{titlepage}
 \newpage
-
+%
 \tableofcontents
 \newpage
-
+%
 \lstset{language=Matlab, upquote=true}
 \lstset{morekeywords={randi, false, imshow, drawpolygon, polyarea, drawline, ones, imread, VideoWriter, XData, YData, getFrame, writeVideo, deg2rad, soundsc, resample, audiowrite, sind}}
-\lstset{
-    basicstyle = \ttfamily, columns = fullflexible, keepspaces = true
-}
-
+%
 \section{MATLAB Functions}
-
 \begin{table}[H]
     \centering
     \begin{tabular}{c | c}
