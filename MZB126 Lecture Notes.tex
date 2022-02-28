@@ -7,12 +7,13 @@
 \usepackage{textcomp, upquote} % Code block quotations support 
 
 % Header and footer
-\newcommand{\className}{Engineering Computation}
-\newcommand{\classTime}{Semester 2, 2021}
-\newcommand{\classInstructorName}{Dr Michael Dallaston}
+\newcommand{\unitName}{Engineering Computation}
+\newcommand{\unitTime}{Semester 2, 2021}
+\newcommand{\unitCoordinator}{Dr Michael Dallaston}
+\newcommand{\documentAuthors}{\textsc{Tarang Janawalkar}}
 
 \fancyhf{}
-\fancyhead[L]{\className}
+\fancyhead[L]{\unitName}
 \fancyhead[R]{\leftmark}
 \fancyfoot[C]{\thepage}
 
@@ -32,16 +33,10 @@
 \begin{titlepage}
     \vspace*{\fill}
     \begin{center}
-        \LARGE{\textbf{\className}}
-        \texorpdfstring{\\}{ }
-        \texorpdfstring{\vspace{0.1in}}{ }
-        \normalsize{\classTime}
-        \texorpdfstring{\\}{ }
-        \texorpdfstring{\vspace{0.1in}}{ }
-        \normalsize\textit{\classInstructorName}
-        \texorpdfstring{\\}{ }
-        \texorpdfstring{\vspace{0.2in}}{ }
-        \textsc{Tarang Janawalkar}
+        \LARGE{\textbf{\unitName}} \\[0.1in]
+        \normalsize{\unitTime} \\[0.2in]
+        \normalsize\textit{\unitCoordinator} \\[0.2in]
+        \documentAuthors
     \end{center}
     \vspace*{\fill}
     \doclicenseThis
@@ -868,7 +863,7 @@ To make statistical inferences about various features of this model, the followi
     \item $\forall i : \E{\left( \varepsilon_i \right)} = 0$.
     \item The residuals are normally distributed.
 \end{enumerate}
-In summary, we assume $\varepsilon_i \stackrel{iid}{\sim} \mathrm{N}\left( 0,\: \sigma^2 \right)$.
+In summary, we assume $\varepsilon_i \stackrel{\mathrm{iid}}{\sim} \mathrm{N}\left( 0,\: \sigma^2 \right)$.
 The estimated variance of $\varepsilon_i$ uses a similar form to the expression shown in the previous section.
 \begin{align*}
     s^2 & = \frac{1}{n- 2} \sum_i^n \varepsilon_i^2                                          \\
@@ -1028,4 +1023,7 @@ and it follows that
     \end{align*}
     \endgroup 
 \end{proof}
+The process described above for estimating a linear relationship between two observed variables $x$ and $y$ is known as linear regression.
+Linear regression can be conducted in MATLAB, using the \lstinline!fitlm! function.
+
 \end{document}
