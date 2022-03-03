@@ -105,8 +105,8 @@ When manipulating matrices, \verb!*!, \verb!^!, perform matrix operations, while
     \caption{Plotting in MATLAB.}
     % \label{}
 \end{table}
-\section{Operations in MATLAB}
-\subsection{Conditional Operations}
+\subsection{Operations in MATLAB}
+\subsubsection{Conditional Operations}
 \begin{multicols}{2}
     \begin{lstlisting}
 if expression
@@ -120,7 +120,7 @@ end
     \columnbreak
     Code inside an \lstinline{if} statement only executes if the expression is true. Note that only one branch will execute depending on which expression is true.
 \end{multicols}
-\subsection{Iterative Operations}
+\subsubsection{Iterative Operations}
 \begin{multicols}{2}
     \begin{lstlisting}
 while expression
@@ -1098,13 +1098,13 @@ Similarly, we can determine a confidence interval for these values using the fol
     CI_c = \hat{y}_i \pm t_{n-2,\: 1-\alpha/2} s \sqrt{\frac{1}{n} + \frac{\left( x_i - \overline{x} \right)^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}}
 \end{equation*}
 where \(s\sqrt{\frac{1}{n} + \frac{\left( x_i - \overline{x} \right)^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}}\) 
-is the standard error for \(y_i\).
+is the standard error for \(\hat{y}_i\).
 
 This formula can be used to create a confidence band for the true value of 
 \(y\) at any possible \(x\) to create the following plot where the confidence level is \(99\% \).
 \begin{figure}[H]
     \centering
-    \includegraphics[height = 8cm, keepaspectratio = true]{linear_regression}
+    \includegraphics[width = \linewidth, keepaspectratio = true]{linear_regression}
     \caption{Graph of linear regression model.}
     % \label{}
 \end{figure}
@@ -1154,4 +1154,28 @@ Note that:
     \endgroup
 \end{proof}
 \subsection{Coefficient of Determination}
+The linear regression output also gives us the coefficient of determination labelled \(R^2\).
+\begin{definition}[Coefficient of Determination]
+    The coefficient of determination \(R^2\) describes the percentage of the observed variance
+    in \(y\) that is explained by the fitted model \(\hat{y}\).
+    \begin{equation*}
+        R^2 = 1 - \frac{RSS}{TSS}
+    \end{equation*}
+    where \(RSS\) is the regression sum of squares defined 
+    \(\sum_i^n\left( \hat{y}_i - y_i \right)^2\) and \(TSS\) is the total sum 
+    of squares defined \(\sum_i^n \left( y_i - \overline{y} \right)^2\).
+\end{definition}
+This value is labelled \lstinline!R-squared! in the MATLAB output.
+\section{Linear Regression Diagnostics}
+After fitting a linear model, it is important to check that linearity is the best assumption for the relationship between the variables.
+
+We can do this using a residual plot.
+\subsection{Summary of Assumptions}
+During the process of linear regression, we make a number of assumptions:
+\begin{enumerate}
+    \item Each observation is independent of other observations
+    \item The relationship between \(X\) and \(Y\) is best modelled as a linear relationship
+    \item The residuals are have a Normal distribution.
+    \item The variance of the residuals is constant for all observations.
+\end{enumerate}
 \end{document}
