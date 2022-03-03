@@ -15,16 +15,16 @@ This repository provides **lecture notes** and **exam notes** for **MZB126 - Eng
 ## Contents
 
 1. MATLAB Functions
-2. Operations in MATLAB
-3. Differential Equations
-4. First-Order Ordinary Differential Equations
-5. Second-Order Ordinary Differential Equations
-6. Systems of Ordinary Differential Equations
-7. Probability
-8. Probability Distributions
-9. Common Probability Distributions
-10. Statistical Inference
-11. Linear Regression
+2. Differential Equations
+3. First-Order Ordinary Differential Equations
+4. Second-Order Ordinary Differential Equations
+5. Systems of Ordinary Differential Equations
+6. Probability
+7. Probability Distributions
+8. Common Probability Distributions
+9. Statistical Inference
+10. Linear Regression
+11. Linear Regression Diagnostics
 
 ---
 
