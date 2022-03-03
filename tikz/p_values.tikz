@@ -10,20 +10,20 @@
     \begin{tikzpicture}
         \draw[thick, <->] (0, 0) -- ++ (10, 0);
         %
-        \node[anchor=south] at (1, 0) {$\vphantom{abcdefghijklmnopqrstuvwxyz}\text{very strong}$};
-        \node[anchor=south] at (3, 0) {$\vphantom{abcdefghijklmnopqrstuvwxyz}\text{strong}$};
-        \node[anchor=south] at (5, 0) {$\vphantom{abcdefghijklmnopqrstuvwxyz}\text{some}$};
-        \node[anchor=south] at (7, 0) {$\vphantom{abcdefghijklmnopqrstuvwxyz}\text{weak}$};
-        \node[anchor=south] at (9, 0) {$\vphantom{abcdefghijklmnopqrstuvwxyz}\text{insufficient}$};
+        \node[anchor=south] at (1, 0) {\(\vphantom{abcdefghijklmnopqrstuvwxyz}\text{very strong}\)};
+        \node[anchor=south] at (3, 0) {\(\vphantom{abcdefghijklmnopqrstuvwxyz}\text{strong}\)};
+        \node[anchor=south] at (5, 0) {\(\vphantom{abcdefghijklmnopqrstuvwxyz}\text{some}\)};
+        \node[anchor=south] at (7, 0) {\(\vphantom{abcdefghijklmnopqrstuvwxyz}\text{weak}\)};
+        \node[anchor=south] at (9, 0) {\(\vphantom{abcdefghijklmnopqrstuvwxyz}\text{insufficient}\)};
         %
-        \node[anchor=north] at (2, -0.1) {$0.001$};
-        \node[anchor=north] at (4, -0.1) {$0.01$};
-        \node[anchor=north] at (6, -0.1) {$0.05$};
-        \node[anchor=north] at (8, -0.1) {$0.1$};
+        \node[anchor=north] at (2, -0.1) {\(0.001\)};
+        \node[anchor=north] at (4, -0.1) {\(0.01\)};
+        \node[anchor=north] at (6, -0.1) {\(0.05\)};
+        \node[anchor=north] at (8, -0.1) {\(0.1\)};
         %
         \foreach \x in {0, 2, 4, 6, 8, 10}
             \draw[very thin] (\x, -0.1) -- ++ (0, 0.2);
         %
-        \node at (5, .75) {$\text{\small \underline{Strength of evidence against $H_0$}}$};
+        \node at (5, .75) {\(\text{\small \underline{Strength of evidence against \)H_0\(}}\)};
     \end{tikzpicture}
 \end{document}

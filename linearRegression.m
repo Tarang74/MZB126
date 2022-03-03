@@ -1,8 +1,8 @@
 clear all
 close all
 
-x = [0.5, ];
-y = [];
+x = [1 2 3 4 5 6 7 8 9 10];
+y = [1.1 2.3 4.5 5.1 6.7 7.4 8.9 10.0 11.1 11.9];
 
 % Fit a linear model:
 % y = beta0 + beta1 * x
@@ -50,12 +50,22 @@ disp([beta1_hat - tinv(area, df) * model.Coefficients.SE(2), beta1_hat + tinv(ar
 
 % Visualise Points
 figure
-plot(x, y, 'x');
+plot(x, y, 'bx');
 hold on
-fplot(@(x) beta0_hat + beta1_hat * x, 'b-')
+fplot(@(x) beta0_hat + beta1_hat * x, [min(x) max(x)], 'r-')
 
-plot(x, upper_y_i_hat, 'r--')
-plot(x, lower_y_i_hat, 'r--')
+plot(x, upper_y_i_hat, 'r:')
+plot(x, lower_y_i_hat, 'r:')
 
-axis([3.8 10.4 0 2])
+xlabel('x1')
+ylabel('y')
+title('y vs. x1')
+
+legend('Data', 'Fit', 'Confidence bounds', 'Location', 'southeast')
+
+xPad = (max(x) - min(x)) * 0.1;
+yPad = (max(y) - min(y)) * 0.4;
+
+axis([min(x)-xPad, max(x)+xPad, min(y)-yPad, max(y)+yPad]);
+
 hold off
