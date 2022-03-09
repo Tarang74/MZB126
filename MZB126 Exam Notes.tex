@@ -97,7 +97,7 @@ else ... end
     \end{equation*}
     \subsection*{Linear ODEs}
     For \(\dv{y}{t} + p(t)y = q(t)\), use the \textit{integrating factor}:
-    \(I(t) = \e^{\int p(t) \dd{t}}\), so that
+    \(I(t) = e^{\int p(t) \dd{t}}\), so that
     \begin{equation*}
         y(t) = \frac{1}{I(t)} \int I(t) q(t) \dd{t}.
     \end{equation*}
@@ -128,20 +128,20 @@ else ... end
     \end{equation*}
     \subsection*{Homogeneous Solution}
     \begin{equation*}
-        y_H(t) = \e^{\lambda t}
+        y_H(t) = e^{\lambda t}
     \end{equation*}
     To solve for \(\lambda\), substitute the homogeneous form into the homogeneous ODE\@. \\
     \underline{Real distinct roots:}
     \begin{equation*}
-        y_H(t) = c_1\e^{\lambda_1 t} + c_2\e^{\lambda_2 t}
+        y_H(t) = c_1e^{\lambda_1 t} + c_2e^{\lambda_2 t}
     \end{equation*}
     \underline{Real repeated roots:}
     \begin{equation*}
-        y_H(t) = c_1\e^{\lambda t} + c_2 t\e^{\lambda t}
+        y_H(t) = c_1e^{\lambda t} + c_2 te^{\lambda t}
     \end{equation*}
     \underline{Complex conjugate roots:} \(\lambda = \alpha \pm \beta i\)
     \begin{equation*}
-        y_H(t) = \e^{\alpha x}\bigl( c_1\cos{\left( \beta t \right)} + c_2 \sin{\left( \beta t \right)} \bigr)
+        y_H(t) = e^{\alpha x}\bigl( c_1\cos{\left( \beta t \right)} + c_2 \sin{\left( \beta t \right)} \bigr)
     \end{equation*}
     \subsection*{Particular Solution}
     \emph{See table below.}
@@ -149,7 +149,7 @@ else ... end
     \subsection*{System of ODEs}
     Given \(\symbfit{y}' = \symbf{A} \symbfit{y}\),
     \begin{equation*}
-        \symbfit{y}_H(t) = \symbfit{q}\e^{\lambda t}.
+        \symbfit{y}_H(t) = \symbfit{q}e^{\lambda t}.
     \end{equation*}
     \(\lambda_i\) are the eigenvalues of \(\symbfit{A}\) that satisfy
     \begin{equation*}
@@ -161,7 +161,7 @@ else ... end
     \end{equation*}
     \underline{For real distinct roots:}
     \begin{equation*}
-        \symbfit{y}_H(t) = c_1\symbfit{q}_1\e^{\lambda_1 t} + c_2\symbfit{q}_2\e^{\lambda_2 t}
+        \symbfit{y}_H(t) = c_1\symbfit{q}_1e^{\lambda_1 t} + c_2\symbfit{q}_2e^{\lambda_2 t}
     \end{equation*}
     \subsection*{Higher-Order ODEs}
     \begin{equation*}
@@ -189,7 +189,7 @@ else ... end
         \midrule
         a constant                                                         & A                                                                       \\
         a polynomial of degree \(n\)                                         & \(\displaystyle \sum_{i = 0}^n A_i t^i\)                                  \\
-        \(\e^{kt}\)                                                          & \(A \e^{kt}\)                                                             \\
+        \(e^{kt}\)                                                          & \(A e^{kt}\)                                                             \\
         \(\cos{\left( \omega t \right)}\) or \(\sin{\left( \omega t \right)}\) & \(A_0 \cos{\left( \omega t \right)} + A_1 \sin{\left( \omega t \right)}\) \\
         a combination of the above                                         & a combination of the above                                              \\
         linearly dependent to \(y_H(t)\)                                     & multiply \(y_P(t)\) by \(t\) until linearly independent                     \\
@@ -317,8 +317,8 @@ else ... end
         \textbf{Distribution}                                    & \textbf{Probability}                            & \textbf{Cumulative Probability}         & \(\mu\)                  & \(\sigma^2\)                \\
         \midrule
         Binomial: \(X\sim \mathrm{bin}\left( n,\: p \right)\)      & \(\binom{n}{x} p^x \left( 1 - p \right)^{n - x}\) & \emph{See table above.}                 & \(np\)                   & \(np\left( 1-p \right)\)    \\
-        Poisson: \(X\sim \mathrm{Pois}\left( \mu \right)\)         & \(\e^{-\mu}\mu^x/{x!}\)                           & \emph{See table above.}                 & \(\lambda t\)            & \(\lambda t\)               \\
-        Exponential: \(T\sim \exp{\left( \lambda \right)}\)        & \(\lambda \e^{-\lambda t}\)                       & \(1 - \lambda \e^{-\lambda t}\)           & \(1/\lambda\)            & \(1/\lambda^2\)             \\
+        Poisson: \(X\sim \mathrm{Pois}\left( \mu \right)\)         & \(e^{-\mu}\mu^x/{x!}\)                           & \emph{See table above.}                 & \(\lambda t\)            & \(\lambda t\)               \\
+        Exponential: \(T\sim \exp{\left( \lambda \right)}\)        & \(\lambda e^{-\lambda t}\)                       & \(1 - \lambda e^{-\lambda t}\)           & \(1/\lambda\)            & \(1/\lambda^2\)             \\
         Uniform: \(X\sim \mathrm{U}\left( a,\: b \right)\)         & \(1/\left( b-a \right)\)                          & \(\left( x-a \right)/\left( b-a \right)\) & \(\left( a+b \right)/2\) & \(\left( b-a \right)^2/12\) \\
         Normal: \(X\sim \mathrm{N}\left( \mu,\: \sigma^2 \right)\) & \(-\)                                             & \(-\)                                     & \(\mu\)                  & \(\sigma^2\)                \\
         \bottomrule
@@ -375,7 +375,7 @@ else ... end
             \Pr{\left( T > \abs{T_{\text{test}}} \right)}    & = \frac{\alpha}{2}
         \end{align*}
     \end{multicols*}
-    \includegraphics[width = \linewidth, keepaspectratio = true]{p_values}
+    \includegraphics[width = \linewidth, keepaspectratio = true]{figures/p_values}
 \end{minipage}
 \begin{multicols}{3}
     \section*{Linear Regression}

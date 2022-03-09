@@ -60,7 +60,7 @@
         \lstinline!y = sin(x)!  & Sine with \(x\) in radians.    \\
         \lstinline!y = sind(x)! & Sine with \(x\) in degrees.    \\
         \lstinline!y = asin(x)! & Arcsine with \(y\) in radians. \\
-        \lstinline!y = exp(x)!  & \(\e^x\).                      \\
+        \lstinline!y = exp(x)!  & \(e^x\).                       \\
         \lstinline!y = log(x)!  & \(\ln{\left( x \right)}\).     \\
         \bottomrule
     \end{tabular}
@@ -286,14 +286,14 @@ where \(a,\:b,\:c\) are constants.
 \end{definition}
 This differential equation has a solution of the form:
 \begin{equation*}
-    y_H = \e^{rt}
+    y_H = e^{rt}
 \end{equation*}
 \subsection{Characteristic Equation}
-By making the substitution \(y=\e^{rt}\), we get
+By making the substitution \(y=e^{rt}\), we get
 \begin{align*}
     a \dv[2]{y_H}{t} + b \dv{y_H}{t} + c y_H & = 0 \\
-    ar^2\e^{rt} + br\e^{rt} + c\e^{rt}       & = 0 \\
-    (ar^2 + br + c)\e^{rt}                   & = 0 \\
+    ar^2e^{rt} + bre^{rt} + ce^{rt}          & = 0 \\
+    (ar^2 + br + c)e^{rt}                    & = 0 \\
     ar^2 + br + c                            & = 0
 \end{align*}
 This is known as the characteristic or \textit{auxiliary} equation. The next step is to calculate the roots of the equation.
@@ -305,29 +305,29 @@ This is known as the characteristic or \textit{auxiliary} equation. The next ste
 \subsubsection{Real Distinct Roots}
 Given \(r_1\) and \(r_2\) are real and distinct:
 \begin{align*}
-    y_1(t) = \e^{r_1t} &  & y_2(t) = \e^{r_2t}
+    y_1(t) = e^{r_1t} &  & y_2(t) = e^{r_2t}
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
-    y_H(t) = c_1\e^{r_1t} + c_2\e^{r_2t}
+    y_H(t) = c_1e^{r_1t} + c_2e^{r_2t}
 \end{equation*}
 \subsubsection{Real Repeated Roots}
 Given \(r\) is a repeated root:
 \begin{align*}
-    y_1(t) = \e^{rt} &  & y_2(t) = t\e^{rt}
+    y_1(t) = e^{rt} &  & y_2(t) = te^{rt}
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
-    y_H(t) = c_1\e^{rt} + c_2t\e^{rt}
+    y_H(t) = c_1e^{rt} + c_2te^{rt}
 \end{equation*}
 \subsubsection{Complex Conjugate Roots}
 Given \(r_1 = \alpha + \beta i\) and \(r_2 = \alpha - \beta i\) are complex conjugates:
 \begin{align*}
-    y_1(t) = \e^{r_1t} &  & y_2(t) = \e^{r_2t}
+    y_1(t) = e^{r_1t} &  & y_2(t) = e^{r_2t}
 \end{align*}
 Hence the solution to the homogeneous equation is given by:
 \begin{equation*}
-    y_H(t) = c_1\e^{\alpha t}\cos{\left( \beta t \right)} + c_2\e^{\alpha t}\sin{\left( \beta t \right)}
+    y_H(t) = c_1e^{\alpha t}\cos{\left( \beta t \right)} + c_2e^{\alpha t}\sin{\left( \beta t \right)}
 \end{equation*}
 \subsection{Nonhomogeneous ODE}
 A nonhomogeneous differential equation is of the form
@@ -355,7 +355,7 @@ The particular solution will depend on what \(Q(t)\) looks like.
         \midrule
         a constant                                                        & \(A\)                                                               \\
         \(n\)th degree polynomial                                         & \(A_0 + A_1t + \cdots + A_{n-1}t^{n-1} + A_n t^n\)                  \\
-        \(\e^{\alpha t}\)                                                 & \(A\e^{\alpha t}\)                                                  \\
+        \(e^{\alpha t}\)                                                  & \(Ae^{\alpha t}\)                                                   \\
         \(\cos{\left( \alpha t \right)}\)                                 & \(A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}\) \\
         \(\sin{\left( \alpha t \right)}\)                                 & \(A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}\) \\
         \(\cos{\left( \alpha t \right)} + \sin{\left( \alpha t \right)}\) & \(A\cos{\left( \alpha t \right)} + B\sin{\left( \alpha t \right)}\) \\
@@ -401,13 +401,17 @@ A first-order system of differential equations has the form
 where \(x_1=x_1(t),\: x_2=x_2(t),\: \dots,\: x_n=x_n(t)\) are the
 functions to be determined. In matrix form, the system can be written as
 \begin{align*}
-    \dv{t}\mqty[x_1                                        \\ x_2 \\ \vdots \\ x_n] &= \mqty[
-    a_{11}     & a_{12}                  & \cdots & a_{1n} \\
-    a_{21}     & a_{22}                  & \cdots & a_{2n} \\
-    \vdots     & \vdots                  &        & \vdots \\
-    a_{n1}     & a_{n2}                  & \cdots & a_{nn}
-    ] \mqty[x_1                                            \\ x_2 \\ \vdots \\ x_n] \\
-    \symbf{x}' & = \symbfit{A} \symbf{x}
+    \dv{t} \begin{bmatrix}
+               x_1 \\ x_2 \\ \vdots \\ x_n
+           \end{bmatrix} & = \begin{bmatrix}
+                                 a_{11} & a_{12} & \cdots & a_{1n} \\
+                                 a_{21} & a_{22} & \cdots & a_{2n} \\
+                                 \vdots & \vdots &        & \vdots \\
+                                 a_{n1} & a_{n2} & \cdots & a_{nn}
+                             \end{bmatrix} \begin{bmatrix}
+                                               x_1 \\ x_2 \\ \vdots \\ x_n
+                                           \end{bmatrix} \\
+    \symbf{x}'                  & = \symbfit{A} \symbf{x}
 \end{align*}
 \subsection{Higher-Order ODEs}
 A higher-order linear differential equation can be solved by first converting it to a first-order linear
@@ -422,38 +426,38 @@ Let
         & \vdotswithin{=}          \\
     x_n & = y^{\left( n-1 \right)}
 \end{align*}
-so that \(\symbfit{x}=\mqty[x_1 & x_2 & \cdots & x_n]^\top \). Then the differential equation can
+so that \(\symbfit{x}=\begin{bmatrix}x_1 & x_2 & \cdots & x_n\end{bmatrix}^\top \). Then the differential equation can
 be expressed as the following first-order linear system of differential equations
 \begin{equation*}
-    \dv{t}\mqty[
-        x_1 \\
-        x_2 \\
+    \dv{t} \begin{bmatrix}
+        x_1               \\
+        x_2               \\
         \vdotswithin{x_3} \\
         x_n
-    ] = \mqty[
-    0 & 1 & 0 & \cdots & 0 \\
-    0 & 0 & 1 & \cdots & 0 \\
-    \vdots & \vdots & \vdots & \ddots & \vdots \\
-    0 & 0 & 0 & \cdots & 1 \\
-    -a_n & -a_{n-1} & -a_{n-2} & \cdots & -a_1
-    ] \mqty[
-        x_1 \\
-        x_2 \\
+    \end{bmatrix} = \begin{bmatrix}
+        0      & 1        & 0        & \cdots & 0      \\
+        0      & 0        & 1        & \cdots & 0      \\
+        \vdots & \vdots   & \vdots   & \ddots & \vdots \\
+        0      & 0        & 0        & \cdots & 1      \\
+        -a_n   & -a_{n-1} & -a_{n-2} & \cdots & -a_1
+    \end{bmatrix} \begin{bmatrix}
+        x_1               \\
+        x_2               \\
         \vdotswithin{x_3} \\
         x_n
-    ]
+    \end{bmatrix}
 \end{equation*}
 \subsection{Solution Form}
 Like the homogeneous case, we will guess a solution of the form
 \begin{equation*}
-    \symbf{x} = \symbf{q}\e^{\lambda t}
+    \symbf{x} = \symbf{q}e^{\lambda t}
 \end{equation*}
 which allows for the following substitution
 \begin{align*}
-    \lambda \symbf{q}\e^{\lambda t}                                         & = \symbfit{A} \symbf{q}\e^{\lambda t} \\
-    \symbfit{A} \symbf{q}\e^{\lambda t} - \lambda \symbf{q}\e^{\lambda t}   & = \symbf{0}                           \\
-    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}\e^{\lambda t} & = \symbf{0}                           \\
-    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}               & = \symbf{0}
+    \lambda \symbf{q}e^{\lambda t}                                         & = \symbfit{A} \symbf{q}e^{\lambda t} \\
+    \symbfit{A} \symbf{q}e^{\lambda t} - \lambda \symbf{q}e^{\lambda t}    & = \symbf{0}                          \\
+    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}e^{\lambda t} & = \symbf{0}                          \\
+    \left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q}              & = \symbf{0}
 \end{align*}
 This equation has the trivial solution \(\symbf{q}=\symbf{0}\), however for a fundamental set of solutions,
 we must let \(\symbfit{A} - \lambda\symbfit{I}\) be singular.
@@ -469,7 +473,7 @@ These eigenvalues can then be used to solve the eigenvectors of \(\symbfit{A}\)
     \item Model the system of ODEs in the form \(\symbf{x}' = \symbfit{A} \symbf{x}\)
     \item Solve the characteristic equation for the eigenvalues of \(\symbfit{A}\)
     \item Solve the corresponding eigenvectors of \(\symbfit{A}\) by solving \(\left( \symbfit{A} - \lambda\symbfit{I} \right) \symbf{q} = \symbf{0}\)
-    \item Write the general solution: \(\symbf{x} = c_1\symbf{q}_1\e^{\lambda_1 t} + c_2\symbf{q}_2\e^{\lambda_2 t}\)
+    \item Write the general solution: \(\symbf{x} = c_1\symbf{q}_1e^{\lambda_1 t} + c_2\symbf{q}_2e^{\lambda_2 t}\)
     \item Apply initial conditions to solve \(c_1\) and \(c_2\)
 \end{enumerate}
 \section{Probability}
@@ -701,7 +705,7 @@ This distribution has the following mean and variance
 The Poisson distribution describes discrete events that occur randomly at an average rate \(\lambda \).
 The PMF for this distribution is given by
 \begin{equation*}
-    p(x) = \frac{\mu^x\e^{-\mu}}{x!}
+    p(x) = \frac{\mu^xe^{-\mu}}{x!}
 \end{equation*}
 where \(\mu = \lambda t\) is the average number of events occurring in any interval of length \(t\).
 This distribution has the following mean and variance
@@ -1097,14 +1101,14 @@ Similarly, we can determine a confidence interval for these values using the fol
 \begin{equation*}
     CI_c = \hat{y}_i \pm t_{n-2,\: 1-\alpha/2} s \sqrt{\frac{1}{n} + \frac{\left( x_i - \overline{x} \right)^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}}
 \end{equation*}
-where \(s\sqrt{\frac{1}{n} + \frac{\left( x_i - \overline{x} \right)^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}}\) 
+where \(s\sqrt{\frac{1}{n} + \frac{\left( x_i - \overline{x} \right)^2}{\sum_i^n \left( x_i - \overline{x} \right)^2}}\)
 is the standard error for \(\hat{y}_i\).
 
-This formula can be used to create a confidence band for the true value of 
+This formula can be used to create a confidence band for the true value of
 \(y\) at any possible \(x\) to create the following plot where the confidence level is \(99\% \).
 \begin{figure}[H]
     \centering
-    \includegraphics[width = \linewidth, keepaspectratio = true]{linear_regression}
+    \includegraphics[width = \linewidth, keepaspectratio = true]{figures/linear_regression}
     \caption{Graph of linear regression model.}
     % \label{}
 \end{figure}
@@ -1161,8 +1165,8 @@ The linear regression output also gives us the coefficient of determination labe
     \begin{equation*}
         R^2 = 1 - \frac{RSS}{TSS}
     \end{equation*}
-    where \(RSS\) is the regression sum of squares defined 
-    \(\sum_i^n\left( \hat{y}_i - y_i \right)^2\) and \(TSS\) is the total sum 
+    where \(RSS\) is the regression sum of squares defined
+    \(\sum_i^n\left( \hat{y}_i - y_i \right)^2\) and \(TSS\) is the total sum
     of squares defined \(\sum_i^n \left( y_i - \overline{y} \right)^2\).
 \end{definition}
 This value is labelled \lstinline!R-squared! in the MATLAB output.
@@ -1175,7 +1179,7 @@ During the process of linear regression, we make a number of assumptions:
 \begin{enumerate}
     \item Each observation is independent of other observations
     \item The relationship between \(X\) and \(Y\) is best modelled as a linear relationship
-    \item The residuals are have a Normal distribution.
-    \item The variance of the residuals is constant for all observations.
+    \item The residuals are have a Normal distribution
+    \item The variance of the residuals is constant for all observations
 \end{enumerate}
 \end{document}
