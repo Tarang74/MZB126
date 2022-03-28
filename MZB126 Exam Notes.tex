@@ -74,7 +74,7 @@ else ... end
     \section*{Differential Equations}
     \subsection*{Mechanical Systems}
     \begin{equation*}
-        \sum F = \dv{p}{t},\quad \sum M = I \dv[2]{\theta}{t}
+        \sum F = \odv{p}{t},\quad \sum M = I \odv[2]{\theta}{t}
     \end{equation*}
     where momentum \(p = mv\), moment \(M=Fx\) and inertia \(I=mr^2\).
     % \columnbreak
@@ -84,22 +84,22 @@ else ... end
     \end{align*}
     \subsection*{Electrical Circuits}
     \begin{align*}
-        i = \dv{q}{t},\quad \sum v_{loop} = 0,\quad \sum i_{node} = 0
+        i = \odv{q}{t},\quad \sum v_{loop} = 0,\quad \sum i_{node} = 0
     \end{align*}
     \underline{Voltage drop across elements:}
     \begin{align*}
-        v_R = iR,\quad v_C = \frac{q}{C},\quad v_L & = L \dv{i}{t}
+        v_R = iR,\quad v_C = \frac{q}{C},\quad v_L & = L \odv{i}{t}
     \end{align*}
     \subsection*{Separable ODEs}
-    For \(\dv{y}{t} = p(t) q(y)\):
+    For \(\odv{y}{t} = p(t) q(y)\):
     \begin{equation*}
-        \int \frac{1}{q(y)} \dv{y}{t} \dd{t} = \int p(t) \dd{t}.
+        \int \frac{1}{q(y)} \odv{y}{t} \odif{t} = \int p(t) \odif{t}.
     \end{equation*}
     \subsection*{Linear ODEs}
-    For \(\dv{y}{t} + p(t)y = q(t)\), use the \textit{integrating factor}:
-    \(I(t) = e^{\int p(t) \dd{t}}\), so that
+    For \(\odv{y}{t} + p(t)y = q(t)\), use the \textit{integrating factor}:
+    \(I(t) = e^{\int p(t) \odif{t}}\), so that
     \begin{equation*}
-        y(t) = \frac{1}{I(t)} \int I(t) q(t) \dd{t}.
+        y(t) = \frac{1}{I(t)} \int I(t) q(t) \odif{t}.
     \end{equation*}
     \subsection*{Linearisation}
     \begin{align*}
@@ -175,7 +175,7 @@ else ... end
         \mqty[
         0      & 1        & 0        & \cdots & 0      \\
         0      & 0        & 1        & \cdots & 0      \\
-        \vdots & \vdots   & \vdots   & \ddots & \vdots \\
+        \vdots & \vdots   & \vdots   & \odifots & \vdots \\
         0      & 0        & 0        & \cdots & 1      \\
         -a_n   & -a_{n-1} & -a_{n-2} & \cdots & -a_1
         ]
@@ -256,7 +256,7 @@ else ... end
         Has an infinite number of outcomes. Distributed with a
         probability density function \(f(x)\).
         \begin{equation*}
-            \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f(x) \dd{x}
+            \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f(x) \odif{x}
         \end{equation*}
         \begin{equation*}
             F(x) = \Pr{\left( X \leq x \right)}
@@ -286,9 +286,9 @@ else ... end
                                    & \textbf{Discrete}                            & \textbf{Continuous}                                \\
             \midrule
             Valid probabilities    & \(0 \leq p(x) \leq 1\)                         & \(f(x) \geq 0\)                                      \\
-            Cumulative probability & \(\sum_{u \leq x} p(u)\)                       & \(\int_{-\infty}^{x} f(u) \dd{u}\)                   \\
-            Expectation            & \(\sum_{\Omega} xp(x)\)                        & \(\int_{\Omega} xf(x)\dd{x}\)                        \\
-            Variance               & \(\sum_{\Omega} \left( x - \mu \right)^2p(x)\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\dd{x}\) \\
+            Cumulative probability & \(\sum_{u \leq x} p(u)\)                       & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
+            Expectation            & \(\sum_{\Omega} xp(x)\)                        & \(\int_{\Omega} xf(x)\odif{x}\)                        \\
+            Variance               & \(\sum_{\Omega} \left( x - \mu \right)^2p(x)\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\odif{x}\) \\
             \bottomrule
         \end{tabular}
     \end{table}

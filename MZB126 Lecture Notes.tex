@@ -152,12 +152,12 @@ end
 \end{theorem}
 \begin{theorem}[VI Relationship between Inductors]
     \begin{equation*}
-        v = L \dv{i}{t}
+        v = L \odv{i}{t}
     \end{equation*}
 \end{theorem}
 \begin{theorem}[VI Relationship between Capacitors]
     \begin{equation*}
-        i = C \dv{v}{t}
+        i = C \odv{v}{t}
     \end{equation*}
 \end{theorem}
 \begin{theorem}[Kirchhoff's Voltage Law]
@@ -175,7 +175,7 @@ end
 \subsection{Mechanical Systems}
 \begin{theorem}[Newton's Second Law]
     \begin{equation*}
-        \sum F = \dv{p}{t}
+        \sum F = \odv{p}{t}
     \end{equation*}
     where \(p = mv\).
 \end{theorem}
@@ -197,49 +197,49 @@ end
 \section{First-Order Ordinary Differential Equations}
 \subsection{Separable ODEs}
 \begin{equation*}
-    \dv{y}{t} = F(y,\: t)
+    \odv{y}{t} = F(y,\: t)
 \end{equation*}
 \begin{enumerate}
-    \item Rewrite the equation in the form: \(f(y)\dd{y} = g(t)\dd{t}\).
-    \item Integrate both sides: \(\int f(y)\dd{y} = \int g(t)\dd{t}\).
+    \item Rewrite the equation in the form: \(f(y)\odif{y} = g(t)\odif{t}\).
+    \item Integrate both sides: \(\int f(y)\odif{y} = \int g(t)\odif{t}\).
     \item Rearrange for the explicit form of \(y(t)\).
 \end{enumerate}
 \subsection{Linear ODEs}
 Let \(P=P(t)\), \(Q=Q(t)\) and \(\mu = \mu(t)\)
 \begin{equation*}
-    \dv{y}{t} + Py = Q
+    \odv{y}{t} + Py = Q
 \end{equation*}
 \begin{enumerate}
-    \item Determine the integrating factor: \(\displaystyle \mu=\exp{\left( \int P \dd{t} \right)}\).
+    \item Determine the integrating factor: \(\displaystyle \mu=\exp{\left( \int P \odif{t} \right)}\).
     \item Solve:
           \begin{equation*}
-              y=\frac{1}{\mu}\left(\int Q \mu \dd{t} + C\right)
+              y=\frac{1}{\mu}\left(\int Q \mu \odif{t} + C\right)
           \end{equation*}
 \end{enumerate}
 \begin{proof}
     To solve a first-order linear differential equation, determine an integrating factor \(\mu = \mu(t)\) such that
     \begin{equation}
-        P \mu = \dv{\mu}{t} \label{eq:integrating_factor}
+        P \mu = \odv{\mu}{t} \label{eq:integrating_factor}
     \end{equation}
     Multiplying the equation by \(\mu \) gives
     \begin{align*}
-        \mu \dv{y}{t} + P \mu y             & = Q \mu                                           \\
-        \mu \dv{y}{t} + \dv{\mu}{t} y       & = Q \mu                                           \\
-        \dv{t}\bigl(\mu y\bigr)             & = Q \mu                                           \\
-        \int \dv{t}\bigl(\mu y\bigr) \dd{t} & = \int Q \mu \dd{t}                               \\
-        \mu y                               & = \int Q \mu \dd{t}                               \\
-        y                                   & = \frac{1}{\mu}\left(\int Q \mu \dd{t} + C\right)
+        \mu \odv{y}{t} + P \mu y             & = Q \mu                                           \\
+        \mu \odv{y}{t} + \odv{\mu}{t} y       & = Q \mu                                           \\
+        \odv{t}\bigl(\mu y\bigr)             & = Q \mu                                           \\
+        \int \odv{t}\bigl(\mu y\bigr) \odif{t} & = \int Q \mu \odif{t}                               \\
+        \mu y                               & = \int Q \mu \odif{t}                               \\
+        y                                   & = \frac{1}{\mu}\left(\int Q \mu \odif{t} + C\right)
     \end{align*}
     To determine \(\mu \) we can rearrange \hyperref[eq:integrating_factor]{Equation~\ref{eq:integrating_factor}} into
     \begin{align*}
-        P = \frac{1}{\mu}\dv{\mu}{t}
+        P = \frac{1}{\mu}\odv{\mu}{t}
     \end{align*}
     By recognition, this is the derivative of the natural logarithm of \(\mu \) with respect to \(t\).
     \begin{align*}
-        P             & = \dv{t}(\ln{\left( \mu \right)})                       \\
-        \int P \dd{t} & = \int \dv{t}\bigl(\ln{\left( \mu \right)}\bigr) \dd{t} \\
-        \int P \dd{t} & = \ln{\left( \mu \right)}                               \\
-        \mu           & = \exp{\left( \int P \dd{t} \right)}
+        P             & = \odv{t}(\ln{\left( \mu \right)})                       \\
+        \int P \odif{t} & = \int \odv{t}\bigl(\ln{\left( \mu \right)}\bigr) \odif{t} \\
+        \int P \odif{t} & = \ln{\left( \mu \right)}                               \\
+        \mu           & = \exp{\left( \int P \odif{t} \right)}
     \end{align*}
 \end{proof}
 \subsection{Solution using Linearisation}
@@ -252,36 +252,36 @@ This new polynomial can be substituted to form a linear ODE, which can be solved
 \section{Second-Order Ordinary Differential Equations}
 \subsection{Constant Coefficient Linear ODEs}
 \begin{equation*}
-    a \dv[2]{y}{t} + b \dv{y}{t} + c y = Q(t)
+    a \odv[2]{y}{t} + b \odv{y}{t} + c y = Q(t)
 \end{equation*}
 where \(a,\:b,\:c\) are constants.
 \subsection{Linearity of Solutions}
 \begin{theorem}[Principle of Superposition]\label{theorem:superposition}
     As the given ODE is linear, if \(y_1(t)\) is a solution to the equation
     \begin{equation*}
-        a \dv[2]{y_1}{t} + b \dv{y_1}{t} + cy_1 = Q_1(t)
+        a \odv[2]{y_1}{t} + b \odv{y_1}{t} + cy_1 = Q_1(t)
     \end{equation*}
     and \(y_2(t)\) is a solution to
     \begin{equation*}
-        a \dv[2]{y_2}{t} + b \dv{y_2}{t} + cy_2 = Q_2(t)
+        a \odv[2]{y_2}{t} + b \odv{y_2}{t} + cy_2 = Q_2(t)
     \end{equation*}
     then for the function \(y = c_1y_1+c_2y_2\)
     \begin{equation*}
-        a \dv[2]{y}{t} + b \dv{y}{t} + cy = c_1Q_1(t) + c_2Q_2(t)
+        a \odv[2]{y}{t} + b \odv{y}{t} + cy = c_1Q_1(t) + c_2Q_2(t)
     \end{equation*}
     where \(c_1\) and \(c_2\) are constants.
 \end{theorem}
 % \begin{proof}
 % \begin{align*}
-%     a \dv[2]{y}{t} + b \dv{y}{t} + cy &= a \dv[2]{t}(k_1y_1+k_2y_2) + b \dv{t}(k_1y_1+k_2y_2) + c(k_1y_1+k_2y_2) \\
-%     &= k_1\left( a \dv[2]{y}{t} + b \dv{y}{t} + cy \right)a \dv[2]{t}(k_1y_1+k_2y_2) + b \dv{t}(k_1y_1+k_2y_2) + c(k_1y_1+k_2y_2) \\
+%     a \odv[2]{y}{t} + b \odv{y}{t} + cy &= a \odv[2]{t}(k_1y_1+k_2y_2) + b \odv{t}(k_1y_1+k_2y_2) + c(k_1y_1+k_2y_2) \\
+%     &= k_1\left( a \odv[2]{y}{t} + b \odv{y}{t} + cy \right)a \odv[2]{t}(k_1y_1+k_2y_2) + b \odv{t}(k_1y_1+k_2y_2) + c(k_1y_1+k_2y_2) \\
 % \end{align*}
 % \end{proof}
 \subsection{Homogeneous ODEs}
 \begin{definition}
     A homogeneous ODE has \(Q(t)=0\), which gives
     \begin{equation*}
-        a \dv[2]{y}{t} + b \dv{y}{t} + c y = 0
+        a \odv[2]{y}{t} + b \odv{y}{t} + c y = 0
     \end{equation*}
 \end{definition}
 This differential equation has a solution of the form:
@@ -291,7 +291,7 @@ This differential equation has a solution of the form:
 \subsection{Characteristic Equation}
 By making the substitution \(y=e^{rt}\), we get
 \begin{align*}
-    a \dv[2]{y_H}{t} + b \dv{y_H}{t} + c y_H & = 0 \\
+    a \odv[2]{y_H}{t} + b \odv{y_H}{t} + c y_H & = 0 \\
     ar^2e^{rt} + bre^{rt} + ce^{rt}          & = 0 \\
     (ar^2 + br + c)e^{rt}                    & = 0 \\
     ar^2 + br + c                            & = 0
@@ -332,7 +332,7 @@ Hence the solution to the homogeneous equation is given by:
 \subsection{Nonhomogeneous ODE}
 A nonhomogeneous differential equation is of the form
 \begin{equation*}
-    a \dv[2]{y}{t} + b \dv{y}{t} + c y = Q(t)
+    a \odv[2]{y}{t} + b \odv{y}{t} + c y = Q(t)
 \end{equation*}
 where \(Q(t)\neq 0\).
 \subsection{General Solution of a Nonhomogeneous ODE}
@@ -401,7 +401,7 @@ A first-order system of differential equations has the form
 where \(x_1=x_1(t),\: x_2=x_2(t),\: \dots,\: x_n=x_n(t)\) are the
 functions to be determined. In matrix form, the system can be written as
 \begin{align*}
-    \dv{t} \begin{bmatrix}
+    \odv{t} \begin{bmatrix}
                x_1 \\ x_2 \\ \vdots \\ x_n
            \end{bmatrix} & = \begin{bmatrix}
                                  a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -429,7 +429,7 @@ Let
 so that \(\symbfit{x}=\begin{bmatrix}x_1 & x_2 & \cdots & x_n\end{bmatrix}^\top \). Then the differential equation can
 be expressed as the following first-order linear system of differential equations
 \begin{equation*}
-    \dv{t} \begin{bmatrix}
+    \odv{t} \begin{bmatrix}
         x_1               \\
         x_2               \\
         \vdotswithin{x_3} \\
@@ -437,7 +437,7 @@ be expressed as the following first-order linear system of differential equation
     \end{bmatrix} = \begin{bmatrix}
         0      & 1        & 0        & \cdots & 0      \\
         0      & 0        & 1        & \cdots & 0      \\
-        \vdots & \vdots   & \vdots   & \ddots & \vdots \\
+        \vdots & \vdots   & \vdots   & \odifots & \vdots \\
         0      & 0        & 0        & \cdots & 1      \\
         -a_n   & -a_{n-1} & -a_{n-2} & \cdots & -a_1
     \end{bmatrix} \begin{bmatrix}
@@ -599,15 +599,15 @@ Two events are dependent if the outcome of one event influences the outcome of t
 
     Here, probabilities are represented by areas under the PDF\@:
     \begin{equation*}
-        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f(u) \dd{u}
+        \Pr{\left( x_1 \leq X \leq x_2 \right)} = \int_{x_1}^{x_2} f(u) \odif{u}
     \end{equation*}
     and the CDF is defined as
     \begin{equation*}
-        F(x) = \Pr{\left( X \leq x \right)} = \int_{-\infty}^{x} f(u) \dd{u}.
+        F(x) = \Pr{\left( X \leq x \right)} = \int_{-\infty}^{x} f(u) \odif{u}.
     \end{equation*}
     Note that \(f(x)\) is a valid PDF provided
     \begin{equation*}
-        f(x) \geq 0:\forall x \quad \text{and} \quad \int_{-\infty}^{\infty} f(u) \dd{u} = 1
+        f(x) \geq 0:\forall x \quad \text{and} \quad \int_{-\infty}^{\infty} f(u) \odif{u} = 1
     \end{equation*}
     while \(F(x)\) is a valid CDF if:
     \begin{enumerate}
@@ -624,7 +624,7 @@ Two events are dependent if the outcome of one event influences the outcome of t
         \E{\left( X \right)} =
         \begin{cases}
             \sum_{\Omega} x p(x)        & \text{for discrete variables}   \\
-            \int_{\Omega} x f(x) \dd{x} & \text{for continuous variables}
+            \int_{\Omega} x f(x) \odif{x} & \text{for continuous variables}
         \end{cases}
     \end{equation*}
 \end{definition}
@@ -636,7 +636,7 @@ Two events are dependent if the outcome of one event influences the outcome of t
         \Var{\left( X \right)} & =
         \begin{cases}
             \sum_{\Omega} \left( x - \mu \right)^2 p(x)             & \text{for discrete variables}   \\
-            \int_{\Omega} \left( x - \mu \right)^2 p(x) f(x) \dd{x} & \text{for continuous variables}
+            \int_{\Omega} \left( x - \mu \right)^2 p(x) f(x) \odif{x} & \text{for continuous variables}
         \end{cases} \\
                                & = \E{\left( X^2 \right)} - \E{\left( X \right)}^2
     \end{align*}
@@ -805,7 +805,7 @@ Values along the horizontal axis of the \(t\)-distribution can be denoted by \(t
     \begin{equation*}
         {CI}_{\left( 1 - \alpha \right)} = \overline{X} \pm t_{n-1,\: 1-\alpha/2} \frac{s}{\sqrt{n}}
     \end{equation*}
-    Typically we construct \(1-\alpha = \SI{95}{\percent}\) confidence intervals.
+    Typically we construct \(1-\alpha = \qty{95}{\%}\) confidence intervals.
 \end{definition}
 \subsection{Hypothesis Testing}
 \begin{definition}[Hypothesis Tests]
