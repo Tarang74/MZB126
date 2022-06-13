@@ -6,6 +6,13 @@
 
 ---
 
+## Downloads
+
+Lecture notes download: [MZB126 Lecture Notes PDF](https://www.github.com/Tarang74/MZB126/raw/main/MZB126%20Lecture%20Notes.pdf)
+Exam notes download: [MZB126 Exam Notes PDF](https://www.github.com/Tarang74/MZB126/raw/main/MZB126%20Exam%20Notes.pdf)
+
+---
+
 This repository provides **lecture notes** and **exam notes** for **MZB126 - Engineering Computation**.
 
 *The contents of the lecture notes are described below.*
@@ -31,4 +38,3 @@ This repository provides **lecture notes** and **exam notes** for **MZB126 - Eng
 ![Copyright](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)
 
 This work is licensed under a [Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
- 
