@@ -6,16 +6,16 @@
 \usepackage{changepage} % Modify page width
 \usepackage{multicol} % Use multiple columns
 \usepackage{titlesec} % Modify section heading styles
-\usepackage{textcomp, upquote} % Code block quotations support 
-\usepackage{calc} % Set exact 
+\usepackage{textcomp, upquote} % Code block quotations support
+\usepackage{calc} % Set exact
 
 %% A4 page
 \geometry{
 	a4paper,
 	margin = 10mm
-} 
+}
 
-%% Hide horizontal rule 
+%% Hide horizontal rule
 \renewcommand{\headrulewidth}{0pt}
 
 % Hide page numbers
@@ -54,12 +54,12 @@
 function [output1, ...]
     = function_name(input1, ...)
 % Iterate over the vector v
-for i = v ... end 
+for i = v ... end
 % Repeat while condition is true
 while condition ... end
 % Execute first true alternative
 if condition_1 ...
-elseif condition_2 ... 
+elseif condition_2 ...
 else ... end
 \end{lstlisting}
     \subsection*{Partial Fraction Decomposition}
@@ -68,7 +68,7 @@ else ... end
         \left(ax+b\right)^k & \to \frac{A_1}{ax+b} + \cdots + \frac{A_k}{\left( ax+b \right)^k}
     \end{align*}
     \begin{align*}
-        \left(ax^2+bx+c\right)^k     & \to                                                  \\
+        \left(ax^2+bx+c\right)^k     & \to                                                   \\
         \frac{A_1x+B_1}{ax^2+bx+c} + & \cdots + \frac{A_k x+B_k}{\left( ax^2+bx+c \right)^k}
     \end{align*}
     \section*{Differential Equations}
@@ -79,7 +79,7 @@ else ... end
     where momentum \(p = mv\), moment \(M=Fx\) and inertia \(I=mr^2\).
     % \columnbreak
     \begin{align*}
-        F_T & = \left( c - v \right) d_f & F_g & = -mg                       \\
+        F_T & = \left( c - v \right) d_f & F_g & = -mg                         \\
         F_s & = -kx                      & F_f & = -b v^2 \text{ (or \(-bv\))}
     \end{align*}
     \subsection*{Electrical Circuits}
@@ -185,14 +185,14 @@ else ... end
     \centering
     \begin{tabular}{c c}
         \toprule
-        \(F(t)\)                                                             & \(y_P(t)\)                                                                \\
+        \(F(t)\)                                                               & \(y_P(t)\)                                                                \\
         \midrule
-        a constant                                                         & A                                                                       \\
-        a polynomial of degree \(n\)                                         & \(\displaystyle \sum_{i = 0}^n A_i t^i\)                                  \\
-        \(e^{kt}\)                                                          & \(A e^{kt}\)                                                             \\
+        a constant                                                             & A                                                                         \\
+        a polynomial of degree \(n\)                                           & \(\displaystyle \sum_{i = 0}^n A_i t^i\)                                  \\
+        \(e^{kt}\)                                                             & \(A e^{kt}\)                                                              \\
         \(\cos{\left( \omega t \right)}\) or \(\sin{\left( \omega t \right)}\) & \(A_0 \cos{\left( \omega t \right)} + A_1 \sin{\left( \omega t \right)}\) \\
-        a combination of the above                                         & a combination of the above                                              \\
-        linearly dependent to \(y_H(t)\)                                     & multiply \(y_P(t)\) by \(t\) until linearly independent                     \\
+        a combination of the above                                             & a combination of the above                                                \\
+        linearly dependent to \(y_H(t)\)                                       & multiply \(y_P(t)\) by \(t\) until linearly independent                   \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -283,9 +283,9 @@ else ... end
         \centering
         \begin{tabular}{c c c}
             \toprule
-                                   & \textbf{Discrete}                            & \textbf{Continuous}                                \\
+                                   & \textbf{Discrete}                              & \textbf{Continuous}                                    \\
             \midrule
-            Valid probabilities    & \(0 \leq p(x) \leq 1\)                         & \(f(x) \geq 0\)                                      \\
+            Valid probabilities    & \(0 \leq p(x) \leq 1\)                         & \(f(x) \geq 0\)                                        \\
             Cumulative probability & \(\sum_{u \leq x} p(u)\)                       & \(\int_{-\infty}^{x} f(u) \odif{u}\)                   \\
             Expectation            & \(\sum_{\Omega} xp(x)\)                        & \(\int_{\Omega} xf(x)\odif{x}\)                        \\
             Variance               & \(\sum_{\Omega} \left( x - \mu \right)^2p(x)\) & \(\int_{\Omega} \left( x - \mu \right)^2f(x)\odif{x}\) \\
@@ -314,11 +314,11 @@ else ... end
     \centering
     \begin{tabular}{c c c c c}
         \toprule
-        \textbf{Distribution}                                    & \textbf{Probability}                            & \textbf{Cumulative Probability}         & \(\mu\)                  & \(\sigma^2\)                \\
+        \textbf{Distribution}                                      & \textbf{Probability}                              & \textbf{Cumulative Probability}           & \(\mu\)                  & \(\sigma^2\)                \\
         \midrule
-        Binomial: \(X\sim \mathrm{bin}\left( n,\: p \right)\)      & \(\binom{n}{x} p^x \left( 1 - p \right)^{n - x}\) & \emph{See table above.}                 & \(np\)                   & \(np\left( 1-p \right)\)    \\
-        Poisson: \(X\sim \mathrm{Pois}\left( \mu \right)\)         & \(e^{-\mu}\mu^x/{x!}\)                           & \emph{See table above.}                 & \(\lambda t\)            & \(\lambda t\)               \\
-        Exponential: \(T\sim \exp{\left( \lambda \right)}\)        & \(\lambda e^{-\lambda t}\)                       & \(1 - \lambda e^{-\lambda t}\)           & \(1/\lambda\)            & \(1/\lambda^2\)             \\
+        Binomial: \(X\sim \mathrm{bin}\left( n,\: p \right)\)      & \(\binom{n}{x} p^x \left( 1 - p \right)^{n - x}\) & \emph{See table above.}                   & \(np\)                   & \(np\left( 1-p \right)\)    \\
+        Poisson: \(X\sim \mathrm{Pois}\left( \mu \right)\)         & \(e^{-\mu}\mu^x/{x!}\)                            & \emph{See table above.}                   & \(\lambda t\)            & \(\lambda t\)               \\
+        Exponential: \(T\sim \exp{\left( \lambda \right)}\)        & \(\lambda e^{-\lambda t}\)                        & \(1 - e^{-\lambda t}\)                    & \(1/\lambda\)            & \(1/\lambda^2\)             \\
         Uniform: \(X\sim \mathrm{U}\left( a,\: b \right)\)         & \(1/\left( b-a \right)\)                          & \(\left( x-a \right)/\left( b-a \right)\) & \(\left( a+b \right)/2\) & \(\left( b-a \right)^2/12\) \\
         Normal: \(X\sim \mathrm{N}\left( \mu,\: \sigma^2 \right)\) & \(-\)                                             & \(-\)                                     & \(\mu\)                  & \(\sigma^2\)                \\
         \bottomrule
